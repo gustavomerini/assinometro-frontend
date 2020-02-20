@@ -19,6 +19,10 @@
     "@angular/platform-browser": "~9.0.2",
     "@angular/platform-browser-dynamic": "~9.0.2",
     "@angular/router": "~9.0.2",
+    "@clr/angular": "^2.3.7",
+    "@clr/icons": "^2.3.7",
+    "@clr/ui": "^2.3.7",
+    "@webcomponents/custom-elements": "^1.0.0",
     "rxjs": "~6.5.4",
     "tslib": "^1.10.0",
     "zone.js": "~0.10.2"
