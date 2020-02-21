@@ -1,9 +1,9 @@
-import { NgModule } from '@angular/core';
+import { NgModule } from "@angular/core";
 
 @NgModule({
-    imports: [],
-    exports: [],
-    declarations: [],
-    providers: [],
+  imports: [],
+  exports: [],
+  declarations: [],
+  providers: []
 })
-export class SharedModule { }
+export class SharedModule {}
