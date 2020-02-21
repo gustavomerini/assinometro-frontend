@@ -3,7 +3,7 @@ import { Routes, RouterModule } from "@angular/router";
 import { LandingPageComponent } from "./features/landing-page/landing-page.component";
 
 const routes: Routes = [
-  { path: "", redirectTo: "home", pathMatch: "full" },
+  { path: "", redirectTo: "landing-page", pathMatch: "full" },
   {
     path: "landing-page",
     component: LandingPageComponent
