@@ -1,0 +1,12 @@
+{
+  "welcome_message": "Welcome to",
+  "app_name": "Assinômetro",
+  "login_action": "Login",
+  "form_username": "Username",
+  "form_password": "Password",
+  "wrong_password_username": "Invalid user name or password",
+  "already_have_credentials": "Already have an account? Sign in",
+  "signup_message": "Sign up for a Company ID",
+  "register_action": "Register",
+  "form_error_required": "Field is required"
+}

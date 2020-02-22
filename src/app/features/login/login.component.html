@@ -1,1 +1,26 @@
-<button [routerLink]="['/login', 1]" class="btn btn-primary">Login workssssssssssssss</button>
+<div class="clr-example">
+  <div class="login-wrapper">
+    <div class="login">
+      <section class="title">
+        <h3 class="welcome">{{ "welcome_message" | translate }}</h3>
+        {{ "app_name" | translate }}
+      </section>
+      <form class="login-group" [formGroup]="loginForm">
+        <app-clarity-form [clrFormGroup]="loginForm" [fieldName]="'username'">
+        </app-clarity-form>
+        <app-clarity-form [clrFormGroup]="loginForm" [fieldName]="'password'">
+        </app-clarity-form>
+
+        <div *ngIf="validationError" class="error active message-error">
+          {{ "wrong_password_username" | translate }}
+        </div>
+        <button type="submit" class="btn btn-primary">
+          {{ "login_action" | translate }}
+        </button>
+        <a [routerLink]="['/register']" class="signup">{{
+          "signup_message" | translate
+        }}</a>
+      </form>
+    </div>
+  </div>
+</div>

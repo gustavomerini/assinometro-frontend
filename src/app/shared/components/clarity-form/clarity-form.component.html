@@ -1,0 +1,19 @@
+<section [formGroup]="clrFormGroup" class="keep-distance">
+  <clr-input-container>
+    <label>{{ fieldName }}</label>
+    <input
+      [name]="fieldName"
+      clrInput
+      [formControlName]="fieldName"
+      [placeholder]="'form_' + fieldName | translate"
+    />
+  </clr-input-container>
+
+  <section *ngFor="let validation of validations">
+    <section *ngIf="formHasError()">
+      <span class="error-message" *ngIf="control.errors[validation]">{{
+        "form_error_" + validation | translate
+      }}</span>
+    </section>
+  </section>
+</section>

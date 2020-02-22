@@ -1,1 +1,93 @@
-<button class="btn btn-primary">Register workssssssssssssss</button>
+<div class="clr-example">
+  <div class="login-wrapper">
+    <div class="login">
+      <section class="title">
+        <h3 class="welcome">{{ "welcome_message" | translate }}</h3>
+        {{ "app_name" | translate }}
+      </section>
+      <form class="login-group" clrForm [formGroup]="registerForm">
+        <clr-input-container>
+          <input
+            name="email"
+            clrInput
+            formControlName="email"
+            class="keep-distance"
+            placeholder="E-mail"
+          />
+          <clr-control-error *clrIfError="'required'"
+            >This is a required field</clr-control-error
+          >
+          <clr-control-error *clrIfError="'minlength'"
+            >Must be at least 5 characters</clr-control-error
+          >
+          <clr-control-error *clrIfError="'pattern'"
+            >It must match 'asdfasdf'</clr-control-error
+          >
+        </clr-input-container>
+        <clr-input-container>
+          <input
+            name="username"
+            clrInput
+            formControlName="username"
+            class="keep-distance"
+            placeholder="Username"
+          />
+          <clr-control-error *clrIfError="'required'"
+            >This is a required field</clr-control-error
+          >
+          <clr-control-error *clrIfError="'minlength'"
+            >Must be at least 5 characters</clr-control-error
+          >
+          <clr-control-error *clrIfError="'pattern'"
+            >It must match 'asdfasdf'</clr-control-error
+          >
+        </clr-input-container>
+        <clr-input-container>
+          <input
+            name="password"
+            clrInput
+            formControlName="password"
+            class="keep-distance"
+            placeholder="Password"
+          />
+          <clr-control-error *clrIfError="'required'"
+            >This is a required field</clr-control-error
+          >
+          <clr-control-error *clrIfError="'minlength'"
+            >Must be at least 5 characters</clr-control-error
+          >
+          <clr-control-error *clrIfError="'pattern'"
+            >It must match 'asdfasdf'</clr-control-error
+          >
+        </clr-input-container>
+        <clr-input-container>
+          <input
+            name="confirmPassword"
+            clrInput
+            formControlName="confirmPassword"
+            class="keep-distance"
+            placeholder="Confirm Password"
+          />
+          <clr-control-error *clrIfError="'required'"
+            >This is a required field</clr-control-error
+          >
+          <clr-control-error *clrIfError="'minlength'"
+            >Must be at least 5 characters</clr-control-error
+          >
+          <clr-control-error *clrIfError="'pattern'"
+            >It must match 'asdfasdf'</clr-control-error
+          >
+        </clr-input-container>
+        <div *ngIf="validationError" class="error active message-error">
+          {{ "wrong_password_username" | translate }}
+        </div>
+        <button type="submit" class="btn btn-primary">
+          {{ "register_action" | translate }}
+        </button>
+        <a [routerLink]="['/login']" class="signup">{{
+          "already_have_credentials" | translate
+        }}</a>
+      </form>
+    </div>
+  </div>
+</div>

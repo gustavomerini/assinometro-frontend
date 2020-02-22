@@ -1,0 +1,21 @@
+.form-group {
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 0.6rem;
+}
+
+.login-wrapper {
+  background: hsl(198, 100%, 32%);
+}
+
+.message-error {
+  margin-top: 1rem !important;
+}
+
+.keep-distance {
+  margin-bottom: 2rem;
+}
+
+label {
+  display: none !important;
+}
