@@ -10,5 +10,11 @@ export class LandingPageComponent implements OnInit {
     console.log("landing bootstrap");
   }
 
+  public showMenu = false;
   ngOnInit(): void {}
+
+  public toggleMenu() {
+    this.showMenu = !this.showMenu;
+    console.log(this.showMenu)
+  }
 }

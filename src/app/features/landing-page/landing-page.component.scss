@@ -1,0 +1,168 @@
+
+.navbar-classic {
+  min-height: 80px;
+  width: 100%;
+  padding: 0.5rem 1rem;
+}
+
+.flex-container {
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+  justify-content: space-between;
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.navbar-brand {
+  color: #555;
+  margin-top: 5px;
+  font-size: 27px;
+  font-weight: 600;
+  font-family: "Poppins", sans-serif;
+  display: inline-block;
+  padding-top: 0.3125rem;
+  padding-bottom: 0.3125rem;
+  margin-right: 1rem;
+  font-size: 1.25rem;
+  line-height: inherit;
+  white-space: nowrap;
+}
+
+h1 {
+  font-size: 1.5rem;
+  font-weight: 500;
+}
+
+p {
+  font-size: 1rem;
+  text-align: justify;
+}
+
+.landing-page {
+  padding: 10rem 0;
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 0 92%);
+}
+
+.justify-contend-end {
+  justify-content: flex-end !important;
+}
+
+.justify-content-center {
+  justify-content: center;
+}
+
+.align-items-center {
+  align-items: center !important;
+}
+
+.bg-blue {
+  background: #edf5ff !important;
+}
+
+.img-fluid {
+  max-width: 100%;
+  height: auto;
+}
+
+.main-action {
+  margin-top: 1.5rem;
+  height: 2.4rem;
+  width: 7rem;
+}
+
+.navbar-nav {
+  list-style: none;
+}
+
+.space-big {
+  padding: 90px 0;
+}
+
+.center {
+  text-align: center;
+}
+
+.ml-auto,
+.mx-auto {
+  margin-left: auto !important;
+}
+.mr-auto,
+.mx-auto {
+  margin-right: auto !important;
+}
+
+@media (min-width: 576px) {
+  .flex-container {
+    max-width: 540px;
+  }
+}
+
+@media (min-width: 768px) {
+  .flex-container {
+    max-width: 720px;
+  }
+  .navbar-toggler {
+    display: none;
+  }
+  .navbar-classic {
+    flex-flow: row nowrap;
+    justify-content: flex-start;
+  }
+  .navbar-nav {
+    display: flex !important;
+    flex-direction: row;
+  }
+}
+
+@media (min-width: 992px) {
+  .flex-container {
+    max-width: 960px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .flex-container {
+    max-width: 1140px;
+  }
+}
+
+@media (max-width: 480px) {
+  .mob-hide {
+    display: none !important;
+  }
+  h1 {
+    font-size: 1.0rem;
+    font-weight: 500;
+  }
+  p {
+    font-size: 0.6rem;
+    text-align: justify;
+  }
+  .mob-fix-1 {
+    margin-top: 45px;
+  }
+  .flex-container {
+    flex-direction: column;
+  }
+  .collapse:not(.show) {
+    display: none;
+  }
+  .landing-page {
+    padding: 0 0 70px 0
+  }
+  .navbar-classic {
+    flex-flow: row nowrap;
+    justify-content: flex-start;
+  }
+  .navbar-nav {
+    display: flex !important;
+    flex-direction: column;
+  }
+  .top-nav {
+    display: flex;
+    align-items: center;
+  }
+}

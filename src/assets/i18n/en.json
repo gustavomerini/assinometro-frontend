@@ -14,5 +14,9 @@
   "form_confirm_password": "Confirm your password",
   "form_email": "E-mail",
   "error_invalid_parameter_exception": "Password must have 8 di",
-  "error_username_exists_exception": "Username already exists"
+  "error_username_exists_exception": "Username already exists",
+  "get_started": "Get Started",
+  "nav_home": "Home",
+  "nav_faq": "FAQ",
+  "nav_about_me": "About Me"
 }
