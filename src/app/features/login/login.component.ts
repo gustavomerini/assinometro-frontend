@@ -1,7 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { FormBuilder, Validators } from "@angular/forms";
 import { TranslateService } from "@ngx-translate/core";
-import { Auth } from "aws-amplify";
+import Auth from "@aws-amplify/auth";
 import { handleCognitoError } from 'src/app/shared/functions/utils';
 
 @Component({

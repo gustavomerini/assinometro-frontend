@@ -11,10 +11,10 @@ import { RouterModule } from "@angular/router";
     TranslateModule.forChild(),
     RouterModule,
     ClarityModule,
-    FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    FormsModule
   ],
-  exports: [TranslateModule],
+  exports: [TranslateModule, ClarityModule, ReactiveFormsModule, FormsModule],
   declarations: [],
   providers: []
 })

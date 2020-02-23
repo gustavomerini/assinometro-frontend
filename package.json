@@ -4,6 +4,8 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve --aot",
+    "build:stats": "ng build --stats-json",
+    "analyze": "webpack-bundle-analyzer dist/assinometro-frontend/stats-es2015.json",
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
@@ -19,10 +21,12 @@
     "@angular/platform-browser": "~9.1.0-next.1",
     "@angular/platform-browser-dynamic": "~9.1.0-next.1",
     "@angular/router": "~9.1.0-next.1",
+    "@aws-amplify/auth": "^2.1.5",
+    "@aws-amplify/core": "^2.2.4",
     "@clr/angular": "^3.0.0-next.8",
     "@clr/core": "^3.0.0-next.8",
-    "@clr/icons": "^3.0.0-next.8",
     "@clr/ui": "^3.0.0-next.8",
+    "@clr/icons": "^3.0.0-next.8",
     "@ngx-translate/core": "^12.1.1",
     "@ngx-translate/http-loader": "^4.0.0",
     "@webcomponents/custom-elements": "^1.0.0",
@@ -36,9 +40,9 @@
     "@angular/cli": "~9.1.0-next.0",
     "@angular/compiler-cli": "~9.1.0-next.1",
     "@angular/language-service": "~9.1.0-next.1",
-    "@types/node": "^12.11.1",
     "@types/jasmine": "~3.3.8",
     "@types/jasminewd2": "~2.0.3",
+    "@types/node": "^12.11.1",
     "codelyzer": "^5.1.2",
     "jasmine-core": "~3.4.0",
     "jasmine-spec-reporter": "~4.2.1",
@@ -50,6 +54,7 @@
     "protractor": "~5.4.0",
     "ts-node": "~7.0.0",
     "tslint": "~5.15.0",
-    "typescript": "~3.7.5"
+    "typescript": "~3.7.5",
+    "webpack-bundle-analyzer": "^3.6.0"
   }
 }
