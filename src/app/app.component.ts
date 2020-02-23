@@ -1,5 +1,5 @@
 import { Component } from "@angular/core";
-import {TranslateService} from '@ngx-translate/core';
+import { TranslateService } from "@ngx-translate/core";
 
 @Component({
   selector: "app-root",
@@ -8,8 +8,12 @@ import {TranslateService} from '@ngx-translate/core';
 })
 export class AppComponent {
   title = "assinometro-frontend";
+  public signedIn = false;
+  public user = null;
 
-  constructor(private translate: TranslateService) {
-    this.translate.setDefaultLang('pt');
+  constructor(
+    private translate: TranslateService,
+  ) {
+    this.translate.setDefaultLang("pt");
   }
 }

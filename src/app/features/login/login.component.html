@@ -1,26 +1,43 @@
-<div class="clr-example">
-  <div class="login-wrapper">
-    <div class="login">
-      <section class="title">
-        <h3 class="welcome">{{ "welcome_message" | translate }}</h3>
-        {{ "app_name" | translate }}
-      </section>
-      <form class="login-group" [formGroup]="loginForm">
-        <app-clarity-form [clrFormGroup]="loginForm" [fieldName]="'username'">
-        </app-clarity-form>
-        <app-clarity-form [clrFormGroup]="loginForm" [fieldName]="'password'">
-        </app-clarity-form>
-
-        <div *ngIf="validationError" class="error active message-error">
-          {{ "wrong_password_username" | translate }}
-        </div>
-        <button type="submit" class="btn btn-primary">
-          {{ "login_action" | translate }}
-        </button>
-        <a [routerLink]="['/register']" class="signup">{{
-          "signup_message" | translate
-        }}</a>
-      </form>
+<div class="login-wrapper">
+  <form class="login" [formGroup]="loginForm" (ngSubmit)="loginUser()">
+    <section class="title">
+      <h3 class="welcome">{{ "welcome_message" | translate }}</h3>
+      {{ "app_name" | translate }}
+    </section>
+    <div class="login-group">
+      <clr-input-container>
+        <label class="clr-sr-only">{{ "form_username" | translate }}</label>
+        <input
+          name="username"
+          clrInput
+          formControlName="username"
+          [placeholder]="'form_username' | translate"
+        />
+        <clr-control-error *clrIfError="'required'">{{
+          "form_error_username_required" | translate
+        }}</clr-control-error>
+      </clr-input-container>
+      <clr-password-container>
+        <label class="clr-sr-only">{{ "form_password" | translate }}</label>
+        <input
+          clrPassword
+          formControlName="password"
+          id="login_password"
+          [placeholder]="'form_password' | translate"
+        />
+        <clr-control-error *clrIfError="'required'">{{
+          "form_error_password_required" | translate
+        }}</clr-control-error>
+      </clr-password-container>
+      <div *ngIf="validationError" class="error active message-error">
+        {{ errorMessage }}
+      </div>
+      <button type="submit" class="btn btn-primary">
+        {{ "login_action" | translate }}
+      </button>
+      <a [routerLink]="['/register']" class="signup">{{
+        "signup_message" | translate
+      }}</a>
     </div>
-  </div>
+  </form>
 </div>

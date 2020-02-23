@@ -1,0 +1,29 @@
+{
+  "users": {
+    "userId": "1ad08b7f-b364-41b5-a3d2-4cc78d662cde",
+    "email": "joaozin@gmail.com",
+    "subs": [
+      {
+        "name": "Netflix",
+        "description": "Serviço de streaming",
+        "price": 11,
+        "type": "PHONE_PLAN",
+        "ext": {
+          "mb": 100
+        }
+      }
+    ]
+  },
+  "subscriptions": [
+    {
+      "name": "Vivo TEL",
+      "description": "Plano de celular VIVO",
+      "price": null,
+      "type": "PHONE_PLAN",
+      "ext": {
+        "mb": null
+      }
+    }
+  ]
+}
+

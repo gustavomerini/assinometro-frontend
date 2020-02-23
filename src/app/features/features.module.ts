@@ -1,6 +1,7 @@
 import { NgModule } from "@angular/core";
 import { Routes, RouterModule } from "@angular/router";
 import { LandingPageComponent } from "./landing-page/landing-page.component";
+import { LandingPageModule } from './landing-page/landing-page.module';
 
 const routes: Routes = [
   { path: "", redirectTo: "landing-page", pathMatch: "full" },
@@ -20,7 +21,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forChild(routes)],
+  imports: [RouterModule.forChild(routes), LandingPageModule],
   exports: [RouterModule],
   declarations: []
 })

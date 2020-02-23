@@ -8,5 +8,11 @@
   "already_have_credentials": "Already have an account? Sign in",
   "signup_message": "Sign up for a Company ID",
   "register_action": "Register",
-  "form_error_required": "Field is required"
+  "form_error_password_required": "Password is required",
+  "form_error_username_required": "Username is required",
+  "form_error_confirm_password_required": "You need to confirm your password",
+  "form_confirm_password": "Confirm your password",
+  "form_email": "E-mail",
+  "error_invalid_parameter_exception": "Password must have 8 di",
+  "error_username_exists_exception": "Username already exists"
 }

@@ -27,7 +27,6 @@
     "@ngx-translate/http-loader": "^4.0.0",
     "@webcomponents/custom-elements": "^1.0.0",
     "aws-amplify": "^2.2.5",
-    "aws-amplify-angular": "^4.1.6",
     "rxjs": "^6.5.4",
     "tslib": "^1.10.0",
     "zone.js": "~0.10.2"
