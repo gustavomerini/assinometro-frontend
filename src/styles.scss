@@ -1,8 +1,17 @@
 /* You can add global styles to this file, and also import other style files */
 
-html, body {
-    height: 100%;
-    padding: 0px;
+html,
+body {
+  height: 100%;
+  padding: 0px;
+  width: 100%;
+  margin: 0px;
+}
+
+.with-padding-top {
+  margin: 1.4rem 0 0 0 !important;
+}
+
+.full-width {
     width: 100%;
-    margin: 0px;
 }

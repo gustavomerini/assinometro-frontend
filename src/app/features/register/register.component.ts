@@ -4,6 +4,7 @@ import { TranslateService } from "@ngx-translate/core";
 import Auth from "@aws-amplify/auth";
 import { handleCognitoError } from "src/app/shared/utils/utils";
 import { Router } from "@angular/router";
+import { ClrLoadingState } from '@clr/angular';
 
 @Component({
   selector: "app-register",
@@ -25,6 +26,7 @@ export class RegisterComponent implements OnInit {
   });
   public message = "";
   public alertRole = "";
+  public registerBtnState = ClrLoadingState.DEFAULT;
 
   constructor(private fb: FormBuilder, public translate: TranslateService) {}
 
@@ -32,6 +34,7 @@ export class RegisterComponent implements OnInit {
 
   public async registerUser() {
     const { username, password, email } = this.registerForm.value;
+    this.registerBtnState = ClrLoadingState.LOADING;
     this.closeAlert();
     const user = {
       username,
@@ -44,9 +47,11 @@ export class RegisterComponent implements OnInit {
       const signUpResponse = await Auth.signUp(user);
       this.message = this.translate.instant("check_your_email");
       this.alertRole = "alert-info";
+      this.registerBtnState = ClrLoadingState.SUCCESS;
     } catch (error) {
       this.message = this.translate.instant(handleCognitoError(error));
       this.alertRole = "alert-danger";
+      this.registerBtnState = ClrLoadingState.ERROR;
     }
   }
 

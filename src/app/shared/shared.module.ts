@@ -6,6 +6,7 @@ import { RouterModule } from "@angular/router";
 import { AlertComponent } from './components/alert/alert.component';
 import { SpinnerComponent } from './components/spinner/spinner.component';
 import { ClarityModule } from '@clr/angular';
+import { ButtonComponent } from './components/button/button.component';
 
 @NgModule({
   imports: [
@@ -16,8 +17,8 @@ import { ClarityModule } from '@clr/angular';
     ReactiveFormsModule,
     FormsModule
   ],
-  exports: [TranslateModule, ClarityModule, CommonModule, AlertComponent, SpinnerComponent],
-  declarations: [AlertComponent, SpinnerComponent],
+  exports: [TranslateModule, ClarityModule, CommonModule, AlertComponent, SpinnerComponent, ButtonComponent],
+  declarations: [AlertComponent, SpinnerComponent, ButtonComponent],
   providers: []
 })
 export class SharedModule {}

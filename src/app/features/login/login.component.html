@@ -30,9 +30,7 @@
         }}</clr-control-error>
       </clr-password-container>
       <app-alert *ngIf="message" class="custom-alert" [message]="message" [role]="alertRole" (close)="closeAlert()"></app-alert>
-      <button type="submit" class="btn btn-primary with-padding-top">
-        {{ "login_action" | translate }}
-      </button>
+      <app-button [type]="'submit'" [label]="'login_action' | translate" [loadingState]="loginBtnState" [classNames]="'btn btn-primary with-padding-top full-width'"></app-button>
       <a [routerLink]="['/register']" class="signup">{{
         "signup_message" | translate
       }}</a>
