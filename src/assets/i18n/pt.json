@@ -8,8 +8,6 @@
   "already_have_credentials": "Already have an account? Sign in",
   "signup_message": "Sign up for a Company ID",
   "register_action": "Register",
-  "form_error_password_required": "Password is required",
-  "form_error_username_required": "Username is required",
   "form_error_confirm_password_required": "You need to confirm your password",
   "form_confirm_password": "Confirm your password",
   "form_email": "E-mail",
@@ -22,5 +20,11 @@
   "landing_page_message": "Tracking subscriptions expenses can be hard. That's why our mission is to help you to save your money, delivering an easy way to track all of your expenses and an analyser comparing prices of all subscriptions to notify whoever is paying more!",
   "landing_page_header": "Track your subscriptions expenses!",
   "error_not_authorized_exception": "Username or password invalid",
-  "check_your_email": "Check your email to verify your account"
+  "check_your_email": "Check your email to confirm your account",
+  "error_user_not_confirmed_exception": "You need to confirm your account",
+  "logout_action": "Logout",
+  "form_must_match": "Passwords must match",
+  "form_password_required": "You need to inform a password",
+  "form_username_required": "You need to inform an username",
+  "form_email_required": "You need to inform an e-mail"
 }

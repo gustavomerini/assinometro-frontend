@@ -3,7 +3,12 @@ import { Component, OnInit, Input } from "@angular/core";
 @Component({
   selector: "app-button",
   template: `
-    <button [clrLoading]="loadingState" [class]="classNames" [type]="type">
+    <button
+      [clrLoading]="loadingState"
+      (click)="action()"
+      [class]="classNames"
+      [type]="type"
+    >
       {{ label }}
     </button>
   `
@@ -17,6 +22,8 @@ export class ButtonComponent implements OnInit {
   public loadingState = "";
   @Input()
   public label = "";
+  @Input()
+  public action = () => {};
 
   constructor() {}
 

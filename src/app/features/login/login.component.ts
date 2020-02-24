@@ -2,9 +2,10 @@ import { Component, OnInit } from "@angular/core";
 import { FormBuilder, Validators } from "@angular/forms";
 import { TranslateService } from "@ngx-translate/core";
 import Auth from "@aws-amplify/auth";
-import { ClrLoadingState } from '@clr/angular';
+import { ClrLoadingState } from "@clr/angular";
 
 import { handleCognitoError } from "src/app/shared/utils/utils";
+import { Router } from "@angular/router";
 
 @Component({
   selector: "app-login",
@@ -21,7 +22,11 @@ export class LoginComponent implements OnInit {
   public alertRole = "";
   public loginBtnState = ClrLoadingState.DEFAULT;
 
-  constructor(private fb: FormBuilder, private translate: TranslateService) {}
+  constructor(
+    private fb: FormBuilder,
+    private translate: TranslateService,
+    private router: Router
+  ) {}
 
   ngOnInit(): void {}
 
@@ -34,8 +39,8 @@ export class LoginComponent implements OnInit {
     };
     this.closeAlert();
     try {
-      const signInResponse = await Auth.signIn(user);
-      this.loginBtnState = ClrLoadingState.SUCCESS;
+      await Auth.signIn(user);
+      this.router.navigate(["/dashboard"]);
     } catch (error) {
       this.message = this.translate.instant(handleCognitoError(error));
       this.alertRole = "alert-danger";

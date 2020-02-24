@@ -1,10 +1,15 @@
-import { Component, OnInit } from "@angular/core";
-import { FormBuilder, Validators } from "@angular/forms";
+import { Component, OnInit, Input } from "@angular/core";
+import {
+  FormBuilder,
+  Validators,
+  Validator,
+  AbstractControl
+} from "@angular/forms";
 import { TranslateService } from "@ngx-translate/core";
 import Auth from "@aws-amplify/auth";
 import { handleCognitoError } from "src/app/shared/utils/utils";
-import { Router } from "@angular/router";
-import { ClrLoadingState } from '@clr/angular';
+import { ClrLoadingState } from "@clr/angular";
+import { ComparePassword } from 'src/app/shared/validators/compare-password.validator';
 
 @Component({
   selector: "app-register",
@@ -12,18 +17,24 @@ import { ClrLoadingState } from '@clr/angular';
   styleUrls: ["./register.component.scss"]
 })
 export class RegisterComponent implements OnInit {
-  public registerForm = this.fb.group({
-    email: [
-      "merinigames@hotmail.com",
-      Validators.compose([Validators.required])
-    ],
-    username: ["gutomerini", Validators.compose([Validators.required])],
-    password: ["g#79O4+|W-#nY9k", Validators.compose([Validators.required])],
-    confirmPassword: [
-      "g#79O4+|W-#nY9k",
-      Validators.compose([Validators.required])
-    ]
-  });
+  public registerForm = this.fb.group(
+    {
+      email: [
+        "merinigames@hotmail.com",
+        Validators.compose([Validators.required])
+      ],
+      username: ["gutomerini", Validators.compose([Validators.required])],
+      password: ["", Validators.compose([Validators.required])],
+      confirmPassword: [
+        "",
+        Validators.compose([Validators.required])
+      ]
+    },
+    {
+      // Used custom form validator name
+      validator: ComparePassword("password", "confirmPassword")
+    }
+  );
   public message = "";
   public alertRole = "";
   public registerBtnState = ClrLoadingState.DEFAULT;

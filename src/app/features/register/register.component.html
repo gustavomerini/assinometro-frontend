@@ -14,7 +14,7 @@
           [placeholder]="'form_username' | translate"
         />
         <clr-control-error *clrIfError="'required'">{{
-          "form_error_required" | translate
+          "form_username_required" | translate
         }}</clr-control-error>
       </clr-input-container>
       <clr-input-container>
@@ -26,22 +26,9 @@
           [placeholder]="'form_email' | translate"
         />
         <clr-control-error *clrIfError="'required'">{{
-          "form_error_required" | translate
+          "form_email_required" | translate
         }}</clr-control-error>
       </clr-input-container>
-      <clr-password-container>
-        <label class="clr-sr-only">{{ "form_confirm_password" | translate }}</label>
-        <input
-          name="confirmPassword"
-          clrPassword
-          formControlName="confirmPassword"
-          class="keep-distance"
-          [placeholder]="'form_confirm_password' | translate"
-        />
-        <clr-control-error *clrIfError="'required'">{{
-          "form_error_confirm_password_required" | translate
-        }}</clr-control-error>
-      </clr-password-container>
       <clr-password-container>
         <label class="clr-sr-only">{{ "form_password" | translate }}</label>
         <input
@@ -52,11 +39,41 @@
           [placeholder]="'form_password' | translate"
         />
         <clr-control-error *clrIfError="'required'">{{
-          "form_error_required" | translate
+          "form_password_required" | translate
         }}</clr-control-error>
       </clr-password-container>
-      <app-alert *ngIf="message" class="custom-alert" [message]="message" [role]="alertRole" (close)="closeAlert()"></app-alert>
-      <app-button [type]="'submit'" [label]="'register_action' | translate | translate" [loadingState]="registerBtnState" [classNames]="'btn btn-primary with-padding-top full-width'"></app-button>
+      <clr-password-container>
+        <label class="clr-sr-only">{{
+          "form_confirm_password" | translate
+        }}</label>
+        <input
+          name="confirmPassword"
+          clrPassword
+          formControlName="confirmPassword"
+          class="keep-distance"
+          [placeholder]="'form_confirm_password' | translate"
+        />
+        <clr-control-error *clrIfError="'required'">{{
+          "form_error_confirm_password_required" | translate
+        }}</clr-control-error>
+
+        <clr-control-error *clrIfError="'mustMatch'">{{
+          "form_must_match" | translate
+        }}</clr-control-error>
+      </clr-password-container>
+      <app-alert
+        *ngIf="message"
+        class="custom-alert"
+        [message]="message"
+        [role]="alertRole"
+        (close)="closeAlert()"
+      ></app-alert>
+      <app-button
+        [type]="'submit'"
+        [label]="'register_action' | translate"
+        [loadingState]="registerBtnState"
+        [classNames]="'btn btn-primary with-padding-top full-width'"
+      ></app-button>
       <a [routerLink]="['/login']" class="signup">{{
         "already_have_credentials" | translate
       }}</a>

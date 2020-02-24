@@ -20,6 +20,7 @@ export class AppComponent {
   public async verifyUserSession() {
     try {
       const response = await Auth.currentSession();
+      console.log(response);
     } catch (error) {
       console.error(error);
     }
