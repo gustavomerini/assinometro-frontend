@@ -6,15 +6,13 @@ import { Component, OnInit } from "@angular/core";
   styleUrls: ["./landing-page.component.scss"]
 })
 export class LandingPageComponent implements OnInit {
-  constructor() {
-    console.log("landing bootstrap");
-  }
-
   public showMenu = false;
+  
+  constructor() {}
+
   ngOnInit(): void {}
 
   public toggleMenu() {
     this.showMenu = !this.showMenu;
-    console.log(this.showMenu)
   }
 }

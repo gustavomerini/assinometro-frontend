@@ -1,10 +1,15 @@
 import { NgModule } from "@angular/core";
-import { AuthService } from "./auth/auth.service";
+import { LoaderService } from "./loader/loader.service";
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { LoaderInterceptor } from './loader/loader.interceptor';
 
 @NgModule({
   imports: [],
   exports: [],
   declarations: [],
-  providers: [AuthService]
+  providers: [
+    LoaderService,
+    { provide: HTTP_INTERCEPTORS, useClass: LoaderInterceptor, multi: true }
+  ]
 })
 export class CoreModule {}

@@ -1,10 +1,11 @@
 import { NgModule } from "@angular/core";
 import { CommonModule } from "@angular/common";
+import { RouterModule } from '@angular/router';
 import { LandingPageComponent } from "./landing-page.component";
-import { SharedModule } from 'src/app/shared/shared.module';
+import { TranslateModule } from '@ngx-translate/core';
 
 @NgModule({
-  imports: [CommonModule, SharedModule],
+  imports: [CommonModule, TranslateModule, RouterModule],
   exports: [],
   declarations: [LandingPageComponent],
   providers: []

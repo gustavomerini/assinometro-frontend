@@ -1,16 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit } from "@angular/core";
 
 @Component({
-  selector: 'app-children',
-  templateUrl: './children.component.html',
+  selector: "app-children",
+  templateUrl: "./children.component.html"
 })
 export class ChildrenLoginComponent implements OnInit {
+  constructor() {}
 
-  constructor() { 
-    console.log("login children bootstrap");
-  }
-
-  ngOnInit(): void {
-  }
-
+  ngOnInit(): void {}
 }

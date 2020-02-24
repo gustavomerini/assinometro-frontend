@@ -55,10 +55,8 @@
           "form_error_required" | translate
         }}</clr-control-error>
       </clr-password-container>
-      <div *ngIf="errorMessage" class="error active message-error">
-        {{ errorMessage }}
-      </div>
-      <button type="submit" class="btn btn-primary">
+      <app-alert *ngIf="message" class="custom-alert" [message]="message" [role]="alertRole" (close)="closeAlert()"></app-alert>
+      <button type="submit" class="btn btn-primary with-padding-top">
         {{ "register_action" | translate }}
       </button>
       <a [routerLink]="['/login']" class="signup">{{

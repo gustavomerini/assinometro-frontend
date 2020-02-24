@@ -1,5 +1,6 @@
 import { Component } from "@angular/core";
 import { TranslateService } from "@ngx-translate/core";
+import Auth from "@aws-amplify/auth";
 
 @Component({
   selector: "app-root",
@@ -11,9 +12,16 @@ export class AppComponent {
   public signedIn = false;
   public user = null;
 
-  constructor(
-    private translate: TranslateService,
-  ) {
+  constructor(private translate: TranslateService) {
     this.translate.setDefaultLang("pt");
+    this.verifyUserSession();
+  }
+
+  public async verifyUserSession() {
+    try {
+      const response = await Auth.currentSession();
+    } catch (error) {
+      console.error(error);
+    }
   }
 }

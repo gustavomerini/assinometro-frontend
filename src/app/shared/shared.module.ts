@@ -1,9 +1,11 @@
 import { NgModule } from "@angular/core";
 import { CommonModule } from "@angular/common";
 import { TranslateModule } from "@ngx-translate/core";
-import { ClarityModule } from "@clr/angular";
 import { ReactiveFormsModule, FormsModule } from "@angular/forms";
 import { RouterModule } from "@angular/router";
+import { AlertComponent } from './components/alert/alert.component';
+import { SpinnerComponent } from './components/spinner/spinner.component';
+import { ClarityModule } from '@clr/angular';
 
 @NgModule({
   imports: [
@@ -14,8 +16,8 @@ import { RouterModule } from "@angular/router";
     ReactiveFormsModule,
     FormsModule
   ],
-  exports: [TranslateModule, ClarityModule, ReactiveFormsModule, FormsModule],
-  declarations: [],
+  exports: [TranslateModule, ClarityModule, CommonModule, AlertComponent, SpinnerComponent],
+  declarations: [AlertComponent, SpinnerComponent],
   providers: []
 })
 export class SharedModule {}

@@ -2,7 +2,8 @@ import { Component, OnInit } from "@angular/core";
 import { FormBuilder, Validators } from "@angular/forms";
 import { TranslateService } from "@ngx-translate/core";
 import Auth from "@aws-amplify/auth";
-import { handleCognitoError } from "src/app/shared/functions/utils";
+import { handleCognitoError } from "src/app/shared/utils/utils";
+import { Router } from "@angular/router";
 
 @Component({
   selector: "app-register",
@@ -22,17 +23,16 @@ export class RegisterComponent implements OnInit {
       Validators.compose([Validators.required])
     ]
   });
-  public errorMessage = "";
+  public message = "";
+  public alertRole = "";
 
-  constructor(private fb: FormBuilder, public translate: TranslateService) {
-    console.log("register bootstrap");
-  }
+  constructor(private fb: FormBuilder, public translate: TranslateService) {}
 
   ngOnInit(): void {}
 
   public async registerUser() {
     const { username, password, email } = this.registerForm.value;
-    this.errorMessage = "";
+    this.closeAlert();
     const user = {
       username,
       password,
@@ -42,8 +42,16 @@ export class RegisterComponent implements OnInit {
     };
     try {
       const signUpResponse = await Auth.signUp(user);
+      this.message = this.translate.instant("check_your_email");
+      this.alertRole = "alert-info";
     } catch (error) {
-      this.errorMessage = this.translate.instant(handleCognitoError(error));
+      this.message = this.translate.instant(handleCognitoError(error));
+      this.alertRole = "alert-danger";
     }
+  }
+
+  public closeAlert() {
+    this.message = "";
+    this.alertRole = "";
   }
 }

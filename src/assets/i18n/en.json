@@ -18,5 +18,7 @@
   "get_started": "Get Started",
   "nav_home": "Home",
   "nav_faq": "FAQ",
-  "nav_about_me": "About Me"
+  "nav_about_me": "About Me",
+  "landing_page_message": "Tracking subscriptions expenses can be hard. That's why our mission is to help you to save your money, delivering an easy way to track all of your expenses and an analyser comparing prices of all subscriptions to notify whoever is paying more!",
+  "landing_page_header": "Track your subscriptions expenses!"
 }
