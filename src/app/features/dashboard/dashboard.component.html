@@ -13,17 +13,43 @@
       }"
     >
       <div class="clr-row">
-        <div class="clr-col-lg-12 clr-col-md-12 clr-col-12">
+        <div class="clr-col-lg-8 clr-col-md-12 clr-col-12">
           <div class="card">
             <div class="card-header">
-              Header
+              Average Cost (BRL)
             </div>
             <div class="card-block">
-              <div class="card-title">
-                Block
+              <div class="card-text average-cost">
+                <div>Year: R$ 450</div>
+                <div>Month: R$ 22,50</div>
+                <div>Weekly: R$ 5,625</div>
               </div>
+            </div>
+          </div>
+        </div>
+        <div class="clr-col-lg-4 clr-col-md-12 clr-col-12">
+          <div class="card">
+            <div class="card-header">
+              Subscription Summary
+            </div>
+            <div class="card-block">
               <div class="card-text">
-                ...
+                <div>Total: 3 subscriptions</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clr-col-lg-8 clr-col-md-12 clr-col-12">
+          <div class="card">
+            <div class="card-header">
+              Monthly expenses
+            </div>
+            <div class="card-block">
+              <div class="card-text">
+                <div
+                  id="chartContainer"
+                  style="height: 500px; width: 100%;  max-width: 100%;"
+                ></div>
               </div>
             </div>
             <div class="card-footer">
@@ -32,97 +58,94 @@
             </div>
           </div>
         </div>
-        <div class="clr-col-lg-12 clr-col-md-12 clr-col-12">
+        <div class="clr-col-lg-4 clr-col-12">
           <div class="card">
             <div class="card-header">
               Header
             </div>
             <div class="card-block">
-              <div class="card-title">
-                Block
+              <div class="card-media-block">
+                <img
+                  src="assets/images/placeholder.png"
+                  class="card-media-image"
+                />
+                <div class="card-media-description">
+                  <span class="card-media-title">
+                    Project A
+                  </span>
+                  <span class="card-media-text">
+                    Owner: John Doe
+                  </span>
+                </div>
               </div>
-              <div class="card-text">
-                ...
+              <div class="card-media-block with-align">
+                <img
+                  src="assets/images/placeholder.png"
+                  class="card-media-image"
+                />
+                <div class="card-media-description">
+                  <span class="card-media-title">
+                    Project A
+                  </span>
+                  <span class="card-media-text">
+                    Owner: John Doe
+                  </span>
+                </div>
               </div>
-            </div>
-            <div class="card-footer">
-              <button class="btn btn-sm btn-link">Footer Action 1</button>
-              <button class="btn btn-sm btn-link">Footer Action 2</button>
-            </div>
-          </div>
-        </div>
-        <div class="clr-col-lg-6 clr-col-md-12 clr-col-12">
-          <div class="card">
-            <div class="card-header">
-              Header
-            </div>
-            <div class="card-block">
-              <div class="card-title">
-                Block
-              </div>
-              <div class="card-text">
-                ...
-              </div>
-            </div>
-            <div class="card-footer">
-              <button class="btn btn-sm btn-link">Footer Action 1</button>
-              <button class="btn btn-sm btn-link">Footer Action 2</button>
-            </div>
-          </div>
-        </div>
-        <div class="clr-col-lg-6 clr-col-md-12 clr-col-12">
-          <div class="card">
-            <div class="card-header">
-              Header
-            </div>
-            <div class="card-block">
-              <div class="card-title">
-                Block
-              </div>
-              <div class="card-text">
-                ...
+              <div class="card-media-block">
+                <img
+                  src="assets/images/placeholder.png"
+                  class="card-media-image"
+                />
+                <div class="card-media-description">
+                  <span class="card-media-title">
+                    Project A
+                  </span>
+                  <span class="card-media-text">
+                    Owner: John Doe
+                  </span>
+                </div>
               </div>
             </div>
             <div class="card-footer">
-              <button class="btn btn-sm btn-link">Footer Action 1</button>
-              <button class="btn btn-sm btn-link">Footer Action 2</button>
+              <button class="btn btn-sm btn-link">Action</button>
             </div>
           </div>
         </div>
       </div>
+      <nav
+        class="sidenav sidenav-items collapse mob-full-size"
+        [ngClass]="{
+          show: showMenu
+        }"
+      >
+        <img class="side-nav-icon" src="assets/images/logo-3.png" />
+        <div class="side-nav-line"></div>
+        <app-button
+          [type]="'submit'"
+          [action]="logout"
+          [label]="'dashboard_page' | translate"
+          [classNames]="'btn btn-link with-margin-top'"
+        ></app-button>
+        <app-button
+          [type]="'submit'"
+          [action]="logout"
+          [label]="'subscriptions_page' | translate"
+          [classNames]="'btn btn-link'"
+        ></app-button>
+        <app-button
+          [type]="'submit'"
+          [action]="logout"
+          [label]="'user_page' | translate"
+          [classNames]="'btn btn-link'"
+        ></app-button>
+        <app-button
+          [type]="'submit'"
+          [action]="logout"
+          [label]="'logout_action' | translate"
+          [classNames]="'btn btn-link'"
+        ></app-button>
+      </nav>
     </div>
-    <nav
-      class="sidenav sidenav-items collapse mob-full-size"
-      [ngClass]="{
-        show: showMenu
-      }"
-    >
-      <img class="side-nav-icon" src="assets/images/logo-3.png" />
-      <div class="side-nav-line"></div>
-      <app-button
-        [type]="'submit'"
-        [action]="logout"
-        [label]="'dashboard_page' | translate"
-        [classNames]="'btn btn-link with-margin-top'"
-      ></app-button>
-      <app-button
-        [type]="'submit'"
-        [action]="logout"
-        [label]="'subscriptions_page' | translate"
-        [classNames]="'btn btn-link'"
-      ></app-button>
-      <app-button
-        [type]="'submit'"
-        [action]="logout"
-        [label]="'user_page' | translate"
-        [classNames]="'btn btn-link'"
-      ></app-button>
-      <app-button
-        [type]="'submit'"
-        [action]="logout"
-        [label]="'logout_action' | translate"
-        [classNames]="'btn btn-link'"
-      ></app-button>
-    </nav>
   </div>
 </div>

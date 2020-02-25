@@ -13,9 +13,17 @@ body {
 }
 
 .full-width {
-    width: 100%;
+  width: 100%;
 }
 
 .with-margin-top {
   margin-top: 1rem;
+}
+
+.canvasjs-chart-credit {
+  display: none !important;
+}
+
+.canvasjs-chart-canvas {
+  max-width: 100%;
 }

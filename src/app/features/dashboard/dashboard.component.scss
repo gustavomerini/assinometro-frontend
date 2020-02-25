@@ -32,6 +32,10 @@
   display: none;
 }
 
+.with-align {
+  align-items: center; 
+}
+
 @media (min-width: 768px) {
   .large-hide {
     display: none;
@@ -42,9 +46,14 @@
   }
   .menu-icon {
     align-self: center;
-    margin-left: 0.6rem;
     cursor: pointer;
   }
+}
+
+.average-cost {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
 }
 
 @media (max-width: 480px) {
