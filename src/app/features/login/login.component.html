@@ -1,5 +1,5 @@
 <div class="login-wrapper">
-  <form class="login" [formGroup]="loginForm" (ngSubmit)="loginUser()">
+  <form class="login" clrForm [formGroup]="loginForm" (ngSubmit)="loginUser()">
     <section class="title">
       <h3 class="welcome">{{ "welcome_message" | translate }}</h3>
       {{ "app_name" | translate }}
@@ -10,6 +10,7 @@
         <input
           name="username"
           clrInput
+          class="clr-col-12"
           formControlName="username"
           [placeholder]="'form_username' | translate"
         />
@@ -21,6 +22,7 @@
         <label class="clr-sr-only">{{ "form_password" | translate }}</label>
         <input
           clrPassword
+          class="clr-col-12"
           formControlName="password"
           id="login_password"
           [placeholder]="'form_password' | translate"
@@ -40,7 +42,7 @@
         [type]="'submit'"
         [label]="'login_action' | translate"
         [loadingState]="loginBtnState"
-        [classNames]="'btn btn-primary with-padding-top full-width'"
+        [classNames]="'btn btn-primary with-margin full-width'"
       ></app-button>
       <a [routerLink]="['/register']" class="signup">{{
         "signup_message" | translate

@@ -9,8 +9,13 @@ import { Router } from "@angular/router";
 })
 export class DashboardComponent implements OnInit {
   constructor(private router: Router) {}
+  public showMenu = false;
 
   ngOnInit(): void {}
+
+  public toggleMenu() {
+    this.showMenu = !this.showMenu;
+  }
 
   logout = () => {
     try {

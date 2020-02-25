@@ -1,6 +1,128 @@
-<app-button
-  [type]="'submit'"
-  [action]="logout"
-  [label]="'logout_action' | translate"
-  [classNames]="'btn btn-primary with-padding-top full-width'"
-></app-button>
+<div class="main-container">
+  <header class="nav-header">
+    <span class="brand-header">Assinômetro</span>
+    <div class="menu-icon" (click)="toggleMenu()">
+      <clr-icon class="end" size="36" shape="bars"></clr-icon>
+    </div>
+  </header>
+  <div class="content-container">
+    <div
+      class="content-area"
+      [ngClass]="{
+        hide: showMenu
+      }"
+    >
+      <div class="clr-row">
+        <div class="clr-col-lg-12 clr-col-md-12 clr-col-12">
+          <div class="card">
+            <div class="card-header">
+              Header
+            </div>
+            <div class="card-block">
+              <div class="card-title">
+                Block
+              </div>
+              <div class="card-text">
+                ...
+              </div>
+            </div>
+            <div class="card-footer">
+              <button class="btn btn-sm btn-link">Footer Action 1</button>
+              <button class="btn btn-sm btn-link">Footer Action 2</button>
+            </div>
+          </div>
+        </div>
+        <div class="clr-col-lg-12 clr-col-md-12 clr-col-12">
+          <div class="card">
+            <div class="card-header">
+              Header
+            </div>
+            <div class="card-block">
+              <div class="card-title">
+                Block
+              </div>
+              <div class="card-text">
+                ...
+              </div>
+            </div>
+            <div class="card-footer">
+              <button class="btn btn-sm btn-link">Footer Action 1</button>
+              <button class="btn btn-sm btn-link">Footer Action 2</button>
+            </div>
+          </div>
+        </div>
+        <div class="clr-col-lg-6 clr-col-md-12 clr-col-12">
+          <div class="card">
+            <div class="card-header">
+              Header
+            </div>
+            <div class="card-block">
+              <div class="card-title">
+                Block
+              </div>
+              <div class="card-text">
+                ...
+              </div>
+            </div>
+            <div class="card-footer">
+              <button class="btn btn-sm btn-link">Footer Action 1</button>
+              <button class="btn btn-sm btn-link">Footer Action 2</button>
+            </div>
+          </div>
+        </div>
+        <div class="clr-col-lg-6 clr-col-md-12 clr-col-12">
+          <div class="card">
+            <div class="card-header">
+              Header
+            </div>
+            <div class="card-block">
+              <div class="card-title">
+                Block
+              </div>
+              <div class="card-text">
+                ...
+              </div>
+            </div>
+            <div class="card-footer">
+              <button class="btn btn-sm btn-link">Footer Action 1</button>
+              <button class="btn btn-sm btn-link">Footer Action 2</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <nav
+      class="sidenav sidenav-items collapse mob-full-size"
+      [ngClass]="{
+        show: showMenu
+      }"
+    >
+      <img class="side-nav-icon" src="assets/images/logo-3.png" />
+      <div class="side-nav-line"></div>
+      <app-button
+        [type]="'submit'"
+        [action]="logout"
+        [label]="'dashboard_page' | translate"
+        [classNames]="'btn btn-link with-margin-top'"
+      ></app-button>
+      <app-button
+        [type]="'submit'"
+        [action]="logout"
+        [label]="'subscriptions_page' | translate"
+        [classNames]="'btn btn-link'"
+      ></app-button>
+      <app-button
+        [type]="'submit'"
+        [action]="logout"
+        [label]="'user_page' | translate"
+        [classNames]="'btn btn-link'"
+      ></app-button>
+      <app-button
+        [type]="'submit'"
+        [action]="logout"
+        [label]="'logout_action' | translate"
+        [classNames]="'btn btn-link'"
+      ></app-button>
+    </nav>
+  </div>
+</div>

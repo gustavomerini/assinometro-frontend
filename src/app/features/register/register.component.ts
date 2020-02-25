@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from "@angular/core";
+import { Component, OnInit, Input, ViewChild } from "@angular/core";
 import {
   FormBuilder,
   Validators,
@@ -9,7 +9,8 @@ import { TranslateService } from "@ngx-translate/core";
 import Auth from "@aws-amplify/auth";
 import { handleCognitoError } from "src/app/shared/utils/utils";
 import { ClrLoadingState } from "@clr/angular";
-import { ComparePassword } from 'src/app/shared/validators/compare-password.validator';
+import { ComparePassword } from "src/app/shared/validators/compare-password.validator";
+import { StrongPassword } from "src/app/shared/validators/strong-password.validator";
 
 @Component({
   selector: "app-register",
@@ -17,22 +18,18 @@ import { ComparePassword } from 'src/app/shared/validators/compare-password.vali
   styleUrls: ["./register.component.scss"]
 })
 export class RegisterComponent implements OnInit {
+  @ViewChild("clrForm", { static: true }) clrForm;
   public registerForm = this.fb.group(
     {
-      email: [
-        "merinigames@hotmail.com",
-        Validators.compose([Validators.required])
-      ],
-      username: ["gutomerini", Validators.compose([Validators.required])],
-      password: ["", Validators.compose([Validators.required])],
-      confirmPassword: [
-        "",
-        Validators.compose([Validators.required])
-      ]
+      email: ["merinigames@hotmail.com", [Validators.required]],
+      password: ["", [Validators.required]],
+      confirmPassword: ["", [Validators.required]]
     },
     {
-      // Used custom form validator name
-      validator: ComparePassword("password", "confirmPassword")
+      validators: [
+        ComparePassword("password", "confirmPassword"),
+        StrongPassword("password")
+      ]
     }
   );
   public message = "";
@@ -44,18 +41,19 @@ export class RegisterComponent implements OnInit {
   ngOnInit(): void {}
 
   public async registerUser() {
-    const { username, password, email } = this.registerForm.value;
+    if (this.registerForm.invalid) {
+      this.clrForm.markAsTouched();
+      return;
+    }
     this.registerBtnState = ClrLoadingState.LOADING;
+    const { username, password, email } = this.registerForm.value;
     this.closeAlert();
     const user = {
-      username,
+      username: email,
       password,
-      attributes: {
-        email
-      }
     };
     try {
-      const signUpResponse = await Auth.signUp(user);
+      await Auth.signUp(user);
       this.message = this.translate.instant("check_your_email");
       this.alertRole = "alert-info";
       this.registerBtnState = ClrLoadingState.SUCCESS;

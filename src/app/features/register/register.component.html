@@ -1,26 +1,15 @@
 <div class="login-wrapper">
-  <form class="login" [formGroup]="registerForm" (ngSubmit)="registerUser()">
+  <form class="login" clrForm [formGroup]="registerForm" (ngSubmit)="registerUser()">
     <section class="title">
       <h3 class="welcome">{{ "welcome_message" | translate }}</h3>
       {{ "app_name" | translate }}
     </section>
     <div class="login-group">
       <clr-input-container>
-        <label class="clr-sr-only">{{ "form_username" | translate }}</label>
-        <input
-          name="username"
-          clrInput
-          formControlName="username"
-          [placeholder]="'form_username' | translate"
-        />
-        <clr-control-error *clrIfError="'required'">{{
-          "form_username_required" | translate
-        }}</clr-control-error>
-      </clr-input-container>
-      <clr-input-container>
         <label class="clr-sr-only">{{ "form_email" | translate }}</label>
         <input
           name="email"
+          class="clr-col-12"
           clrInput
           formControlName="email"
           [placeholder]="'form_email' | translate"
@@ -35,11 +24,14 @@
           name="password"
           clrPassword
           formControlName="password"
-          class="keep-distance"
+          class="keep-distance clr-col-12"
           [placeholder]="'form_password' | translate"
         />
         <clr-control-error *clrIfError="'required'">{{
           "form_password_required" | translate
+        }}</clr-control-error>
+        <clr-control-error *clrIfError="'strongPassword'">{{
+          "form_strong_password" | translate
         }}</clr-control-error>
       </clr-password-container>
       <clr-password-container>
@@ -50,7 +42,7 @@
           name="confirmPassword"
           clrPassword
           formControlName="confirmPassword"
-          class="keep-distance"
+          class="keep-distance clr-col-12"
           [placeholder]="'form_confirm_password' | translate"
         />
         <clr-control-error *clrIfError="'required'">{{
@@ -72,7 +64,7 @@
         [type]="'submit'"
         [label]="'register_action' | translate"
         [loadingState]="registerBtnState"
-        [classNames]="'btn btn-primary with-padding-top full-width'"
+        [classNames]="'btn btn-primary with-margin full-width'"
       ></app-button>
       <a [routerLink]="['/login']" class="signup">{{
         "already_have_credentials" | translate

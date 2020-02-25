@@ -12,7 +12,7 @@
   "form_confirm_password": "Confirm your password",
   "form_email": "E-mail",
   "error_invalid_parameter_exception": "Password must have 8 di",
-  "error_username_exists_exception": "Username already exists",
+  "error_username_exists_exception": "Account already exists",
   "get_started": "Get Started",
   "nav_home": "Home",
   "nav_faq": "FAQ",
@@ -26,5 +26,9 @@
   "form_must_match": "Passwords must match",
   "form_password_required": "You need to inform a password",
   "form_username_required": "You need to inform an username",
-  "form_email_required": "You need to inform an e-mail"
+  "form_email_required": "You need to inform an e-mail",
+  "form_strong_password": "Password must have at least: 8 characters, a special character, an uppercase letter and an lowercase letter",
+  "subscriptions_page": "Subscriptions",
+  "user_page": "Profile",
+  "dashboard_page": "Dashboard"
 }
