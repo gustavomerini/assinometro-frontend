@@ -29,6 +29,7 @@
   "form_email_required": "You need to inform an e-mail",
   "form_strong_password": "Password must have at least: 8 characters, a special character, an uppercase letter and an lowercase letter",
   "subscriptions_page": "Subscriptions",
-  "user_page": "Profile",
-  "dashboard_page": "Dashboard"
+  "profile_page": "Profile",
+  "dashboard_page": "Dashboard",
+  "logout_page": "Logout"
 }

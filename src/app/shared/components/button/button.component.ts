@@ -15,7 +15,7 @@ import { Component, OnInit, Input } from "@angular/core";
 })
 export class ButtonComponent implements OnInit {
   @Input()
-  public type = "";
+  public type = "text";
   @Input()
   public classNames = "";
   @Input()

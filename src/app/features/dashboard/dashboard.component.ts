@@ -11,6 +11,29 @@ import * as Canvas from "./canvas/canvas";
 export class DashboardComponent implements OnInit {
   constructor(private router: Router) {}
   public showMenu = false;
+  public menuItems = ["dashboard", "subscriptions", "profile", "logout"]
+  public subscriptions = [
+    {
+      name: "Netflix",
+      price: "R$ 15,00"
+    },
+    {
+      name: "Spotify",
+      price: "R$ 15,00"
+    },
+    {
+      name: "Vivo Fibra",
+      price: "R$ 150,00"
+    },
+    {
+      name: "Sky TV",
+      price: "R$ 135,00"
+    },
+    {
+      name: "Oi Fixo",
+      price: "R$ 95,00"
+    },
+  ]
 
   ngOnInit(): void {
     this.loadCanvas();
@@ -22,7 +45,6 @@ export class DashboardComponent implements OnInit {
 
   loadCanvas() {
     Canvas.addColorSet("customColorSet6", [
-      // "#ADE500",
       "#6DA700",
       "#67ACBC",
       "#008080",
@@ -32,17 +54,7 @@ export class DashboardComponent implements OnInit {
       "#EB5B5C",
       "#F5A319"
     ]);
-    // "#003D79",
-    // "#004D8A",
-    // "#0065AB",
-    // "#0079B8",
-    // "#0095D3",
-    // "#89CBDF",
-    // "#49AFD9",
-    // "#A3EDF6",
-    // "#89CBDF",
-    // "#A6D8E7",
-
+    
     let chart = new Canvas.Chart("chartContainer", {
       theme: "light2",
       animationEnabled: true,

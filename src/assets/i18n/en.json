@@ -27,5 +27,9 @@
   "form_password_required": "You need to inform a password",
   "form_username_required": "You need to inform an username",
   "form_email_required": "You need to inform an e-mail",
-  "form_strong_password": "Password must have at least: 8 characters, a special character, an uppercase letter and an lowercase letter"
+  "form_strong_password": "Password must have at least: 8 characters, a special character, an uppercase letter and an lowercase letter",
+  "subscriptions_page": "Subscriptions",
+  "profile_page": "Profile",
+  "dashboard_page": "Dashboard",
+  "logout_page": "Logout"
 }
