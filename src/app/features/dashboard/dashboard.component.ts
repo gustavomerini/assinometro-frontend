@@ -1,7 +1,8 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, ChangeDetectorRef } from "@angular/core";
 import Auth from "@aws-amplify/auth";
 import { Router } from "@angular/router";
 import * as Canvas from "./canvas/canvas";
+import { TranslateService } from "@ngx-translate/core";
 
 @Component({
   selector: "app-dashboard",
@@ -9,9 +10,15 @@ import * as Canvas from "./canvas/canvas";
   styleUrls: ["./dashboard.component.scss"]
 })
 export class DashboardComponent implements OnInit {
-  constructor(private router: Router) {}
+  constructor(private router: Router, private translate: TranslateService, private cdr: ChangeDetectorRef) {}
   public showMenu = false;
-  public menuItems = ["dashboard", "subscriptions", "profile", "logout"]
+  public isTotalSubsLoaded = false;
+
+  public menuItems = ["dashboard", "subscriptions", "profile", "logout"];
+  public totalSubsFooter = {
+    label: this.translate.instant("action_manage"),
+    action: () => this.router.navigate(["/subscriptions"])
+  };
   public subscriptions = [
     {
       name: "Netflix",
@@ -32,11 +39,12 @@ export class DashboardComponent implements OnInit {
     {
       name: "Oi Fixo",
       price: "R$ 95,00"
-    },
-  ]
+    }
+  ];
 
   ngOnInit(): void {
-    this.loadCanvas();
+    
+    setTimeout(() => this.loadCanvas(), 2500) 
   }
 
   public toggleMenu() {
@@ -44,6 +52,8 @@ export class DashboardComponent implements OnInit {
   }
 
   loadCanvas() {
+    this.isTotalSubsLoaded = true;
+    this.cdr.detectChanges() 
     Canvas.addColorSet("customColorSet6", [
       "#6DA700",
       "#67ACBC",
@@ -54,7 +64,7 @@ export class DashboardComponent implements OnInit {
       "#EB5B5C",
       "#F5A319"
     ]);
-    
+
     let chart = new Canvas.Chart("chartContainer", {
       theme: "light2",
       animationEnabled: true,
