@@ -69,12 +69,12 @@ export class DashboardComponent implements OnInit {
       theme: "light2",
       animationEnabled: true,
       colorSet: "customColorSet6",
+      fontFamily: {
+        fontFamily: "Metropolis"
+      },
       data: [
         {
           type: "column",
-          showInLegend: true,
-          legendMarkerColor: "grey",
-          legendText: "Reais R$",
           dataPoints: [
             { y: 140, label: "January" },
             { y: 130, label: "February" },

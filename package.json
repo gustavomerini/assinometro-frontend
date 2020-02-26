@@ -5,6 +5,7 @@
     "ng": "ng",
     "start": "ng serve --aot",
     "build:stats": "ng build --stats-json",
+    "build-prod:stats": "ng build --prod --stats-json",
     "analyze": "webpack-bundle-analyzer dist/assinometro-frontend/stats-es2015.json",
     "build": "ng build",
     "test": "ng test",
