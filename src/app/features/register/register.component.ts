@@ -21,7 +21,7 @@ export class RegisterComponent implements OnInit {
   @ViewChild("clrForm", { static: true }) clrForm;
   public registerForm = this.fb.group(
     {
-      email: ["merinigames@hotmail.com", [Validators.required]],
+      email: ["", [Validators.required]],
       password: ["", [Validators.required]],
       confirmPassword: ["", [Validators.required]]
     },

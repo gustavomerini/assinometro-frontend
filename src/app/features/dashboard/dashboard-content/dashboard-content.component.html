@@ -1,0 +1,65 @@
+<section>
+  <div class="clr-row">
+    <div class="clr-col-lg-8 clr-col-md-12 clr-col-12" (click)="loadCanvas()">
+      <dashboard-card
+        [header]="'monthly_expenses' | translate"
+        [isLoaded]="isTotalSubsLoaded"
+        [footer]="totalSubsFooter"
+      >
+        <div
+          id="chartContainer"
+          style="height: 45vh; width: 100%;  max-width: 100%;"
+        ></div>
+      </dashboard-card>
+    </div>
+    <div class="clr-col-lg-4 clr-col-md-12 clr-col-12">
+      <dashboard-card
+        [header]="'monthly_expenses' | translate"
+        [isLoaded]="isTotalSubsLoaded"
+        [footer]="totalSubsFooter"
+      >
+        <div
+          id="chartContainer2"
+          style="height: 45vh; width: 100%;  max-width: 100%;"
+        ></div>
+      </dashboard-card>
+    </div>
+  </div>
+  <div class="clr-row">
+    <div class="clr-col-lg-8 clr-col-md-12 clr-col-12">
+      <dashboard-card
+        [header]="'subscription_summary' | translate"
+        [isLoaded]="isTotalSubsLoaded"
+      >
+        <div class="card-text average-cost">
+          <div>Year: <span class="highlight-price">R$ 450</span></div>
+          <div>Month: <span class="highlight-price">R$ 22,50</span></div>
+          <div>Weekly: <span class="highlight-price">R$ 5,62</span></div>
+        </div>
+      </dashboard-card>
+    </div>
+    <div class="clr-col-lg-4 clr-col-12">
+      <dashboard-card
+        [header]="'subscriptions_page' | translate"
+        [isLoaded]="isTotalSubsLoaded"
+        [footer]="totalSubsFooter"
+      >
+        <div
+          class="card-media-block with-align"
+          *ngFor="let subs of subscriptions"
+        >
+          <img
+            [src]="'assets/images/' + subs.name.toLowerCase() + '.png'"
+            class="card-media-image"
+          />
+          <div class="card-media-description">
+            <span class="card-media-title">
+              {{ subs.name }}
+            </span>
+            <span class="card-media-text"> Price: {{ subs.price }} </span>
+          </div>
+        </div>
+      </dashboard-card>
+    </div>
+  </div>
+</section>

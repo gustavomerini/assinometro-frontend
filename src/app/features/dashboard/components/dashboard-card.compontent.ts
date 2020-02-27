@@ -12,7 +12,7 @@ import { Component, OnInit, Input } from "@angular/core";
   ],
   template: `
     <div class="card">
-      <div class="card-header">
+      <div *ngIf="header" class="card-header">
         {{ header }}
       </div>
       <div
@@ -27,7 +27,7 @@ import { Component, OnInit, Input } from "@angular/core";
           <ng-content></ng-content>
         </ng-template>
       </div>
-      <div class="card-footer" *ngIf="footer.label">
+      <div class="card-footer" *ngIf="footer && isLoaded">
         <button (click)="footer.action()" class="btn btn-sm btn-link">
           {{ footer.label }}
         </button>

@@ -32,17 +32,17 @@
 }
 
 h1 {
-  font-size: 1.5rem;
+  font-size: 1.1rem;
   font-weight: 500;
 }
 
 p {
-  font-size: 1rem;
+  font-size: 0.8rem;
   text-align: justify;
 }
 
 .landing-page {
-  padding: 10rem 0;
+  padding: 6rem 0;
   clip-path: polygon(0 0, 100% 0, 100% 100%, 0 92%);
 }
 
@@ -62,6 +62,11 @@ p {
   background: #edf5ff !important;
 }
 
+.top-image {
+  width: 100px;
+  height: 60px;
+}
+
 .img-fluid {
   max-width: 100%;
   height: auto;
@@ -70,7 +75,7 @@ p {
 .main-action {
   margin-top: 1.5rem;
   height: 2.4rem;
-  width: 7rem;
+  width: 6.3rem;
 }
 
 .navbar-nav {
@@ -78,7 +83,7 @@ p {
 }
 
 .space-big {
-  padding: 90px 0;
+  padding: 20px 0;
 }
 
 .center {
@@ -119,13 +124,13 @@ p {
 
 @media (min-width: 992px) {
   .flex-container {
-    max-width: 960px;
+    max-width: 900px;
   }
 }
 
 @media (min-width: 1200px) {
   .flex-container {
-    max-width: 1140px;
+    max-width: 1100px;
   }
 }
 

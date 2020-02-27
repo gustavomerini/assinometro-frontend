@@ -31,5 +31,9 @@
   "subscriptions_page": "Subscriptions",
   "profile_page": "Profile",
   "dashboard_page": "Dashboard",
-  "logout_page": "Logout"
+  "logout_page": "Logout",
+  "subscription_summary": "Subscriptions summary",
+  "subscription_total": "Subscriptions total",
+  "monthly_expenses": "Monthly expenses",
+  "action_manage": "Manage"
 }

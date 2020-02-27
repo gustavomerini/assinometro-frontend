@@ -12,70 +12,11 @@
         hide: showMenu
       }"
     >
-      <div class="clr-row">
-        <div class="clr-col-lg-8 clr-col-md-12 clr-col-12">
-          <dashboard-card
-            [header]="'subscription_summary' | translate"
-            [isLoaded]="isTotalSubsLoaded"
-            [footer]="totalSubsFooter"
-          >
-            <div class="card-text average-cost">
-              <div>Year: R$ 450</div>
-              <div>Month: R$ 22,50</div>
-              <div>Weekly: R$ 5,625</div>
-            </div>
-          </dashboard-card>
-        </div>
-        <div class="clr-col-lg-4 clr-col-md-12 clr-col-12">
-          <dashboard-card
-            [header]="'subscription_summary' | translate"
-            [isLoaded]="isTotalSubsLoaded"
-            [footer]="totalSubsFooter"
-          >
-            <div class="card-text">
-              <div>Total: 3 subscriptions</div>
-            </div>
-          </dashboard-card>
-        </div>
-        <div class="clr-col-lg-8 clr-col-md-12 clr-col-12">
-          <dashboard-card
-            [header]="'monthly_expenses' | translate"
-            [isLoaded]="isTotalSubsLoaded"
-            [footer]="totalSubsFooter"
-          >
-            <div
-              id="chartContainer"
-              style="height: 500px; width: 100%;  max-width: 100%;"
-            ></div>
-          </dashboard-card>
-        </div>
-        <div class="clr-col-lg-4 clr-col-12">
-          <dashboard-card
-            [header]="'subscriptions_page' | translate"
-            [isLoaded]="isTotalSubsLoaded"
-            [footer]="totalSubsFooter"
-          >
-            <div
-              class="card-media-block with-align"
-              *ngFor="let subs of subscriptions"
-            >
-              <img
-                src="assets/images/placeholder.png"
-                class="card-media-image"
-              />
-              <div class="card-media-description">
-                <span class="card-media-title">
-                  {{ subs.name }}
-                </span>
-                <span class="card-media-text"> Price: {{ subs.price }} </span>
-              </div>
-            </div>
-          </dashboard-card>
-        </div>
-      </div>
+      <router-outlet></router-outlet>
     </div>
     <nav
       class="sidenav sidenav-items collapse mob-full-size"
+      id="disney"
       [ngClass]="{
         show: showMenu
       }"
@@ -84,8 +25,8 @@
       <div class="side-nav-line"></div>
       <app-button
         *ngFor="let item of menuItems"
-        [action]="item"
-        [label]="item + '_page' | translate"
+        [action]="item.action"
+        [label]="item.route + '_page' | translate"
         [classNames]="'btn btn-link with-margin-top'"
       ></app-button>
     </nav>

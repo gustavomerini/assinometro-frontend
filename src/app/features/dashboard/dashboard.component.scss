@@ -24,7 +24,7 @@
 
 .nav-header {
   background: #002538;
-  padding: 2rem;
+  padding: 1rem;
   align-items: center;
 }
 
@@ -33,7 +33,7 @@
 }
 
 .with-align {
-  align-items: center; 
+  align-items: center;
 }
 
 @media (min-width: 768px) {
@@ -48,12 +48,6 @@
     align-self: center;
     cursor: pointer;
   }
-}
-
-.average-cost {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
 }
 
 @media (max-width: 480px) {
