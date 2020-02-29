@@ -1,4 +1,4 @@
-# [Assinômetro](www.assinometro.com)
+# [Assinômetro](https://www.assinometro.com)
 
 # WIP
 
