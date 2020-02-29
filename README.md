@@ -1,27 +1,10 @@
-# AssinometroFrontend
+# [Assinômetro](www.assinometro.com)
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.3.24.
+# WIP
 
-## Development server
+This is the project I created for my final paper (TCC).
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+The idea is to provide a Web Application where the user can register their expenses with subscriptions.
+With all the data gathered, the application will provide a feature that will compare each other's expenses and it will warn the user that is paying more for a subscription compared with the others.
+For example: If a user is paying R$ 150,00 for an internet plan that provides 100mb and the majority of users pay only R$ 110,00, a warning will be sent so that the user can negotiate with the company.
 
-## Code scaffolding
-
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
-
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
