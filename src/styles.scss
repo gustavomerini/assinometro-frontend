@@ -1,4 +1,5 @@
-/* You can add global styles to this file, and also import other style files */
+@import "~src/assets/variables";
+
 html,
 body {
   height: 100%;
@@ -25,4 +26,20 @@ body {
 
 .canvasjs-chart-canvas {
   max-width: 100%;
+}
+
+.bg-blue {
+  background: $primary-color !important;
+}
+
+.white-color {
+  color: $secondary-color !important;
+}
+
+.blue-color {
+  color: $primary-color !important;
+}
+
+.clarity-blue-color {
+  color: $clarity-blue-color !important;
 }

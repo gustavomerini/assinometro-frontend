@@ -4,7 +4,7 @@
       <a class="navbar-brand" href="#"><img  src="assets/images/logo.png"/></a>
       <button
         (click)="toggleMenu()"
-        class="btn btn-outline navbar-expand-lg navbar-toggler custom-theme"
+        class="btn btn-outline navbar-toggler"
       >
         Menu
       </button>
@@ -45,11 +45,11 @@
     <div class="clr-row h-100 align-items-center">
       <div class="clr-col-md-6 clr-col-sm-12">
         <div class="align-items-center">
-          <h1 class="tagline">{{ "landing_page_header" | translate }}</h1>
-          <p class="mb-space">
+          <h1 class="white-color">{{ "landing_page_header" | translate }}</h1>
+          <p class="white-color">
             {{ "landing_page_message" | translate }}
           </p>
-          <button [routerLink]="['/login']" class="btn btn-primary main-action">
+          <button [routerLink]="['/login']" class="btn btn-inverse white-color main-action">
             {{ "get_started" | translate }}
           </button>
         </div>
@@ -69,11 +69,11 @@
     <div class="clr-row h-100 align-items-center">
       <div class="clr-col-md-6 clr-col-sm-12">
         <div class="align-items-center">
-          <h1 class="tagline">{{ "landing_page_header" | translate }}</h1>
-          <p class="mb-space">
+          <h1 class="blue-color">{{ "landing_page_header" | translate }}</h1>
+          <p class="blue-color">
             {{ "landing_page_message" | translate }}
           </p>
-          <button [routerLink]="['/login']" class="btn btn-primary main-action">
+          <button [routerLink]="['/login']" class="btn btn-inverse main-action">
             {{ "get_started" | translate }}
           </button>
         </div>
@@ -92,8 +92,8 @@
     <div class="clr-row">
       <div class="clr-col-12 mx-auto">
         <div class="footer-content center">
-          <img src="assets/images/logo.png"/>
-          <p>© All right reserved. Assinômetro 2020.</p>
+          <img src="assets/images/logo-4.png"/>
+          <p class="white-color">© All right reserved. Assinômetro 2020.</p>
         </div>
       </div>
     </div>

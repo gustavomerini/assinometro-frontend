@@ -1,3 +1,4 @@
+@import "~src/assets/variables";
 
 .navbar-classic {
   min-height: 80px;
@@ -25,10 +26,6 @@
   display: inline-block;
   padding-top: 0.3125rem;
   padding-bottom: 0.3125rem;
-  margin-right: 1rem;
-  font-size: 1.25rem;
-  line-height: inherit;
-  white-space: nowrap;
 }
 
 h1 {
@@ -56,10 +53,6 @@ p {
 
 .align-items-center {
   align-items: center !important;
-}
-
-.bg-blue {
-  background: #edf5ff !important;
 }
 
 .top-image {
@@ -109,6 +102,9 @@ p {
   .flex-container {
     max-width: 720px;
   }
+  .landing-page {
+    padding: 200px;
+  }
   .navbar-toggler {
     display: none;
   }
@@ -139,7 +135,7 @@ p {
     display: none !important;
   }
   h1 {
-    font-size: 1.0rem;
+    font-size: 1rem;
     font-weight: 500;
   }
   p {
@@ -156,7 +152,7 @@ p {
     display: none;
   }
   .landing-page {
-    padding: 0 0 70px 0
+    padding: 0 0 70px 0;
   }
   .navbar-classic {
     flex-flow: row nowrap;
@@ -169,5 +165,8 @@ p {
   .top-nav {
     display: flex;
     align-items: center;
+  }
+  .navbar-toggler {
+    margin-left: 1rem;
   }
 }

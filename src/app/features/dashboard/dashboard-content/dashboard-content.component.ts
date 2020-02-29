@@ -80,13 +80,14 @@ export class DashboardContentComponent implements OnInit {
     this.isTotalSubsLoaded = true;
     this.cdr.detectChanges();
     Canvas.addColorSet("customColorSet6", [
-      "#49AFD9",
-      "#C1CDD4",
       "#0065AB",
+      "#C1CDD4",
+      "#49AFD9",
       "#25333D",
       "#A6D8E7",
       "#798893"
     ]);
+    Canvas.addColorSet("customColorSet5", ["#0065AB"]);
 
     let chart2 = new Canvas.Chart("chartContainer2", {
       theme: "light2",
@@ -112,26 +113,20 @@ export class DashboardContentComponent implements OnInit {
     let chart = new Canvas.Chart("chartContainer", {
       theme: "light2",
       animationEnabled: true,
+      dataPointMaxWidth: 60,
       colorSet: "customColorSet6",
       fontFamily: {
         fontFamily: "Metropolis"
       },
       data: [
         {
-          type: type,
+          type: "column",
           dataPoints: [
-            { y: 140, label: "January" },
-            { y: 130, label: "February" },
-            { y: 115, label: "March" },
-            { y: 150, label: "April" },
+            { y: 185, label: "April" },
             { y: 160, label: "May" },
-            { y: 160, label: "June" },
-            { y: 150, label: "July" },
-            { y: 145, label: "August" },
-            { y: 120, label: "September" },
-            { y: 135, label: "October" },
-            { y: 140, label: "November" },
-            { y: 160, label: "December" }
+            { y: 155, label: "June" },
+            { y: 140, label: "July" },
+            { y: 160, label: "August" }
           ]
         }
       ]
