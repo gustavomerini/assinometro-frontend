@@ -92,6 +92,11 @@ p {
   margin-right: auto !important;
 }
 
+.max-size {
+  max-width: 200px;
+  max-height: 60px;
+}
+
 @media (min-width: 576px) {
   .flex-container {
     max-width: 540px;
