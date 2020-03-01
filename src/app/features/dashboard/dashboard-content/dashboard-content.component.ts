@@ -83,11 +83,10 @@ export class DashboardContentComponent implements OnInit {
       "#0065AB",
       "#C1CDD4",
       "#49AFD9",
-      "#25333D",
+      "#798893",
       "#A6D8E7",
-      "#798893"
+      "#25333D"
     ]);
-    Canvas.addColorSet("customColorSet5", ["#0065AB"]);
 
     let chart2 = new Canvas.Chart("chartContainer2", {
       theme: "light2",
