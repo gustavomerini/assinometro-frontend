@@ -5,30 +5,7 @@ import * as Canvas from "../canvas/canvas";
 
 @Component({
   selector: "dashboard-content",
-  styles: [
-    `
-      .average-cost {
-        display: flex;
-        flex-direction: row;
-        justify-content: space-between;
-      }
-
-      .highlight-price {
-        font-weight: 500;
-        font-size: 1rem;
-      }
-
-      .with-align {
-        align-items: center;
-      }
-
-      .total-subs {
-        display: flex;
-        flex-direction: row;
-        justify-content: space-between;
-      }
-    `
-  ],
+  styleUrls: ["dashboard-content.component.scss"],
   templateUrl: "dashboard-content.component.html"
 })
 export class DashboardContentComponent implements OnInit {
