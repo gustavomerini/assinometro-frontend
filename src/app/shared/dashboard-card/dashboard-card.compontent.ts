@@ -50,5 +50,5 @@ export class DashboardCardComponent implements OnInit {
 
 export interface Footer {
   label: string;
-  action: Function;
+  action: () => void;
 }

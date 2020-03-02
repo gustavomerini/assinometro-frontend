@@ -4,11 +4,11 @@ import { Router } from "@angular/router";
 import * as Canvas from "../canvas/canvas";
 
 @Component({
-  selector: "dashboard-content",
-  styleUrls: ["dashboard-content.component.scss"],
-  templateUrl: "dashboard-content.component.html"
+  selector: "app-dashboard-summary",
+  styleUrls: ["dashboard-summary.component.scss"],
+  templateUrl: "dashboard-summary.component.html"
 })
-export class DashboardContentComponent implements OnInit {
+export class DashboardSummaryComponent implements OnInit {
   public totalSubsFooter = {
     label: this.translate.instant("action_manage"),
     action: () => this.router.navigate(["/subscriptions"])

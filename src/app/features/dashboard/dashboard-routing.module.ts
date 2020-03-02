@@ -3,8 +3,8 @@ import { Routes, RouterModule } from "@angular/router";
 import { SharedModule } from "src/app/shared/shared.module";
 import { DashboardComponent } from "./dashboard.component";
 import { UserLoggedInGuard } from "src/app/core/services/auth-guard.service";
-import { SubscriptionsComponent } from "./subscriptions/subscriptions.component";
-import { DashboardContentComponent } from "./dashboard-content/dashboard-content.component";
+import { DashboardSummaryComponent } from "./dashboard-summary/dashboard-summary.component";
+import { DashboardSubscriptionsComponent } from "./dashboard-subscriptions/dashboard-subscriptions.component";
 
 const routes: Routes = [
   {
@@ -14,16 +14,15 @@ const routes: Routes = [
   {
     path: "",
     component: DashboardComponent,
-    canActivate: [UserLoggedInGuard],
     children: [
       {
         path: "summary",
-        component: DashboardContentComponent,
+        component: DashboardSummaryComponent,
         canActivate: [UserLoggedInGuard]
       },
       {
         path: "subscriptions",
-        component: SubscriptionsComponent,
+        component: DashboardSubscriptionsComponent,
         canActivate: [UserLoggedInGuard]
       }
     ]

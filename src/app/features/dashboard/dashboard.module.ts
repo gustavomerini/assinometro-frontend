@@ -3,20 +3,17 @@ import { CommonModule } from "@angular/common";
 
 import { DashboardComponent } from "./dashboard.component";
 import { SharedModule } from "src/app/shared/shared.module";
-import { SubscriptionsComponent } from "./subscriptions/subscriptions.component";
-import { DashboardContentComponent } from "./dashboard-content/dashboard-content.component";
 import { DashboardRoutingModule } from "./dashboard-routing.module";
-import { DashboardCardComponent } from './components/dashboard-card/dashboard-card.compontent';
-import { DashboardSidenavComponent } from './components/dashboard-sidenav/dashboard-sidenav.component';
+import { DashboardSidenavComponent } from "./components/dashboard-sidenav/dashboard-sidenav.component";
+import { DashboardSummaryComponent } from "./dashboard-summary/dashboard-summary.component";
+import { DashboardSubscriptionsModule } from "./dashboard-subscriptions/dashboard-subscriptions.module";
 
 @NgModule({
-  imports: [CommonModule, SharedModule, DashboardRoutingModule],
+  imports: [CommonModule, SharedModule, DashboardSubscriptionsModule, DashboardRoutingModule],
   exports: [],
   declarations: [
     DashboardComponent,
-    DashboardContentComponent,
-    DashboardCardComponent,
-    SubscriptionsComponent,
+    DashboardSummaryComponent,
     DashboardSidenavComponent
   ],
   providers: []
