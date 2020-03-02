@@ -1,49 +1,46 @@
-import { Component, OnInit, ChangeDetectorRef } from "@angular/core";
-import Auth from "@aws-amplify/auth";
-import { Router, ActivatedRoute } from "@angular/router";
-import { TranslateService } from "@ngx-translate/core";
+import { Component } from "@angular/core";
+import {
+  trigger,
+  state,
+  style,
+  transition,
+  animate
+} from "@angular/animations";
 
 @Component({
   selector: "app-dashboard",
   templateUrl: "./dashboard.component.html",
-  styleUrls: ["./dashboard.component.scss"]
+  styleUrls: ["./dashboard.component.scss"],
+  animations: [
+    trigger("slideInOut", [
+      state(
+        "in",
+        style({
+          transform: "translate3d(0, 0, 0)"
+        })
+      ),
+      state(
+        "out",
+        style({
+          transform: "translate3d(-100%, 0, 0)"
+        })
+      ),
+      transition("in => out", animate("400ms ease-in-out")),
+      transition("out => in", animate("400ms ease-in-out"))
+    ])
+  ]
 })
-export class DashboardComponent implements OnInit {
-  constructor(
-    private router: Router,
-    private activatedRoute: ActivatedRoute,
-    private translate: TranslateService,
-    private cdr: ChangeDetectorRef
-  ) {}
-  public showMenu = false;
+export class DashboardComponent {
+  constructor() {}
+
   public isTotalSubsLoaded = false;
-
-  public menuItems = [
-    { route: "dashboard", action: null },
-    {
-      route: "subscriptions",
-      action: () => this.router.navigate(["subscriptions"], {relativeTo: this.activatedRoute})
-    },
-    { route: "profile", action: null },
-    {
-      route: "logout",
-      action: () => {
-        try {
-          Auth.signOut();
-          this.router.navigate(["/landing-page"]);
-        } catch (error) {
-          console.error(error);
-        }
-      }
-    }
-  ];
-
-  ngOnInit(): void {
-    
-  }
+  public menuState = "out";
 
   public toggleMenu() {
-    this.showMenu = !this.showMenu;
+    this.menuState = this.menuState === "out" ? "in" : "out";
   }
 
+  public closeMenu() {
+    this.menuState = "out";
+  }
 }

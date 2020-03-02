@@ -48,7 +48,7 @@ export class DashboardContentComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    setTimeout(() => this.loadCanvas(), 2500);
+    setTimeout(() => this.loadCanvas(), 1500);
   }
 
   loadCanvas() {
