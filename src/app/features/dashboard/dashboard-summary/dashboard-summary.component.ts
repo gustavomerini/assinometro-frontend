@@ -1,7 +1,7 @@
 import { Component, OnInit, ChangeDetectorRef } from "@angular/core";
 import { TranslateService } from "@ngx-translate/core";
 import { Router } from "@angular/router";
-import * as Canvas from "../canvas/canvas";
+import * as Chartist from "chartist";
 
 @Component({
   selector: "app-dashboard-summary",
@@ -56,62 +56,38 @@ export class DashboardSummaryComponent implements OnInit {
   }
 
   loadCanvas() {
-    const type = this.chartTypes[this.counter];
-    this.counter >= 2 ? (this.counter = 0) : this.counter++;
     this.isTotalSubsLoaded = true;
     this.cdr.detectChanges();
-    Canvas.addColorSet("customColorSet6", [
-      "#0065AB",
-      "#C1CDD4",
-      "#49AFD9",
-      "#798893",
-      "#A6D8E7",
-      "#25333D"
-    ]);
-
-    // let chart2 = new Canvas.Chart("chartContainer2", {
-    //   theme: "light2",
-    //   animationEnabled: true,
-    //   colorSet: "customColorSet6",
-    //   fontFamily: {
-    //     fontFamily: "Metropolis"
-    //   },
-    //   data: [
-    //     {
-    //       type: "doughnut",
-    //       dataPoints: [
-    //         { y: 15, label: "Netflix" },
-    //         { y: 145, label: "Vivo" },
-    //         { y: 55, label: "Oi" },
-    //         { y: 80, label: "Sky" },
-    //         { y: 15, label: "Spotify" }
-    //       ]
-    //     }
-    //   ]
-    // });
-    // chart2.render();
-    let chart = new Canvas.Chart("chartContainer", {
-      theme: "light2",
-      animationEnabled: true,
-      dataPointMaxWidth: 60,
-      colorSet: "customColorSet6",
-      fontFamily: {
-        fontFamily: "Metropolis"
-      },
-      data: [
-        {
-          type: "column",
-          dataPoints: [
-            { y: 250, label: "April" },
-            { y: 260, label: "May" },
-            { y: 290, label: "June" },
-            { y: 290, label: "July" },
-            { y: 290, label: "August" }
-          ]
-        }
+    const data = {
+      labels: ["Mai", "Jun", "Jul", "Aug"],
+        series: [
+        [5, 4, 3, 7],
       ]
-    });
+    };
 
-    chart.render();
+    const options = {
+      seriesBarDistance: 15
+    };
+
+    const responsiveOptions = [
+      ["screen and (min-width: 641px) and (max-width: 1024px)", {
+        seriesBarDistance: 10,
+        axisX: {
+          labelInterpolationFnc: (value) => {
+            return value;
+          }
+        }
+      }],
+      ["screen and (max-width: 640px)", {
+        seriesBarDistance: 5,
+        axisX: {
+          labelInterpolationFnc: (value) => {
+            return value[0];
+          }
+        }
+      }]
+    ];
+
+    return new Chartist.Bar(".ct-chart", data, options, responsiveOptions);
   }
 }
