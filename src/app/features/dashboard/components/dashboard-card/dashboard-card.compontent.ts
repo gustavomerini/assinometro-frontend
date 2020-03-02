@@ -8,6 +8,10 @@ import { Component, OnInit, Input } from "@angular/core";
         display: flex;
         justify-content: center;
       }
+
+      .card-block {
+        overflow: auto;
+      }
     `
   ],
   template: `

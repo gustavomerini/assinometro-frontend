@@ -20,10 +20,10 @@ export class DashboardContentComponent implements OnInit {
   public subscriptions = [
     {
       name: "Netflix",
-      price: "R$ 15,00"
+      price: "R$ 37,40"
     },
     {
-      name: "Vivo",
+      name: "Amazon",
       price: "R$ 150,00"
     },
     {
@@ -31,12 +31,16 @@ export class DashboardContentComponent implements OnInit {
       price: "R$ 15,00"
     },
     {
-      name: "Kindle",
+      name: "Apple",
       price: "R$ 30,00"
     },
     {
-      name: "Oi",
-      price: "R$ 95,00"
+      name: "Audible",
+      price: "R$ 29,99"
+    },
+    {
+      name: "Blizzard",
+      price: "R$ 27,90"
     }
   ];
   public isTotalSubsLoaded = false;
@@ -65,27 +69,27 @@ export class DashboardContentComponent implements OnInit {
       "#25333D"
     ]);
 
-    let chart2 = new Canvas.Chart("chartContainer2", {
-      theme: "light2",
-      animationEnabled: true,
-      colorSet: "customColorSet6",
-      fontFamily: {
-        fontFamily: "Metropolis"
-      },
-      data: [
-        {
-          type: "doughnut",
-          dataPoints: [
-            { y: 15, label: "Netflix" },
-            { y: 145, label: "Vivo" },
-            { y: 55, label: "Oi" },
-            { y: 80, label: "Sky" },
-            { y: 15, label: "Spotify" }
-          ]
-        }
-      ]
-    });
-    chart2.render();
+    // let chart2 = new Canvas.Chart("chartContainer2", {
+    //   theme: "light2",
+    //   animationEnabled: true,
+    //   colorSet: "customColorSet6",
+    //   fontFamily: {
+    //     fontFamily: "Metropolis"
+    //   },
+    //   data: [
+    //     {
+    //       type: "doughnut",
+    //       dataPoints: [
+    //         { y: 15, label: "Netflix" },
+    //         { y: 145, label: "Vivo" },
+    //         { y: 55, label: "Oi" },
+    //         { y: 80, label: "Sky" },
+    //         { y: 15, label: "Spotify" }
+    //       ]
+    //     }
+    //   ]
+    // });
+    // chart2.render();
     let chart = new Canvas.Chart("chartContainer", {
       theme: "light2",
       animationEnabled: true,
@@ -98,11 +102,11 @@ export class DashboardContentComponent implements OnInit {
         {
           type: "column",
           dataPoints: [
-            { y: 185, label: "April" },
-            { y: 160, label: "May" },
-            { y: 155, label: "June" },
-            { y: 140, label: "July" },
-            { y: 160, label: "August" }
+            { y: 250, label: "April" },
+            { y: 260, label: "May" },
+            { y: 290, label: "June" },
+            { y: 290, label: "July" },
+            { y: 290, label: "August" }
           ]
         }
       ]

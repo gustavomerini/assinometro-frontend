@@ -13,8 +13,19 @@
   align-items: center;
 }
 
+.card-media-title {
+  font-weight: 700;
+}
+
 .total-subs {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+}
+
+@media (max-width: 480px) {
+  .highlight-price {
+    font-size: 0.7rem;
+    font-weight: 500;
+  }
 }
