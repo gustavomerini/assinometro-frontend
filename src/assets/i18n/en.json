@@ -34,5 +34,8 @@
   "logout_page": "Logout",
   "subscription_summary": "Subscriptions summary",
   "subscription_total": "Subscriptions total",
-  "monthly_expenses": "Monthly expenses"
+  "monthly_expenses": "Monthly expenses",
+  "manage_action": "Manage",
+  "confirm_action": "Confirm",
+  "search_subscription": "Search subscription"
 }

@@ -1,0 +1,38 @@
+@import "~src/assets/variables";
+
+.card-media-image {
+  height: 3rem;
+  width: 3rem;
+}
+
+.subscriptions-wrapper {
+  margin-top: 10px;
+  display: flex;
+  max-height: 50vh;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-content: flex-start;
+  justify-content: center;
+  .subscription-option {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: center;
+    cursor: pointer;
+
+    border-radius: 3px;
+    margin: 10px;
+    height: 96px;
+    width: 96px;
+    .subscription-label {
+      text-transform: capitalize;
+      font-weight: 500;
+    }
+  }
+  .subscription-option:not(.selected) {
+    border: 1px solid #e7e5dd;
+  }
+  .selected {
+    border: 1px solid $primary-color;
+  }
+}

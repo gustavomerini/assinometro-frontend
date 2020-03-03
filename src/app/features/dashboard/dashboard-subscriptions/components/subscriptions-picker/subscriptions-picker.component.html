@@ -1,5 +1,22 @@
-<dashboard-card [isLoaded]="true" [header]="'subscriptions_page' | translate">
-    <section style="height: 45vh; width: 100%;  max-width: 100%;">
-
-      </section>
+<dashboard-card
+  [isLoaded]="subscriptions"
+  [header]="'subscriptions_page' | translate"
+  [footer]="subsPickerFooter"
+>
+  <input
+    #subscriptionInput
+    name="subscription"
+    class="clr-input full-width"
+    (input)="onInput(subscriptionInput.value)"
+    [placeholder]="'search_subscription' | translate"
+  />
+  <div class="subscriptions-wrapper">
+    <div [id]="sub.name" class="subscription-option" *ngFor="let sub of filteredSubs.length ? filteredSubs : subscriptions" (click)="toggleSubscription(sub)">
+      <img
+        [src]="'assets/images/subscriptions/' + sub.logo"
+        class="card-media-image"
+      />
+      <span class="subscription-label"> {{ sub.name }} </span>
+    </div>
+  </div>
 </dashboard-card>

@@ -2,6 +2,7 @@ import { Component, OnInit, ChangeDetectorRef } from "@angular/core";
 import { TranslateService } from "@ngx-translate/core";
 import { Router } from "@angular/router";
 import * as Canvas from "../canvas/canvas";
+import { subscriptions } from "src/app/core/subscription/subscriptions";
 
 @Component({
   selector: "app-dashboard-summary",
@@ -10,39 +11,14 @@ import * as Canvas from "../canvas/canvas";
 })
 export class DashboardSummaryComponent implements OnInit {
   public totalSubsFooter = {
-    label: this.translate.instant("action_manage"),
+    label: this.translate.instant("manage_action"),
     action: () => this.router.navigate(["/subscriptions"])
   };
 
-  chartTypes = ["area", "line", "column"];
-  counter = 0;
+  public subscriptions = subscriptions;
+  public chartTypes = ["area", "line", "column"];
+  public counter = 0;
 
-  public subscriptions = [
-    {
-      name: "Netflix",
-      price: "R$ 37,40"
-    },
-    {
-      name: "Amazon",
-      price: "R$ 150,00"
-    },
-    {
-      name: "Spotify",
-      price: "R$ 15,00"
-    },
-    {
-      name: "Apple",
-      price: "R$ 30,00"
-    },
-    {
-      name: "Audible",
-      price: "R$ 29,99"
-    },
-    {
-      name: "Blizzard",
-      price: "R$ 27,90"
-    }
-  ];
   public isTotalSubsLoaded = false;
 
   constructor(
