@@ -1,18 +1,17 @@
 $primary-color: #4257b2;
-$clr-btn-link-color: $primary-color;
 $secondary-color: #fff;
-$clarity-blue-color: #0065ab;
 $primary-hover-color: #3c54bd;
 
 :root {
-  --clr-btn-link-hover-color: #{$primary-color};
-  --clr-btn-primary-bg-color: #{$primary-color};
-  --clr-btn-primary-border-color: #{$primary-color};
-  --clr-btn-primary-hover-bg-color: #{$primary-hover-color};
-  --clr-link-color: #{$primary-color};
-  --clr-link-hover-color: #{$primary-hover-color};
-  --clr-btn-link-color: #{$primary-color};
-  --clr-btn-default-color: #{$primary-color};
-  --clr-btn-default-box-shadow-color: #{$primary-color};
-  --clr-forms-focused-color: #{$primary-color};
+  --clr-btn-link-hover-color: #{$primary-color} !important;
+  --clr-btn-primary-bg-color: #{$primary-color} !important;
+  --clr-btn-primary-border-color: #{$primary-color} !important;
+  --clr-btn-primary-hover-bg-color: #{$primary-hover-color} !important;
+  --clr-link-color: #{$primary-color} !important;
+  --clr-link-hover-color: #{$primary-hover-color} !important;
+  --clr-btn-link-color: #{$primary-color} !important;
+  --clr-btn-default-color: #{$primary-color} !important;
+  --clr-btn-default-box-shadow-color: #{$primary-color} !important;
+  --clr-forms-focused-color: #{$primary-color} !important;
+  --clr-color-action-600: #{$primary-color} !important;
 }

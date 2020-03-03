@@ -1,3 +1,5 @@
+@import "~src/assets/variables";
+
 .form-group {
   display: flex;
   flex-direction: column;
@@ -5,7 +7,7 @@
 }
 
 .login-wrapper {
-  background: hsl(198, 100%, 32%);
+  background: $primary-color;
 }
 
 .message-error {
@@ -14,4 +16,13 @@
 
 label {
   display: none !important;
+}
+
+.img-title {
+  display: flex;
+  justify-content: center;
+  .max-size {
+    max-width: 200px;
+    max-height: 60px;
+  }
 }

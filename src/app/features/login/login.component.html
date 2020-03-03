@@ -1,9 +1,8 @@
 <div class="login-wrapper">
   <form class="login" clrForm [formGroup]="loginForm" (ngSubmit)="loginUser()">
-    <section class="title">
-      <h3 class="welcome">{{ "welcome_message" | translate }}</h3>
-      {{ "app_name" | translate }}
-    </section>
+    <div class="img-title">
+      <img class="max-size" src="assets/images/logo.svg" />
+    </div>
     <div class="login-group">
       <clr-input-container>
         <label class="clr-sr-only">{{ "form_username" | translate }}</label>
