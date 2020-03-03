@@ -23,11 +23,11 @@ export class SubscriptionsPickerComponent implements OnInit {
     const name = subscription.name;
     if (this.selectedSubs.find(sub => sub === name)) {
       this.selectedSubs = this.selectedSubs.filter(sub => sub !== name);
-      document.getElementById(name).classList.remove("selected");
+      subscription.selected = false;
       return;
     }
     this.selectedSubs.push(name);
-    document.getElementById(name).classList.add("selected");
+    subscription.selected = true;
   }
 
   public onInput(value: string) {

@@ -1,50 +1,62 @@
 export const subscriptions = [
   {
     name: "netflix",
-    logo: "netflix.png"
+    logo: "netflix.png",
+    price: "RS 45,00"
   },
   {
     name: "amazon",
-    logo: "amazon.png"
+    logo: "amazon.png",
+    price: "RS 45,00"
   },
   {
     name: "spotify",
-    logo: "spotify.png"
+    logo: "spotify.png",
+    price: "RS 45,00"
   },
   {
     name: "apple",
-    logo: "apple.png"
+    logo: "apple.png",
+    price: "RS 45,00"
   },
   {
     name: "audible",
-    logo: "audible.png"
+    logo: "audible.png",
+    price: "RS 45,00"
   },
   {
     name: "blizzard",
-    logo: "blizzard.png"
+    logo: "blizzard.png",
+    price: "RS 45,00"
   },
   {
     name: "dazn",
-    logo: "dazn.png"
+    logo: "dazn.png",
+    price: "RS 45,00"
   },
   {
     name: "prime",
-    logo: "prime.png"
+    logo: "prime.png",
+    price: "RS 45,00"
   },
   {
     name: "psn",
-    logo: "psn.png"
+    logo: "psn.png",
+    price: "RS 45,00"
   },
   {
     name: "xbox",
-    logo: "xbox.png"
+    logo: "xbox.png",
+    price: "RS 45,00"
   },
   {
     name: "linkedin",
-    logo: "linkedin.png"
+    logo: "linkedin.png",
+    price: "RS 45,00"
   },
   {
     name: "youtube",
-    logo: "youtube.png"
+    logo: "youtube.png",
+    price: "RS 45,00"
   }
 ];

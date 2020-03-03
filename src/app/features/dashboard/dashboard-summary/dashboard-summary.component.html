@@ -29,17 +29,17 @@
         <section style="height: 45vh; width: 100%;  max-width: 100%;">
           <div
             class="card-media-block with-align card-overflow"
-            *ngFor="let subs of subscriptions"
+            *ngFor="let sub of subscriptions.slice(0, 6)"
           >
             <img
-              [src]="'assets/images/subscriptions/' + subs.name.toLowerCase() + '.png'"
+              [src]="'assets/images/subscriptions/' + sub.name.toLowerCase() + '.png'"
               class="card-media-image"
             />
             <div class="card-media-description">
               <span class="card-media-title">
-                {{ subs.name }}
+                {{ sub.name }}
               </span>
-              <span class="card-media-text"> {{ subs.price }} </span>
+              <span class="card-media-text"> {{ sub.price }} </span>
             </div>
           </div>
         </section>

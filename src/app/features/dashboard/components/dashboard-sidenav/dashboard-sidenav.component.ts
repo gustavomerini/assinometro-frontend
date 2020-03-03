@@ -21,7 +21,13 @@ export class DashboardSidenavComponent {
   @Output() close = new EventEmitter();
 
   public menuItems = [
-    { route: "dashboard", action: null },
+    {
+      route: "dashboard",
+      action: () =>
+        this.router.navigate(["summary"], {
+          relativeTo: this.activatedRoute
+        })
+    },
     {
       route: "subscriptions",
       action: () =>
