@@ -32,12 +32,12 @@
             *ngFor="let sub of subscriptions.slice(0, 6)"
           >
             <img
-              [src]="'assets/images/subscriptions/' + sub.name.toLowerCase() + '.png'"
+              [src]="'assets/images/subscriptions/' + sub.subscriptionName.toLowerCase() + '.png'"
               class="card-media-image"
             />
             <div class="card-media-description">
               <span class="card-media-title">
-                {{ sub.name }}
+                {{ sub.subscriptionName }}
               </span>
               <span class="card-media-text"> {{ sub.price }} </span>
             </div>

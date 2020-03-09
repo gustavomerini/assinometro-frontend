@@ -20,7 +20,7 @@ export class SubscriptionsPickerComponent implements OnInit {
   ngOnInit() {}
 
   public toggleSubscription(subscription) {
-    const name = subscription.name;
+    const name = subscription.subscriptionName;
     if (this.selectedSubs.find(sub => sub === name)) {
       this.selectedSubs = this.selectedSubs.filter(sub => sub !== name);
       subscription.selected = false;
@@ -33,7 +33,7 @@ export class SubscriptionsPickerComponent implements OnInit {
   public onInput(value: string) {
     this.filteredSubs = this.subscriptions.filter(
       sub =>
-        sub.name.toLocaleLowerCase().indexOf(value.toLocaleLowerCase()) === 0
+        sub.subscriptionName.toLocaleLowerCase().indexOf(value.toLocaleLowerCase()) === 0
     );
   }
 

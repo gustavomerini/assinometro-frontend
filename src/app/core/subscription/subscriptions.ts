@@ -1,61 +1,61 @@
 export const subscriptions = [
   {
-    name: "netflix",
+    subscriptionName: "netflix",
     logo: "netflix.png",
     price: "RS 45,00"
   },
   {
-    name: "amazon",
+    subscriptionName: "amazon",
     logo: "amazon.png",
     price: "RS 45,00"
   },
   {
-    name: "spotify",
+    subscriptionName: "spotify",
     logo: "spotify.png",
     price: "RS 45,00"
   },
   {
-    name: "apple",
+    subscriptionName: "apple",
     logo: "apple.png",
     price: "RS 45,00"
   },
   {
-    name: "audible",
+    subscriptionName: "audible",
     logo: "audible.png",
     price: "RS 45,00"
   },
   {
-    name: "blizzard",
+    subscriptionName: "blizzard",
     logo: "blizzard.png",
     price: "RS 45,00"
   },
   {
-    name: "dazn",
+    subscriptionName: "dazn",
     logo: "dazn.png",
     price: "RS 45,00"
   },
   {
-    name: "prime",
+    subscriptionName: "prime",
     logo: "prime.png",
     price: "RS 45,00"
   },
   {
-    name: "psn",
+    subscriptionName: "psn",
     logo: "psn.png",
     price: "RS 45,00"
   },
   {
-    name: "xbox",
+    subscriptionName: "xbox",
     logo: "xbox.png",
     price: "RS 45,00"
   },
   {
-    name: "linkedin",
+    subscriptionName: "linkedin",
     logo: "linkedin.png",
     price: "RS 45,00"
   },
   {
-    name: "youtube",
+    subscriptionName: "youtube",
     logo: "youtube.png",
     price: "RS 45,00"
   }

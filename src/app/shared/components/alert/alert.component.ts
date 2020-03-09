@@ -1,7 +1,16 @@
 import { Component, Input, Output, EventEmitter } from "@angular/core";
 @Component({
   selector: "app-alert",
-  styles: [``],
+  styles: [
+    `
+      .alert-item {
+        flex-wrap: nowrap !important;
+        .alert-icon-wrapper {
+          align-self: center !important;
+        }
+      }
+    `
+  ],
   template: `
     <div class="alert" [ngClass]="role" role="alert">
       <div class="alert-items">

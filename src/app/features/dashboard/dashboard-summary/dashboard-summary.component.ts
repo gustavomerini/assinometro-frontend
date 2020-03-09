@@ -45,27 +45,6 @@ export class DashboardSummaryComponent implements OnInit {
       "#25333D"
     ]);
 
-    // let chart2 = new Canvas.Chart("chartContainer2", {
-    //   theme: "light2",
-    //   animationEnabled: true,
-    //   colorSet: "customColorSet6",
-    //   fontFamily: {
-    //     fontFamily: "Metropolis"
-    //   },
-    //   data: [
-    //     {
-    //       type: "doughnut",
-    //       dataPoints: [
-    //         { y: 15, label: "Netflix" },
-    //         { y: 145, label: "Vivo" },
-    //         { y: 55, label: "Oi" },
-    //         { y: 80, label: "Sky" },
-    //         { y: 15, label: "Spotify" }
-    //       ]
-    //     }
-    //   ]
-    // });
-    // chart2.render();
     let chart = new Canvas.Chart("chartContainer", {
       theme: "light2",
       animationEnabled: true,

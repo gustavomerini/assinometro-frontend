@@ -1,4 +1,5 @@
 export interface Subscription {
-    name: string;
+    id: string;
+    subscriptionName: string;
     logo: string;
 }
