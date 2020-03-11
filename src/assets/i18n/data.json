@@ -7,7 +7,7 @@
         "name": "Netflix",
         "description": "Serviço de streaming",
         "price": 11,
-        "type": "PHONE_PLAN",
+        "type": "STREAMING",
         "ext": {
           "mb": 100
         }
@@ -16,14 +16,137 @@
   },
   "subscriptions": [
     {
-      "name": "Vivo TEL",
-      "description": "Plano de celular VIVO",
+      "subscriptionName": "Netflix",
+      "id": "07eb7750-6396-11ea-bc55-0242ac130003",
+      "logo": "netflix.png",
       "price": null,
-      "type": "PHONE_PLAN",
+      "defaultPrice": 21.9,
+      "frequency": "MONTH",
+      "type": "STREAMING",
       "ext": {
-        "mb": null
+        "options": ["basic", "default", "premium"]
+      }
+    },
+    {
+      "subscriptionName": "AWS",
+      "id": "07eb7994-6396-11ea-bc55-0242ac130003",
+      "logo": "amazon.png",
+      "price": null,
+      "defaultPrice": null,
+      "frequency": "MONTH",
+      "type": "CLOUD",
+      "ext": {}
+    },
+    {
+      "subscriptionName": "Spotify",
+      "id": "07eb7a8e-6396-11ea-bc55-0242ac130003",
+      "logo": "spotify.png",
+      "price": null,
+      "defaultPrice": 14.9,
+      "frequency": "MONTH",
+      "type": "STREAMING",
+      "ext": {
+        "student": null,
+        "family": null,
+        "couple": null
+      }
+    },
+    {
+      "subscriptionName": "iCloud Storage",
+      "id": "07eb7b6a-6396-11ea-bc55-0242ac130003",
+      "logo": "apple.png",
+      "price": null,
+      "defaultPrice": 3.5,
+      "frequency": "MONTH",
+      "type": "STORAGE",
+      "ext": {
+        "size": null
+      }
+    },
+    {
+      "subscriptionName": "Audible",
+      "id": "07eb7d90-6396-11ea-bc55-0242ac130003",
+      "logo": "audible.png",
+      "price": null,
+      "defaultPrice": 45,
+      "frequency": "MONTH",
+      "type": "STREAMING",
+      "ext": {}
+    },
+    {
+      "subscriptionName": "Blizzard",
+      "id": "07eb7e76-6396-11ea-bc55-0242ac130003",
+      "logo": "blizzard.png",
+      "price": null,
+      "defaultPrice": 27.9,
+      "frequency": "MONTH",
+      "type": "GAMES",
+      "ext": {}
+    },
+    {
+      "subscriptionName": "DAZN",
+      "id": "07eb7f3e-6396-11ea-bc55-0242ac130003",
+      "logo": "dazn.png",
+      "price": null,
+      "defaultPrice": 19.9,
+      "frequency": "MONTH",
+      "type": "STREAMING",
+      "ext": {}
+    },
+    {
+      "subscriptionName": "Amazon Prime",
+      "id": "07eb8006-6396-11ea-bc55-0242ac130003",
+      "logo": "prime.png",
+      "price": null,
+      "defaultPrice": 9.9,
+      "frequency": "MONTH",
+      "type": "STREAMING",
+      "ext": {}
+    },
+    {
+      "subscriptionName": "PSN",
+      "id": "07eb82c2-6396-11ea-bc55-0242ac130003",
+      "logo": "psn.png",
+      "price": null,
+      "defaultPrice": 129.99,
+      "frequency": "ANNUAL",
+      "type": "GAMES",
+      "ext": {}
+    },
+    {
+      "subscriptionName": "Xbox Live",
+      "id": "07eb83bc-6396-11ea-bc55-0242ac130003",
+      "logo": "xbox.png",
+      "price": null,
+      "defaultPrice": 120,
+      "frequency": "ANNUAL",
+      "type": "GAMES",
+      "ext": {
+        "ultimate": null
+      }
+    },
+    {
+      "subscriptionName": "Linkedin Premium",
+      "id": "07eb8484-6396-11ea-bc55-0242ac130003",
+      "logo": "linkedin.png",
+      "price": null,
+      "defaultPrice": 48.95,
+      "frequency": "MONTH",
+      "type": "STREAMING",
+      "ext": {}
+    },
+    {
+      "subscriptionName": "YouTube",
+      "id": "07eb8650-6396-11ea-bc55-0242ac130003",
+      "logo": "youtube.png",
+      "price": null,
+      "defaultPrice": 20.9,
+      "type": "STREAMING",
+      "ext": {
+        "family": null,
+        "student": null,
+        "individual": null
       }
     }
   ]
 }
-
