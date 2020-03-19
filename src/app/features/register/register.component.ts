@@ -58,17 +58,25 @@ export class RegisterComponent implements OnInit {
       password
     };
     try {
+      debugger;
       const response = await Auth.signUp(user);
-      this.userService.createUser(response.userSub).subscribe(res => {
-        this.message = this.translate.instant("check_your_email");
-        this.alertRole = "alert-info";
-        this.registerBtnState = ClrLoadingState.SUCCESS;
-      });
+      this.userService.createUser(response.userSub).subscribe(
+        res => {
+          this.message = this.translate.instant("check_your_email");
+          this.alertRole = "alert-info";
+          this.registerBtnState = ClrLoadingState.SUCCESS;
+        },
+        error => this.dispatchError(error)
+      );
     } catch (error) {
-      this.message = this.translate.instant(handleCognitoError(error));
-      this.alertRole = "alert-danger";
-      this.registerBtnState = ClrLoadingState.ERROR;
+      this.dispatchError(error);
     }
+  }
+
+  dispatchError(error) {
+    this.message = this.translate.instant(handleCognitoError(error));
+    this.alertRole = "alert-danger";
+    this.registerBtnState = ClrLoadingState.ERROR;
   }
 
   public closeAlert() {

@@ -6,7 +6,7 @@
   "form_password": "Password",
   "wrong_password_username": "Invalid user name or password",
   "already_have_credentials": "Already have an account? Sign in",
-  "signup_message": "Sign up for a Company ID",
+  "signup_message": "Don't have an account? Sign up",
   "register_action": "Register",
   "form_error_confirm_password_required": "You need to confirm your password",
   "form_confirm_password": "Confirm your password",
@@ -17,7 +17,7 @@
   "nav_home": "Home",
   "nav_faq": "FAQ",
   "nav_about_me": "About Me",
-  "landing_page_message": "Tracking subscriptions expenses can be hard. That's why our mission is to help you to save your money, delivering an easy way to track all of your expenses and an analyser comparing prices of all subscriptions to notify whoever is paying more!",
+  "landing_page_message": "Tracking your subscriptions expenses can be hard. That’s why our mission is to help you save money by delivering an easy way to track all your expenses. Also keeping you aware of the best deals by analyzing and comparing the bests prices on the market.",
   "landing_page_header": "Track your subscriptions expenses!",
   "error_not_authorized_exception": "Username or password invalid",
   "check_your_email": "Check your email to confirm your account",
@@ -42,8 +42,8 @@
   "why_us_description": "We are specialist in providing subscription tracking and we are always inovating",
   "easy_to_use": "Easy to use!",
   "easy_to_use_description": "Friendly interface to provide the best experience for you",
-  "stop_worring": "Stop worring about subscriptions price!",
-  "stop_worring_description": "We will do that for you while you can get the best of your subscriptions content",
+  "stop_worring": "Stop worrying about subscription price!",
+  "stop_worring_description": "We will do that for you while you can get the best of your subscription's content",
   "open_source": "Open Source!",
   "open_source_description": "We are 100% open source, join this community and help it to get bigger"
 }

@@ -7,7 +7,7 @@ export class UserService {
     constructor(private http: HttpClient) { }
 
     public createUser(id) {
-        return this.http.post(`${config.api.invokeUrl}/Users`, {id});
+        return this.http.post(`${config.api.invokeUrl}/users`, {id});
     }
     
 }
