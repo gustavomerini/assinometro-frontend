@@ -1,11 +1,10 @@
 <nav class="navbar navbar-classic">
   <div class="flex-container">
     <div class="top-nav">
-      <a class="navbar-brand" href="#"><img  class="max-size" src="assets/images/logo.svg"/></a>
-      <button
-        (click)="toggleMenu()"
-        class="btn btn-outline navbar-toggler"
-      >
+      <a class="navbar-brand" href="#"
+        ><img class="max-size" src="assets/images/logo.svg"
+      /></a>
+      <button (click)="toggleMenu()" class="btn btn-outline navbar-toggler">
         Menu
       </button>
     </div>
@@ -42,14 +41,17 @@
 </nav>
 <section class="landing-page bg-blue">
   <div class="flex-container">
-    <div class="clr-row h-100 align-items-center">
+    <div class="clr-row align-items-center">
       <div class="clr-col-md-6 clr-col-sm-12">
-        <div class="align-items-center">
+        <div>
           <h1 class="white-color">{{ "landing_page_header" | translate }}</h1>
           <p class="white-color">
             {{ "landing_page_message" | translate }}
           </p>
-          <button [routerLink]="['/login']" class="btn btn-inverse white-color main-action">
+          <button
+            [routerLink]="['/login']"
+            class="btn btn-inverse white-color main-action"
+          >
             {{ "get_started" | translate }}
           </button>
         </div>
@@ -66,25 +68,7 @@
 </section>
 <section class="landing-page">
   <div class="flex-container">
-    <div class="clr-row h-100 align-items-center">
-      <div class="clr-col-md-6 clr-col-sm-12">
-        <div class="align-items-center">
-          <h1 class="blue-color">{{ "landing_page_header" | translate }}</h1>
-          <p class="blue-color">
-            {{ "landing_page_message" | translate }}
-          </p>
-          <button [routerLink]="['/login']" class="btn btn-inverse main-action">
-            {{ "get_started" | translate }}
-          </button>
-        </div>
-      </div>
-      <div class="clr-col-6 clr-col-sm-0">
-        <img
-          src="assets/images/home_1.svg"
-          class="img-fluid mob-hide mob-fix"
-        />
-      </div>
-    </div>
+    <app-landing-page-features></app-landing-page-features>
   </div>
 </section>
 <section id="footer" class="space-big bg-blue">
@@ -92,7 +76,7 @@
     <div class="clr-row">
       <div class="clr-col-12 mx-auto">
         <div class="footer-content center">
-          <img class="max-size" src="assets/images/logo-4.svg"/>
+          <img class="max-size" src="assets/images/logo-4.svg" />
           <p class="white-color">© All right reserved. Assinômetro 2020.</p>
         </div>
       </div>

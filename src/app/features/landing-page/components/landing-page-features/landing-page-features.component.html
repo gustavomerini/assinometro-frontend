@@ -1,0 +1,19 @@
+<div class="features">
+  <h1 class="blue-color features-header">
+    {{ "why_us" | translate }}
+  </h1>
+  <div class="clr-row">
+    <div
+      class="clr-col-lg-4 clr-col-lg-4 feature"
+      *ngFor="let item of landingPageItems"
+    >
+      <img [src]="item.img" class="features-img mob-fix" />
+      <div class="blue-color image-header">
+        {{ item.header | translate }}
+      </div>
+      <div class="blue-color image-subheader">
+        {{ item.subheader | translate }}
+      </div>
+    </div>
+  </div>
+</div>

@@ -11,6 +11,7 @@ import { handleCognitoError } from "src/app/shared/utils/utils";
 import { ClrLoadingState } from "@clr/angular";
 import { ComparePassword } from "src/app/shared/validators/compare-password.validator";
 import { StrongPassword } from "src/app/shared/validators/strong-password.validator";
+import { UserService } from "src/app/core/services/user.service";
 
 @Component({
   selector: "app-register",
@@ -36,7 +37,11 @@ export class RegisterComponent implements OnInit {
   public alertRole = "";
   public registerBtnState = ClrLoadingState.DEFAULT;
 
-  constructor(private fb: FormBuilder, public translate: TranslateService) {}
+  constructor(
+    private fb: FormBuilder,
+    public translate: TranslateService,
+    private userService: UserService
+  ) {}
 
   ngOnInit(): void {}
 
@@ -46,17 +51,19 @@ export class RegisterComponent implements OnInit {
       return;
     }
     this.registerBtnState = ClrLoadingState.LOADING;
-    const { username, password, email } = this.registerForm.value;
+    const { password, email } = this.registerForm.value;
     this.closeAlert();
     const user = {
       username: email,
-      password,
+      password
     };
     try {
-      await Auth.signUp(user);
-      this.message = this.translate.instant("check_your_email");
-      this.alertRole = "alert-info";
-      this.registerBtnState = ClrLoadingState.SUCCESS;
+      const response = await Auth.signUp(user);
+      this.userService.createUser(response.userSub).subscribe(res => {
+        this.message = this.translate.instant("check_your_email");
+        this.alertRole = "alert-info";
+        this.registerBtnState = ClrLoadingState.SUCCESS;
+      });
     } catch (error) {
       this.message = this.translate.instant(handleCognitoError(error));
       this.alertRole = "alert-danger";

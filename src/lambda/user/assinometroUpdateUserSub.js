@@ -4,7 +4,7 @@ const AWS = require("aws-sdk");
 
 exports.handler = async (event, context) => {
   const documentClient = new AWS.DynamoDB.DocumentClient();
-  // const { id, subscriptionName } = JSON.parse(event.body);
+  const { id, subscriptionName } = JSON.parse(event.body);
   const params = {
     TableName: "Users",
     Key: {
@@ -13,8 +13,7 @@ exports.handler = async (event, context) => {
     UpdateExpression: "set subscriptions = :n",
     ExpressionAttributeValues: {
       ":n": {
-        id: "12345",
-        subscriptionName: "Netflix"
+        id,
       }
     },
     ReturnValues: "UPDATED_NEW"

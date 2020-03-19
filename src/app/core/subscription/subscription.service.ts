@@ -10,4 +10,5 @@ export class SubscriptionService {
   public getSubscriptions() {
     return this.http.get(`${config.api.invokeUrl}/subscriptions`);
   }
+
 }

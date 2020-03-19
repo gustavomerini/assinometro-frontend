@@ -37,5 +37,13 @@
   "monthly_expenses": "Monthly expenses",
   "manage_action": "Manage",
   "confirm_action": "Confirm",
-  "search_subscription": "Search subscription"
+  "search_subscription": "Search subscription",
+  "why_us": "Why should you choose us?",
+  "why_us_description": "We are specialist in providing subscription tracking and we are always inovating",
+  "easy_to_use": "Easy to use!",
+  "easy_to_use_description": "Friendly interface to provide the best experience for you",
+  "stop_worring": "Stop worring about subscriptions price!",
+  "stop_worring_description": "We will do that for you while you can get the best of your subscriptions content",
+  "open_source": "Open Source!",
+  "open_source_description": "We are 100% open source, join this community and help it to get bigger"
 }

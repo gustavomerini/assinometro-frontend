@@ -43,10 +43,6 @@ p {
   clip-path: polygon(0 0, 100% 0, 100% 100%, 0 92%);
 }
 
-.justify-contend-end {
-  justify-content: flex-end !important;
-}
-
 .justify-content-center {
   justify-content: center;
 }
@@ -138,6 +134,14 @@ p {
 @media (max-width: 480px) {
   .mob-hide {
     display: none !important;
+  }
+  .main-message {
+    display: flex;
+    flex-flow: column;
+    button {
+      margin-left: auto;
+      margin-right: auto;
+    }
   }
   h1 {
     font-size: 1rem;
