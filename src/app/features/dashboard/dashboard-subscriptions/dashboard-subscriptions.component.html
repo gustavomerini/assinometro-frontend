@@ -2,7 +2,7 @@
   <div class="clr-row">
     <div class="clr-col-lg-4"></div>
     <div class="clr-col-lg-4 clr-col-md-12 clr-col-12">
-      <app-subscriptions-picker [subscriptions]="subscriptions"></app-subscriptions-picker>
+      <app-subscriptions-picker (confirmSubs)="onConfirmSubs($event)" [subscriptions]="subscriptions"></app-subscriptions-picker>
     </div>
     <div class="clr-col-lg-4"></div>
   </div>

@@ -1,6 +1,7 @@
-import { Component, OnInit, Input, ViewChild, ElementRef } from "@angular/core";
+import { Component, OnInit, Input, ViewChild, ElementRef, Output } from "@angular/core";
 import { Subscription } from "src/app/core/subscription/subscription";
 import { TranslateService } from '@ngx-translate/core';
+import { EventEmitter } from '@angular/core';
 
 @Component({
   selector: "app-subscriptions-picker",
@@ -15,6 +16,8 @@ export class SubscriptionsPickerComponent implements OnInit {
     label: this.translate.instant("confirm_action"),
     action: () => this.confirmSubscriptions()
   };
+  @Output() confirmSubs: EventEmitter<Subscription[]> = new EventEmitter<Subscription[]>();
+
   constructor(private translate: TranslateService) {}
 
   ngOnInit() {}
@@ -38,6 +41,6 @@ export class SubscriptionsPickerComponent implements OnInit {
   }
 
   private confirmSubscriptions() {
-    console.log(this.selectedSubs);
+    this.confirmSubs.emit(this.selectedSubs);
   }
 }

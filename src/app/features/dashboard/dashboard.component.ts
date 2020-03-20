@@ -1,4 +1,4 @@
-import { Component } from "@angular/core";
+import { Component, OnInit } from "@angular/core";
 import {
   trigger,
   state,
@@ -6,6 +6,8 @@ import {
   transition,
   animate
 } from "@angular/animations";
+import { SubscriptionService, AWSResponse } from "src/app/core/subscription/subscription.service";
+import { Subscription } from "rxjs";
 
 @Component({
   selector: "app-dashboard",
@@ -30,11 +32,18 @@ import {
     ])
   ]
 })
-export class DashboardComponent {
-  constructor() {}
+export class DashboardComponent implements OnInit {
+  constructor(private subsService: SubscriptionService) {}
 
   public isTotalSubsLoaded = false;
   public menuState = "out";
+
+  ngOnInit() {
+    this.subsService.fetchSubscriptions().subscribe((subs: AWSResponse<Subscription[]>) => {
+      this.subsService.updateSubscriptions(subs);
+      this.isTotalSubsLoaded = true;
+    });
+  }
 
   public toggleMenu() {
     this.menuState = this.menuState === "out" ? "in" : "out";

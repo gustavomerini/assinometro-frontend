@@ -2,7 +2,8 @@ import { Component, OnInit, ChangeDetectorRef } from "@angular/core";
 import { TranslateService } from "@ngx-translate/core";
 import { Router } from "@angular/router";
 import * as Canvas from "../canvas/canvas";
-import { subscriptions } from "src/app/core/subscription/subscriptions";
+import { Subscription } from "rxjs";
+import { SubscriptionService, AWSResponse } from "src/app/core/subscription/subscription.service";
 
 @Component({
   selector: "app-dashboard-summary",
@@ -15,7 +16,7 @@ export class DashboardSummaryComponent implements OnInit {
     action: () => this.router.navigate(["/subscriptions"])
   };
 
-  public subscriptions = subscriptions;
+  public subscriptions: Subscription[];
   public chartTypes = ["area", "line", "column"];
   public counter = 0;
 
@@ -24,10 +25,14 @@ export class DashboardSummaryComponent implements OnInit {
   constructor(
     private translate: TranslateService,
     private router: Router,
-    private cdr: ChangeDetectorRef
+    private cdr: ChangeDetectorRef,
+    private subsService: SubscriptionService
   ) {}
 
   ngOnInit() {
+    this.subsService.subscriptions$.subscribe(
+      (subs: AWSResponse<Subscription[]>) => (this.subscriptions = subs.Items)
+    );
     setTimeout(() => this.loadCanvas(), 1500);
   }
 

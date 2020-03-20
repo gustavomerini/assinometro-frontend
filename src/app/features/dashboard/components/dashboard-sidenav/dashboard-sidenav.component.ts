@@ -1,6 +1,7 @@
 import { Component, Output, EventEmitter } from "@angular/core";
 import { Router, ActivatedRoute } from "@angular/router";
 import Auth from "@aws-amplify/auth";
+import { AuthenticationService } from 'src/app/core/services/authentication.service';
 
 @Component({
   selector: "dashboard-sidenav",
@@ -38,19 +39,17 @@ export class DashboardSidenavComponent {
     { route: "profile", action: null },
     {
       route: "logout",
-      action: () => {
-        try {
-          Auth.signOut();
-          this.router.navigate(["/landing-page"]);
-        } catch (error) {
-          console.error(error);
-        }
-      }
+      action: () => this.logoutUser()
     }
   ];
-  constructor(private router: Router, private activatedRoute: ActivatedRoute) {}
+  constructor(private router: Router, private activatedRoute: ActivatedRoute, private authService: AuthenticationService) {}
 
   public closeMenu() {
     this.close.emit(true);
+  }
+
+  private async logoutUser() {
+      const response = await this.authService.logoutUser();
+      response && response.code ? console.error(response) : this.router.navigate(["/landing-page"]);
   }
 }

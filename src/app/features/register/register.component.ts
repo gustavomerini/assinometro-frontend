@@ -1,9 +1,7 @@
 import { Component, OnInit, Input, ViewChild } from "@angular/core";
 import {
   FormBuilder,
-  Validators,
-  Validator,
-  AbstractControl
+  Validators
 } from "@angular/forms";
 import { TranslateService } from "@ngx-translate/core";
 import Auth from "@aws-amplify/auth";
@@ -11,7 +9,7 @@ import { handleCognitoError } from "src/app/shared/utils/utils";
 import { ClrLoadingState } from "@clr/angular";
 import { ComparePassword } from "src/app/shared/validators/compare-password.validator";
 import { StrongPassword } from "src/app/shared/validators/strong-password.validator";
-import { UserService } from "src/app/core/services/user.service";
+import { UserService } from "src/app/core/services/user/user.service";
 
 @Component({
   selector: "app-register",
@@ -58,7 +56,6 @@ export class RegisterComponent implements OnInit {
       password
     };
     try {
-      debugger;
       const response = await Auth.signUp(user);
       this.userService.createUser(response.userSub).subscribe(
         res => {

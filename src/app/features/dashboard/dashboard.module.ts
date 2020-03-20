@@ -16,6 +16,8 @@ import { DashboardSubscriptionsModule } from "./dashboard-subscriptions/dashboar
     DashboardSummaryComponent,
     DashboardSidenavComponent
   ],
-  providers: []
+  providers: [
+    
+  ]
 })
 export class DashboardModule {}
