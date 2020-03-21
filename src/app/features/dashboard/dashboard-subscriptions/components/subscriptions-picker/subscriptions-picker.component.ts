@@ -24,12 +24,12 @@ export class SubscriptionsPickerComponent implements OnInit {
 
   public toggleSubscription(subscription) {
     const name = subscription.subscriptionName;
-    if (this.selectedSubs.find(sub => sub === name)) {
-      this.selectedSubs = this.selectedSubs.filter(sub => sub !== name);
+    if (this.selectedSubs.find(sub => sub.subscriptionName === name)) {
+      this.selectedSubs = this.selectedSubs.filter(sub => sub.subscriptionName !== name);
       subscription.selected = false;
       return;
     }
-    this.selectedSubs.push(name);
+    this.selectedSubs.push(subscription);
     subscription.selected = true;
   }
 

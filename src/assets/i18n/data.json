@@ -1,19 +1,21 @@
 {
-  "users": {
-    "userId": "1ad08b7f-b364-41b5-a3d2-4cc78d662cde",
-    "email": "joaozin@gmail.com",
-    "subs": [
-      {
-        "name": "Netflix",
-        "description": "Serviço de streaming",
-        "price": 11,
-        "type": "STREAMING",
-        "ext": {
-          "mb": 100
+  "users": [
+    {
+      "userId": "1ad08b7f-b364-41b5-a3d2-4cc78d662cde",
+      "email": "joaozin@gmail.com",
+      "subs": [
+        {
+          "name": "Netflix",
+          "description": "Serviço de streaming",
+          "price": 11,
+          "type": "STREAMING",
+          "ext": {
+            "mb": 100
+          }
         }
-      }
-    ]
-  },
+      ]
+    }
+  ],
   "subscriptions": [
     {
       "subscriptionName": "Netflix",

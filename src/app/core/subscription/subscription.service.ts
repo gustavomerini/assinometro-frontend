@@ -5,7 +5,13 @@ import { Subscription, Subject, BehaviorSubject } from "rxjs";
 
 @Injectable({ providedIn: "root" })
 export class SubscriptionService {
-  private subscriptions: Subject<AWSResponse<Subscription[]>> = new BehaviorSubject<AWSResponse<Subscription[]>>({Items: [], Count: 0, ScannedCount: 0});
+  private subscriptions: Subject<
+    AWSResponse<Subscription[]>
+  > = new BehaviorSubject<AWSResponse<Subscription[]>>({
+    Items: [],
+    Count: 0,
+    ScannedCount: 0
+  });
 
   constructor(private http: HttpClient) {}
 
@@ -26,7 +32,10 @@ export class SubscriptionService {
   }
 
   public addUserSubscriptions(subscriptions: Subscription[], userId: string) {
-    this.http.post(`${config.api.invokeUrl}/Users/${userId}`, subscriptions);
+    return this.http.post(
+      `${config.api.invokeUrl}/users/${userId}/`,
+      {subscriptions}
+    );
   }
 }
 

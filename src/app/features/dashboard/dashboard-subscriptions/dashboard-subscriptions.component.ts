@@ -24,7 +24,14 @@ export class DashboardSubscriptionsComponent implements OnInit {
   public async onConfirmSubs(subs: Subscription[]) {
     try {
       const response = await this.authService.getUserInfo();
-      this.subsService.addUserSubscriptions(subs, response.username);
+      this.subsService.addUserSubscriptions(subs, response.username).subscribe(
+        response => {
+          console.log(response);
+        },
+        error => {
+          console.error(error);
+        }
+      );
     } catch (error) {
       console.error(error);
     }

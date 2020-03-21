@@ -47,8 +47,6 @@ export class LoginComponent implements OnInit {
     this.closeAlert();
     const response = await this.authService.loginUser(user);
     response.code ? this.loginFailed(response) : this.router.navigate(["/dashboard"]);
-    const a = this.authService.getUserInfo();
-    console.log(a);
   }
 
   private loginFailed(error) {
