@@ -30,7 +30,7 @@ export class DashboardSummaryComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.subsService.subscriptions$.subscribe(
+    this.subsService.userSubscriptions$.subscribe(
       (subs: AWSResponse<Subscription[]>) => (this.subscriptions = subs.Items)
     );
     setTimeout(() => this.loadCanvas(), 1500);

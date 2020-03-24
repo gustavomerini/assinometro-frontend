@@ -4,23 +4,17 @@ const AWS = require("aws-sdk");
 
 exports.handler = async (event, context) => {
   const documentClient = new AWS.DynamoDB.DocumentClient();
-  const { id } = event.pathParameters;
   const params = {
-    TableName: "Users",
-    Key: {
-      id,
-    },
-    ProjectionExpression: "subscriptions"
+    TableName: "Subscriptions"
   };
   let responseBody = "";
   let statusCode = 0;
   try {
     const data = await documentClient.scan(params).promise();
-    const filteredData = data.Items.filter(item => Object.keys(item).length > 0)[0];
-    responseBody = JSON.stringify({Items: [...filteredData.subscriptions]});
+    responseBody = JSON.stringify(data);
     statusCode = 200;
   } catch (error) {
-    responseBody = `Unable to get users: ${error}`;
+    responseBody = `Unable to get subscriptions: ${error}`;
     statusCode = 403;
   }
 
@@ -28,7 +22,7 @@ exports.handler = async (event, context) => {
     statusCode,
     headers: {
       "Content-Type": "applications/json",
-      "access-control-allow-origin": "*"
+      "Access-Control-Allow-Origin": "*"
     },
     body: responseBody
   };

@@ -6,8 +6,12 @@ import {
   transition,
   animate
 } from "@angular/animations";
-import { SubscriptionService, AWSResponse } from "src/app/core/subscription/subscription.service";
+import {
+  SubscriptionService,
+  AWSResponse
+} from "src/app/core/subscription/subscription.service";
 import { Subscription } from "rxjs";
+import { AuthenticationService } from "src/app/core/services/authentication.service";
 
 @Component({
   selector: "app-dashboard",
@@ -33,15 +37,22 @@ import { Subscription } from "rxjs";
   ]
 })
 export class DashboardComponent implements OnInit {
-  constructor(private subsService: SubscriptionService) {}
+  constructor(
+    private subsService: SubscriptionService,
+    private authService: AuthenticationService
+  ) {}
 
   public isTotalSubsLoaded = false;
   public menuState = "out";
 
   ngOnInit() {
-    this.subsService.fetchSubscriptions().subscribe((subs: AWSResponse<Subscription[]>) => {
-      this.subsService.updateSubscriptions(subs);
-      this.isTotalSubsLoaded = true;
+    this.authService.getUserInfo().then(response => {
+      this.subsService
+        .fetchUserSubscriptions(response.username)
+        .subscribe((response: AWSResponse<Subscription[]>) => {
+          this.subsService.updateUserSubscriptions(response);
+          this.isTotalSubsLoaded = true;
+        });
     });
   }
 

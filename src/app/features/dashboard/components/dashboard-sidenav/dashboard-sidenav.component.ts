@@ -1,6 +1,5 @@
 import { Component, Output, EventEmitter } from "@angular/core";
 import { Router, ActivatedRoute } from "@angular/router";
-import Auth from "@aws-amplify/auth";
 import { AuthenticationService } from 'src/app/core/services/authentication.service';
 
 @Component({

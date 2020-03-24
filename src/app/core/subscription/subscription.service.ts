@@ -13,22 +13,38 @@ export class SubscriptionService {
     ScannedCount: 0
   });
 
+  private userSubscriptions: Subject<
+  AWSResponse<Subscription[]>
+> = new BehaviorSubject<AWSResponse<Subscription[]>>({
+  Items: [],
+  Count: 0,
+  ScannedCount: 0
+});
+
   constructor(private http: HttpClient) {}
 
   get subscriptions$() {
     return this.subscriptions.asObservable();
   }
 
-  public updateSubscriptions(subs: AWSResponse<Subscription[]>) {
-    this.subscriptions.next(subs);
+  get userSubscriptions$() {
+    return this.userSubscriptions.asObservable();
+  }
+
+  public updateSubscriptions(awsResponse: AWSResponse<Subscription[]>) {
+    this.subscriptions.next(awsResponse);
   }
 
   public fetchSubscriptions() {
     return this.http.get(`${config.api.invokeUrl}/subscriptions`);
   }
 
-  public getSubscriptions() {
-    return this.subscriptions;
+  public updateUserSubscriptions(awsResponse: AWSResponse<Subscription[]>) {
+    this.userSubscriptions.next(awsResponse);
+  }
+
+  public fetchUserSubscriptions(userId: string) {
+    return this.http.get(`${config.api.invokeUrl}/users/${userId}/`);
   }
 
   public addUserSubscriptions(subscriptions: Subscription[], userId: string) {
