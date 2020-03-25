@@ -10,8 +10,8 @@ import {
   SubscriptionService,
   AWSResponse
 } from "src/app/core/subscription/subscription.service";
-import { Subscription } from "rxjs";
 import { AuthenticationService } from "src/app/core/services/authentication.service";
+import { Subscription } from 'src/app/core/subscription/subscription';
 
 @Component({
   selector: "app-dashboard",
@@ -47,6 +47,11 @@ export class DashboardComponent implements OnInit {
 
   ngOnInit() {
     this.authService.getUserInfo().then(response => {
+      this.subsService
+      .fetchSubscriptions()
+      .subscribe((response: AWSResponse<Subscription[]>) => {
+        this.subsService.updateSubscriptions(response);
+      });
       this.subsService
         .fetchUserSubscriptions(response.username)
         .subscribe((response: AWSResponse<Subscription[]>) => {

@@ -7,9 +7,15 @@
         [isLoaded]="isTotalSubsLoaded"
       >
         <div class="card-text average-cost">
-          <div>Year: <span class="highlight-price">R$ 3480,00</span></div>
-          <div>Month: <span class="highlight-price">R$ 290,00</span></div>
-          <div>Weekly: <span class="highlight-price">R$ 72,50</span></div>
+          <div>
+            Year: <span class="highlight-price">R$ {{ priceInfo.year }}</span>
+          </div>
+          <div>
+            Month: <span class="highlight-price">R$ {{ priceInfo.month }}</span>
+          </div>
+          <div>
+            Weekly: <span class="highlight-price">R$ {{ priceInfo.week }}</span>
+          </div>
         </div>
       </dashboard-card>
     </div>
@@ -23,23 +29,27 @@
     <div class="clr-col-lg-4 clr-col-12">
       <dashboard-card
         [header]="'subscriptions_page' | translate"
-        [isLoaded]="isTotalSubsLoaded"
+        
         [footer]="totalSubsFooter"
       >
-        <section style="height: 45vh; width: 100%;  max-width: 100%;">
+        <section style="height: 45vh; width: 100%;  max-width: 100%;" *ngIf="isTotalSubsLoaded">
           <div
             class="card-media-block with-align card-overflow"
             *ngFor="let sub of subscriptions.slice(0, 6)"
           >
             <img
-              [src]="'assets/images/subscriptions/' + sub.subscriptionName.toLowerCase() + '.png'"
+              [src]="
+                'assets/images/subscriptions/' +
+                sub.subscriptionName.toLowerCase() +
+                '.png'
+              "
               class="card-media-image"
             />
             <div class="card-media-description">
               <span class="card-media-title">
                 {{ sub.subscriptionName }}
               </span>
-              <span class="card-media-text"> {{ sub.price }} </span>
+              <span class="card-media-text"> R$ {{ sub.price }} </span>
             </div>
           </div>
         </section>

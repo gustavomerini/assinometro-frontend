@@ -2,8 +2,11 @@ import { Component, OnInit, ChangeDetectorRef } from "@angular/core";
 import { TranslateService } from "@ngx-translate/core";
 import { Router } from "@angular/router";
 import * as Canvas from "../canvas/canvas";
-import { Subscription } from "rxjs";
-import { SubscriptionService, AWSResponse } from "src/app/core/subscription/subscription.service";
+import {
+  SubscriptionService,
+  AWSResponse
+} from "src/app/core/subscription/subscription.service";
+import { Subscription } from "src/app/core/subscription/subscription";
 
 @Component({
   selector: "app-dashboard-summary",
@@ -19,7 +22,12 @@ export class DashboardSummaryComponent implements OnInit {
   public subscriptions: Subscription[];
   public chartTypes = ["area", "line", "column"];
   public counter = 0;
-
+  public priceInfo = {
+    month: 0,
+    year: 0,
+    week: 0
+  };
+  ghosts = [];
   public isTotalSubsLoaded = false;
 
   constructor(
@@ -31,9 +39,25 @@ export class DashboardSummaryComponent implements OnInit {
 
   ngOnInit() {
     this.subsService.userSubscriptions$.subscribe(
-      (subs: AWSResponse<Subscription[]>) => (this.subscriptions = subs.Items)
+      (subs: AWSResponse<Subscription[]>) => {
+        this.subscriptions = subs.Items;
+        this.ghosts = new Array(6);
+        const monthPrice =
+          Math.round(
+            this.subscriptions.reduce(
+              (previous, current) => previous + current.price,
+              0
+            ) * 100
+          ) / 100;
+        this.priceInfo = {
+          month: monthPrice,
+          year: Math.round(monthPrice * 12 * 100) / 100,
+          week: Math.round((monthPrice / 4) * 100) / 100
+        };
+        this.ghosts = [];
+        this.loadCanvas();
+      }
     );
-    setTimeout(() => this.loadCanvas(), 1500);
   }
 
   loadCanvas() {
@@ -62,11 +86,11 @@ export class DashboardSummaryComponent implements OnInit {
         {
           type: "column",
           dataPoints: [
-            { y: 250, label: "April" },
-            { y: 260, label: "May" },
-            { y: 290, label: "June" },
-            { y: 290, label: "July" },
-            { y: 290, label: "August" }
+            { y: this.priceInfo.month, label: "April" },
+            { y: this.priceInfo.month, label: "May" },
+            { y: this.priceInfo.month, label: "June" },
+            { y: this.priceInfo.month, label: "July" },
+            { y: this.priceInfo.month, label: "August" }
           ]
         }
       ]

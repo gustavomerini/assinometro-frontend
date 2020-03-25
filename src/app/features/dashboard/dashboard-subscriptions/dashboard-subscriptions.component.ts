@@ -1,7 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { SubscriptionService } from "src/app/core/subscription/subscription.service";
-import { Subscription } from "rxjs";
 import { AuthenticationService } from "src/app/core/services/authentication.service";
+import { Subscription } from 'src/app/core/subscription/subscription';
 
 @Component({
   selector: "app-dashboard-subscriptions",

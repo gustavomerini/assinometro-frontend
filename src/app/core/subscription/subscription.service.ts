@@ -1,7 +1,8 @@
 import { Injectable } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
 import * as config from "../../../config.json";
-import { Subscription, Subject, BehaviorSubject } from "rxjs";
+import { Subject, BehaviorSubject } from "rxjs";
+import { Subscription } from './subscription';
 
 @Injectable({ providedIn: "root" })
 export class SubscriptionService {
