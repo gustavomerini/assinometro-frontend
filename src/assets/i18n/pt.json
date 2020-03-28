@@ -45,5 +45,11 @@
   "stop_worring": "Stop worrying about subscription price!",
   "stop_worring_description": "We will do that for you while you can get the best of your subscription's content",
   "open_source": "Open Source!",
-  "open_source_description": "We are 100% open source, join this community and help it to get bigger"
+  "open_source_description": "We are 100% open source, join this community and help it to get bigger",
+  "subscription_picker_message": "Select your active subscriptions below and click 'Confirm' to continue",
+  "edit_values_message": "Now, update the values of your subscriptions!",
+  "billed": "Billed",
+  "value": "Value",
+  "add_subscription": "Add Subscription",
+  "go_back": "Go back"
 }

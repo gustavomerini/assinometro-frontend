@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, ViewChild, ElementRef, Output } from "@angular/core";
+import { Component, OnInit, Input, ViewChild, ElementRef, Output, AfterViewInit } from "@angular/core";
 import { Subscription } from "src/app/core/subscription/subscription";
 import { TranslateService } from '@ngx-translate/core';
 import { EventEmitter } from '@angular/core';
@@ -12,6 +12,7 @@ export class SubscriptionsPickerComponent implements OnInit {
   @Input() subscriptions: Subscription[];
   public filteredSubs = [];
   public selectedSubs = [];
+  public loaded = false;
   public subsPickerFooter = {
     label: this.translate.instant("confirm_action"),
     action: () => this.confirmSubscriptions()

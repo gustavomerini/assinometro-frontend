@@ -27,7 +27,7 @@ export class DashboardSummaryComponent implements OnInit {
     year: 0,
     week: 0
   };
-  ghosts = [];
+  public isNewUser = false;
   public isTotalSubsLoaded = false;
 
   constructor(
@@ -40,8 +40,11 @@ export class DashboardSummaryComponent implements OnInit {
   ngOnInit() {
     this.subsService.userSubscriptions$.subscribe(
       (subs: AWSResponse<Subscription[]>) => {
+        if (!this.hasSubscriptions(subs)) {
+          this.router.navigate(['dashboard/subscriptions'], { queryParams: { newUser: true } })
+          return;
+        }
         this.subscriptions = subs.Items;
-        this.ghosts = new Array(6);
         const monthPrice =
           Math.round(
             this.subscriptions.reduce(
@@ -54,15 +57,20 @@ export class DashboardSummaryComponent implements OnInit {
           year: Math.round(monthPrice * 12 * 100) / 100,
           week: Math.round((monthPrice / 4) * 100) / 100
         };
-        this.ghosts = [];
         this.loadCanvas();
       }
     );
   }
 
+  hasSubscriptions(subs) {
+    const obj = subs.Items[0];
+    return obj && Object.keys(obj).length > 0 
+  }
+
   loadCanvas() {
     const type = this.chartTypes[this.counter];
     this.counter >= 2 ? (this.counter = 0) : this.counter++;
+    console.log(performance.now(), "assadsda");
     this.isTotalSubsLoaded = true;
     this.cdr.detectChanges();
     Canvas.addColorSet("customColorSet6", [

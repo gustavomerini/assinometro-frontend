@@ -9,6 +9,12 @@ import { Component, OnInit, Input } from "@angular/core";
         justify-content: center;
       }
 
+      .card-logo {
+        max-width: 36px;
+        max-height: 36px;
+        margin-right: 0.5rem !important;
+      }
+
       .card-block {
         overflow: auto;
       }
@@ -17,6 +23,7 @@ import { Component, OnInit, Input } from "@angular/core";
   template: `
     <div class="card">
       <div *ngIf="header" class="card-header">
+        <img *ngIf="logo" [src]="logo" class="card-logo" />
         {{ header }}
       </div>
       <div
@@ -43,9 +50,12 @@ export class DashboardCardComponent implements OnInit {
   @Input() isLoaded = false;
   @Input() header = "";
   @Input() footer: Footer;
+  @Input() logo = "";
   constructor() {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    console.log(performance.now(), this.isLoaded);
+  }
 }
 
 export interface Footer {

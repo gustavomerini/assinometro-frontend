@@ -7,6 +7,7 @@ import { DashboardRoutingModule } from "./dashboard-routing.module";
 import { DashboardSidenavComponent } from "./components/dashboard-sidenav/dashboard-sidenav.component";
 import { DashboardSummaryComponent } from "./dashboard-summary/dashboard-summary.component";
 import { DashboardSubscriptionsModule } from "./dashboard-subscriptions/dashboard-subscriptions.module";
+import { DashboardSubscriptionItems } from './dashboard-summary/components/dashboard-subscription-items.component';
 
 @NgModule({
   imports: [CommonModule, SharedModule, DashboardSubscriptionsModule, DashboardRoutingModule],
@@ -14,7 +15,8 @@ import { DashboardSubscriptionsModule } from "./dashboard-subscriptions/dashboar
   declarations: [
     DashboardComponent,
     DashboardSummaryComponent,
-    DashboardSidenavComponent
+    DashboardSidenavComponent,
+    DashboardSubscriptionItems
   ],
   providers: [
     

@@ -1,0 +1,14 @@
+.card-content {
+  display: flex;
+  flex-direction: column;
+  .text {
+  }
+}
+
+.actions {
+  margin-top: 1rem;
+  display: flex;
+  flex-direction: row;
+  app-button {
+  }
+}

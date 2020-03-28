@@ -21,7 +21,6 @@
     </div>
     <div class="clr-col-lg-2"></div>
     <div class="clr-col-lg-2"></div>
-
     <div class="clr-col-lg-2"></div>
   </div>
   <div class="clr-row">
@@ -29,30 +28,12 @@
     <div class="clr-col-lg-4 clr-col-12">
       <dashboard-card
         [header]="'subscriptions_page' | translate"
-        
+        [isLoaded]="isTotalSubsLoaded"
         [footer]="totalSubsFooter"
       >
-        <section style="height: 45vh; width: 100%;  max-width: 100%;" *ngIf="isTotalSubsLoaded">
-          <div
-            class="card-media-block with-align card-overflow"
-            *ngFor="let sub of subscriptions.slice(0, 6)"
-          >
-            <img
-              [src]="
-                'assets/images/subscriptions/' +
-                sub.subscriptionName.toLowerCase() +
-                '.png'
-              "
-              class="card-media-image"
-            />
-            <div class="card-media-description">
-              <span class="card-media-title">
-                {{ sub.subscriptionName }}
-              </span>
-              <span class="card-media-text"> R$ {{ sub.price }} </span>
-            </div>
-          </div>
-        </section>
+        <dashboard-subscription-items
+          [subscriptions]="subscriptions"
+        ></dashboard-subscription-items>
       </dashboard-card>
     </div>
     <div class="clr-col-lg-4 clr-col-md-12 clr-col-12">
@@ -69,17 +50,4 @@
     </div>
     <div class="clr-col-lg-2"></div>
   </div>
-
-  <!-- <div class="clr-col-lg-4 clr-col-md-12 clr-col-12">
-    <dashboard-card
-      [header]="'monthly_expenses' | translate"
-      [isLoaded]="isTotalSubsLoaded"
-      [footer]="totalSubsFooter"
-    >
-      <div
-        id="chartContainer2"
-        style="height: 45vh; width: 100%;  max-width: 100%;"
-      ></div>
-    </dashboard-card>
-  </div> -->
 </section>

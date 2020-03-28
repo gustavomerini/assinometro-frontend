@@ -2,7 +2,25 @@
   <div class="clr-row">
     <div class="clr-col-lg-4"></div>
     <div class="clr-col-lg-4 clr-col-md-12 clr-col-12">
-      <app-subscriptions-picker (confirmSubs)="onConfirmSubs($event)" [subscriptions]="subscriptions"></app-subscriptions-picker>
+      <app-alert
+        *ngIf="message"
+        class="custom-alert"
+        [message]="message"
+        [role]="alertRole"
+        (close)="closeAlert()"
+      ></app-alert>
+      <app-subscriptions-picker
+        *ngIf="showSubscriptionPicker"
+        (confirmSubs)="onConfirmSubs($event)"
+        [subscriptions]="subscriptions"
+      ></app-subscriptions-picker>
+      <section *ngIf="!showSubscriptionPicker">
+        <app-confirmed-subs
+          (goBack)="goBack()"
+          (updatedSub)="updateSub($event)"
+          [subscriptions]="confirmedSubs"
+        ></app-confirmed-subs>
+      </section>
     </div>
     <div class="clr-col-lg-4"></div>
   </div>

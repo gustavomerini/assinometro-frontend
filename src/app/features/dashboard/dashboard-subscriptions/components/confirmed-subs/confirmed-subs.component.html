@@ -1,0 +1,25 @@
+<div class="actions">
+  <app-button
+    [label]="'go_back' | translate"
+    [classNames]="'btn btn-primary'"
+    [action]="goBackAction"
+  ></app-button>
+  <app-button
+    [label]="'add_subscription' | translate"
+    [classNames]="'btn btn-primary'"
+    [action]="addSubscription"
+  ></app-button>
+</div>
+<dashboard-card
+  *ngFor="let sub of subscriptions"
+  [logo]="'assets/images/subscriptions/' + sub.logo"
+  [header]="sub.subscriptionName"
+  [isLoaded]="true"
+>
+  <div class="card-content">
+    <span class="text"> {{ "billed" | translate }}: Monthly </span>
+    <span class="text">
+      {{ "value" | translate }}: {{ sub.coin || "R$" }} {{ sub.price }}
+    </span>
+  </div>
+</dashboard-card>

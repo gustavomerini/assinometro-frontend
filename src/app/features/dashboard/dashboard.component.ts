@@ -46,6 +46,7 @@ export class DashboardComponent implements OnInit {
   public menuState = "out";
 
   ngOnInit() {
+    
     this.authService.getUserInfo().then(response => {
       this.subsService
       .fetchSubscriptions()
@@ -56,7 +57,6 @@ export class DashboardComponent implements OnInit {
         .fetchUserSubscriptions(response.username)
         .subscribe((response: AWSResponse<Subscription[]>) => {
           this.subsService.updateUserSubscriptions(response);
-          this.isTotalSubsLoaded = true;
         });
     });
   }
