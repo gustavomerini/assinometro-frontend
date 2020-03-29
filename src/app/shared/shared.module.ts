@@ -7,7 +7,8 @@ import { ClarityModule } from "@clr/angular";
 import { AlertComponent } from "./components/alert/alert.component";
 import { SpinnerComponent } from "./components/spinner/spinner.component";
 import { ButtonComponent } from "./components/button/button.component";
-import { DashboardCardComponent } from "./dashboard-card/dashboard-card.compontent";
+import { DashboardCardComponent } from './components/dashboard-card/dashboard-card.compontent';
+import { AppModalComponent } from './components/app-modal/app-modal.component';
 
 @NgModule({
   imports: [
@@ -18,8 +19,8 @@ import { DashboardCardComponent } from "./dashboard-card/dashboard-card.componte
     ReactiveFormsModule,
     FormsModule
   ],
-  exports: [TranslateModule, ClarityModule, CommonModule, AlertComponent, SpinnerComponent, ButtonComponent, DashboardCardComponent],
-  declarations: [AlertComponent, SpinnerComponent, ButtonComponent, DashboardCardComponent],
+  exports: [TranslateModule, ClarityModule, CommonModule, AlertComponent, SpinnerComponent, ButtonComponent, DashboardCardComponent, AppModalComponent],
+  declarations: [AlertComponent, SpinnerComponent, ButtonComponent, DashboardCardComponent, AppModalComponent],
   providers: []
 })
 export class SharedModule {}

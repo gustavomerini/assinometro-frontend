@@ -2,12 +2,12 @@
   <app-button
     [label]="'go_back' | translate"
     [classNames]="'btn btn-primary'"
-    [action]="goBackAction"
+    (onClick)="goBackAction()"
   ></app-button>
   <app-button
     [label]="'add_subscription' | translate"
     [classNames]="'btn btn-primary'"
-    [action]="addSubscription"
+    (onClick)="openModalAction()"
   ></app-button>
 </div>
 <dashboard-card

@@ -9,7 +9,7 @@ import { AuthenticationService } from 'src/app/core/services/authentication.serv
     <nav class="dashboard-sidenav sidenav-items mob-full-size">
       <app-button
         *ngFor="let item of menuItems"
-        [action]="item.action"
+        (onClick)="item.action($event)"
         [label]="item.route + '_page' | translate"
         [classNames]="'btn btn-link clarity-blue-color with-margin-top'"
       ></app-button>

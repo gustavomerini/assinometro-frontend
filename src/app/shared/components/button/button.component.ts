@@ -1,11 +1,12 @@
-import { Component, OnInit, Input } from "@angular/core";
+import { Component, OnInit, Input, Output } from "@angular/core";
+import { EventEmitter } from '@angular/core';
 
 @Component({
   selector: "app-button",
   template: `
     <button
       [clrLoading]="loadingState"
-      (click)="action()"
+      (click)="onClickButton($event)"
       [class]="classNames"
       [type]="type"
     >
@@ -14,6 +15,8 @@ import { Component, OnInit, Input } from "@angular/core";
   `
 })
 export class ButtonComponent implements OnInit {
+  @Output()
+  public onClick = new EventEmitter();
   @Input()
   public type = "text";
   @Input()
@@ -22,8 +25,10 @@ export class ButtonComponent implements OnInit {
   public loadingState = "";
   @Input()
   public label = "";
-  @Input()
-  public action = () => {};
+
+  onClickButton(event) {
+    this.onClick.emit(event);
+  }
 
   constructor() {}
 

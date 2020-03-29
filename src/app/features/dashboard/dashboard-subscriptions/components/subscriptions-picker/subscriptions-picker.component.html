@@ -11,7 +11,13 @@
     [placeholder]="'search_subscription' | translate"
   />
   <div class="subscriptions-wrapper">
-    <div [id]="sub.subscriptionName" [ngClass]="{'selected': sub.selected}" class="subscription-option" *ngFor="let sub of filteredSubs.length ? filteredSubs : subscriptions" (click)="toggleSubscription(sub)">
+    <div
+      [id]="sub.subscriptionName"
+      *ngFor="let sub of filteredSubs.length ? filteredSubs : subscriptions"
+      [ngClass]="{ selected: sub.selected }"
+      class="subscription-option"
+      (click)="toggleSubscription(sub)"
+    >
       <img
         [src]="'assets/images/subscriptions/' + sub.logo"
         class="card-media-image"

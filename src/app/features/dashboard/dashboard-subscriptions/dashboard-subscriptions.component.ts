@@ -3,7 +3,7 @@ import { SubscriptionService } from "src/app/core/subscription/subscription.serv
 import { AuthenticationService } from "src/app/core/services/authentication.service";
 import { Subscription } from "src/app/core/subscription/subscription";
 import { ActivatedRoute } from "@angular/router";
-import { TranslateService } from '@ngx-translate/core';
+import { TranslateService } from "@ngx-translate/core";
 
 @Component({
   selector: "app-dashboard-subscriptions",
@@ -16,7 +16,12 @@ export class DashboardSubscriptionsComponent implements OnInit {
   public message = "";
   public confirmedSubs = [];
   public alertRole = "";
+  public showModal = false;
   public showSubscriptionPicker = true;
+  public modalFooter = {
+    label: this.translate.instant("manage_action"),
+    action: () => {}
+  };
 
   constructor(
     private subsService: SubscriptionService,
@@ -29,7 +34,7 @@ export class DashboardSubscriptionsComponent implements OnInit {
     this.route.queryParams.subscribe(params => {
       if (params.newUser) {
         this.newUser = params.newUser;
-        this.message = this.translate.instant("subscription_picker_message") 
+        this.message = this.translate.instant("subscription_picker_message");
       }
     });
     this.subsService.subscriptions$.subscribe(
@@ -37,24 +42,26 @@ export class DashboardSubscriptionsComponent implements OnInit {
     );
   }
 
-  public async onConfirmSubs(subs: Subscription[]) {
+  public onConfirmSubs(subs: Subscription[]) {
     this.confirmedSubs = [...this.confirmedSubs, ...subs];
     this.showSubscriptionPicker = false;
     console.log(this.confirmedSubs);
-    this.message = this.translate.instant("edit_values_message")  
+    this.message = this.translate.instant("edit_values_message");
   }
 
-  public async tetse () {
+  public async tetse() {
     try {
       const response = await this.authService.getUserInfo();
-      this.subsService.addUserSubscriptions(this.confirmedSubs, response.username).subscribe(
-        response => {
-          console.log(response);
-        },
-        error => {
-          console.error(error);
-        }
-      );
+      this.subsService
+        .addUserSubscriptions(this.confirmedSubs, response.username)
+        .subscribe(
+          response => {
+            console.log(response);
+          },
+          error => {
+            console.error(error);
+          }
+        );
     } catch (error) {
       console.error(error);
     }
@@ -62,6 +69,10 @@ export class DashboardSubscriptionsComponent implements OnInit {
 
   public goBack() {
     this.showSubscriptionPicker = true;
+  }
+
+  public openModal() {
+    this.showModal = !this.showModal;
   }
 
   public updateSub(sub: Subscription) {

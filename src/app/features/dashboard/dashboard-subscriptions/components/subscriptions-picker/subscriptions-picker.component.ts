@@ -1,7 +1,7 @@
-import { Component, OnInit, Input, ViewChild, ElementRef, Output, AfterViewInit } from "@angular/core";
+import { Component, OnInit, Input, Output } from "@angular/core";
 import { Subscription } from "src/app/core/subscription/subscription";
-import { TranslateService } from '@ngx-translate/core';
-import { EventEmitter } from '@angular/core';
+import { TranslateService } from "@ngx-translate/core";
+import { EventEmitter } from "@angular/core";
 
 @Component({
   selector: "app-subscriptions-picker",
@@ -9,24 +9,32 @@ import { EventEmitter } from '@angular/core';
   templateUrl: "subscriptions-picker.component.html"
 })
 export class SubscriptionsPickerComponent implements OnInit {
+  @Output() confirmSubs: EventEmitter<Subscription[]> = new EventEmitter<
+    Subscription[]
+  >();
   @Input() subscriptions: Subscription[];
+  public subsPickerFooter = {
+    label: this.translate.instant("go_forward"),
+    action: () => this.goForwardAction()
+  };
+
   public filteredSubs = [];
   public selectedSubs = [];
-  public loaded = false;
-  public subsPickerFooter = {
-    label: this.translate.instant("confirm_action"),
-    action: () => this.confirmSubscriptions()
-  };
-  @Output() confirmSubs: EventEmitter<Subscription[]> = new EventEmitter<Subscription[]>();
 
   constructor(private translate: TranslateService) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    console.log('tetse', this.subscriptions);
+    
+    this.subscriptions = this.subscriptions.map(sub => ({...sub, selected: false}));
+  }
 
   public toggleSubscription(subscription) {
     const name = subscription.subscriptionName;
     if (this.selectedSubs.find(sub => sub.subscriptionName === name)) {
-      this.selectedSubs = this.selectedSubs.filter(sub => sub.subscriptionName !== name);
+      this.selectedSubs = this.selectedSubs.filter(
+        sub => sub.subscriptionName !== name
+      );
       subscription.selected = false;
       return;
     }
@@ -37,11 +45,15 @@ export class SubscriptionsPickerComponent implements OnInit {
   public onInput(value: string) {
     this.filteredSubs = this.subscriptions.filter(
       sub =>
-        sub.subscriptionName.toLocaleLowerCase().indexOf(value.toLocaleLowerCase()) === 0
+        sub.subscriptionName
+          .toLocaleLowerCase()
+          .indexOf(value.toLocaleLowerCase()) === 0
     );
   }
 
-  private confirmSubscriptions() {
+  public goForwardAction() {
     this.confirmSubs.emit(this.selectedSubs);
+    this.filteredSubs = [];
+    this.subscriptions = this.subscriptions.map(sub => ({...sub, selected: false}));
   }
 }

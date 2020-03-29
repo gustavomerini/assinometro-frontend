@@ -14,7 +14,7 @@ import { Component, OnInit, Input } from "@angular/core";
     <section style="height: 45vh; width: 100%;  max-width: 100%;">
       <div
         class="card-media-block with-align card-overflow"
-        *ngFor="let sub of subscriptions.slice(0, 6)"
+        *ngFor="let sub of subscriptions"
       >
         <img
           [src]="

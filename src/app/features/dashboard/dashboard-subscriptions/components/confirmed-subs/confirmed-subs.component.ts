@@ -9,10 +9,14 @@ import { Subscription } from 'src/app/core/subscription/subscription';
 export class ConfirmedSubsComponent {
     @Input() subscriptions = [];
     @Output() goBack = new EventEmitter();
-    @Output() addSubscription = new EventEmitter(); 
+    @Output() openModal = new EventEmitter(); 
     @Output() updatedSub: EventEmitter<Subscription> = new EventEmitter<Subscription>();
 
     goBackAction = () => {
         this.goBack.emit()
+    }
+
+    openModalAction = () => {
+      this.openModal.emit();
     }
 }
