@@ -24,8 +24,6 @@ export class SubscriptionsPickerComponent implements OnInit {
   constructor(private translate: TranslateService) {}
 
   ngOnInit() {
-    console.log('tetse', this.subscriptions);
-    
     this.subscriptions = this.subscriptions.map(sub => ({...sub, selected: false}));
   }
 
