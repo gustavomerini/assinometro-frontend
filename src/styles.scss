@@ -20,6 +20,15 @@ body {
   margin-top: 1rem;
 }
 
+.horizontal-form {
+  display: flex;
+  flex-direction: column;
+}
+.item-wrapper {
+  display: flex;
+  flex-direction: row;
+}
+
 .canvasjs-chart-credit {
   display: none !important;
 }

@@ -6,20 +6,55 @@
   ></app-button>
   <app-button
     [label]="'add_subscription' | translate"
+    [classNames]="'btn btn-secondary'"
+    (onClick)="openModalAction()"
+  ></app-button>
+  <app-button
+    [label]="'confirm' | translate"
     [classNames]="'btn btn-primary'"
     (onClick)="openModalAction()"
   ></app-button>
 </div>
+
 <dashboard-card
-  *ngFor="let sub of subscriptions"
+  *ngFor="let sub of subscriptions; let i = index"
   [logo]="'assets/images/subscriptions/' + sub.logo"
   [header]="sub.subscriptionName"
   [isLoaded]="true"
+  [rightButton]="true"
+  (onClick)="onEdit($event, i)"
 >
-  <div class="card-content">
-    <span class="text"> {{ "billed" | translate }}: Monthly </span>
-    <span class="text">
-      {{ "value" | translate }}: {{ sub.coin || "R$" }} {{ sub.price }}
-    </span>
-  </div>
+  <section *ngIf="!sub.isEditing; else isEditingTemplate">
+    <div class="card-content">
+      <span class="text"> {{ "billed" | translate }}: Monthly </span>
+      <span class="text">
+        {{ "value" | translate }}: {{ sub.coin || "R$" }} {{ sub.price }}
+      </span>
+    </div>
+  </section>
+  <ng-template #isEditingTemplate>
+    <div class="card-content">
+      <form class="clr-form clr-form-compact">
+        <div class="clr-row">
+          <label class="item-label">{{ "billed" | translate }}: </label>
+          <input
+            class="clr-input"
+            type="text"
+            name="periodicity"
+            [(ngModel)]="periodicity"
+          />
+        </div>
+
+        <div class="clr-row">
+          <label class="item-label">{{ "value" | translate }}: </label>
+          <input
+            class="clr-input"
+            type="text"
+            name="price"
+            [(ngModel)]="sub.price"
+          />
+        </div>
+      </form>
+    </div>
+  </ng-template>
 </dashboard-card>

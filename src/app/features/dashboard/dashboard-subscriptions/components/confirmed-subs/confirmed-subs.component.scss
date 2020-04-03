@@ -1,15 +1,17 @@
 .card-content {
   display: flex;
   flex-direction: column;
-  .text {
-  }
 }
 
 .actions {
   margin-top: 1rem;
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
-  app-button {
+  app-button:nth-child(3) {
+    margin-left: auto;
   }
+}
+
+.item-label {
+  margin-right: 0.5rem;
 }
