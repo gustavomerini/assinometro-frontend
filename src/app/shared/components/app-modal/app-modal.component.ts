@@ -1,33 +1,65 @@
-import { Component, OnInit, Input } from "@angular/core";
+import {
+  Component,
+  OnInit,
+  Input,
+  Output,
+  EventEmitter,
+  AfterViewInit,
+  ChangeDetectorRef,
+} from "@angular/core";
 
 @Component({
   selector: "app-modal",
   template: `
-    <clr-modal [(clrModalOpen)]="show">
-      <h3 class="modal-title">{{ header }}</h3>
-      <div class="modal-body">
-        <ng-template #modalTemplate>
-          <ng-content></ng-content>
-        </ng-template>
+    <div class="modal" *ngIf="show">
+      <div class="modal-dialog" role="dialog" aria-hidden="true">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button
+              (click)="onCancelAction()"
+              aria-label="Close"
+              class="close"
+              type="button"
+            >
+              <clr-icon aria-hidden="true" shape="close"></clr-icon>
+            </button>
+            <h3 class="modal-title">{{ header }}</h3>
+          </div>
+          <div class="modal-body">
+            {{ message }}
+          </div>
+          <div class="modal-footer">
+            <button (click)="onCancelAction()" class="btn btn-sm btn-link">
+              {{ "cancel" | translate }}
+            </button>
+            <button (click)="onConfirmAction()" class="btn btn-sm btn-primary">
+              {{ label }}
+            </button>
+          </div>
+        </div>
       </div>
-      <div class="modal-footer">
-        <button (click)="(footer.action)" class="btn btn-sm btn-link">
-          {{ footer.label }}
-        </button>
-      </div>
-    </clr-modal>
-  `
+      <div class="modal-backdrop" aria-hidden="true"></div>
+    </div>
+  `,
 })
-export class AppModalComponent implements OnInit {
+export class AppModalComponent implements OnInit, AfterViewInit {
   @Input() show = false;
   @Input() header = "";
-  @Input() footer: Footer;
+  @Input() message: string;
+  @Input() label: string;
+  @Output() onConfirm = new EventEmitter();
+  @Output() onCancel = new EventEmitter();
   constructor() {}
 
   ngOnInit() {}
-}
 
-export interface Footer {
-  label: string;
-  action: () => void;
+  ngAfterViewInit() {}
+
+  public onConfirmAction() {
+    this.onConfirm.emit();
+  }
+
+  public onCancelAction() {
+    this.onCancel.emit();
+  }
 }

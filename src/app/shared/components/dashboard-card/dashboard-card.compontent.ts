@@ -20,14 +20,15 @@ import { Component, OnInit, Input, EventEmitter, Output } from "@angular/core";
         align-items: center;
         flex-direction: row;
       }
-      button {
+
+      .actions {
         margin-left: auto;
       }
 
       .card-block {
         overflow: auto;
       }
-    `
+    `,
   ],
   template: `
     <style></style>
@@ -35,15 +36,25 @@ import { Component, OnInit, Input, EventEmitter, Output } from "@angular/core";
       <div *ngIf="header" class="card-header">
         <img *ngIf="logo" [src]="logo" class="card-logo" />
         {{ header }}
-        <button
-          *ngIf="rightButton"
-          type="button"
-          (click)="rightButtonAction()"
-          class="btn btn-icon"
-          aria-label="home"
-        >
-          <clr-icon [attr.shape]="rightButtonIcon"></clr-icon>
-        </button>
+        <div class="actions" *ngIf="rightButton">
+          <button
+            type="button"
+            (click)="rightButtonAction()"
+            class="btn btn-icon"
+            aria-label="home"
+          >
+            <clr-icon [attr.shape]="rightButtonIcon"></clr-icon>
+          </button>
+          <button
+            type="button"
+            *ngIf="isEditing"
+            (click)="onDeleteAction()"
+            class="btn btn-icon"
+            aria-label="home"
+          >
+            <clr-icon shape="times"></clr-icon>
+          </button>
+        </div>
       </div>
       <div
         class="card-block"
@@ -63,7 +74,7 @@ import { Component, OnInit, Input, EventEmitter, Output } from "@angular/core";
         </button>
       </div>
     </div>
-  `
+  `,
 })
 export class DashboardCardComponent implements OnInit {
   @Input() isLoaded = false;
@@ -72,18 +83,21 @@ export class DashboardCardComponent implements OnInit {
   @Input() logo = "";
   @Input() rightButton: boolean;
   @Output() onClick = new EventEmitter();
+  @Output() onDelete = new EventEmitter();
+
   public rightButtonIcon = "pencil";
-  private isEditing = false;
+  public isEditing = false;
   constructor() {}
 
-  ngOnInit() {
-    console.log(performance.now(), this.isLoaded);
+  ngOnInit() {}
+
+  onDeleteAction() {
+    this.onDelete.emit();
   }
 
   rightButtonAction() {
     this.isEditing = !this.isEditing;
     this.rightButtonIcon = this.isEditing ? "check" : "pencil";
-    console.log(this.rightButtonIcon);
     this.onClick.emit(this.isEditing);
   }
 }

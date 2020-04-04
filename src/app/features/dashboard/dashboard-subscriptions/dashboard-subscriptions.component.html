@@ -1,7 +1,7 @@
 <section>
   <div class="clr-row">
     <div class="clr-col-lg-4"></div>
-    <div class="clr-col-lg-4 clr-col-md-12 clr-col-12">
+    <div class="clr-col-lg-4 clr-col-12">
       <app-alert
         *ngIf="message"
         class="custom-alert"
@@ -23,9 +23,7 @@
         ></app-confirmed-subs>
       </section>
       <app-new-subscription
-        [header]="'subscriptions_page' | translate"
-        [footer]="modalFooter"
-        [show]="showModal"
+        (onConfirm)="onConfirmModal()"
       ></app-new-subscription>
     </div>
     <div class="clr-col-lg-4"></div>

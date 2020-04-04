@@ -15,7 +15,15 @@
     (onClick)="openModalAction()"
   ></app-button>
 </div>
-
+<app-modal
+  [show]="showDeleteModal"
+  [header]="'delete' | translate"
+  [label]="'delete' | translate"
+  (onConfirm)="deleteSubscription()"
+  [message]="'delete_message' | translate"
+  (onCancel)="toggleModal()"
+>
+</app-modal>
 <dashboard-card
   *ngFor="let sub of subscriptions; let i = index"
   [logo]="'assets/images/subscriptions/' + sub.logo"
@@ -23,6 +31,7 @@
   [isLoaded]="true"
   [rightButton]="true"
   (onClick)="onEdit($event, i)"
+  (onDelete)="onDelete(i)"
 >
   <section *ngIf="!sub.isEditing; else isEditingTemplate">
     <div class="card-content">

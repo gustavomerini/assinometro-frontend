@@ -1,5 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
-import { Footer } from 'src/app/shared/components/dashboard-card/dashboard-card.compontent';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 
 @Component({
     selector: 'app-new-subscription',
@@ -8,11 +7,17 @@ import { Footer } from 'src/app/shared/components/dashboard-card/dashboard-card.
 })
 
 export class NewSubscriptionComponent implements OnInit {
-    @Input() isLoaded = false;
-    @Input() show = false;
-    @Input() header = "";
-    @Input() footer: Footer;
+    public show = false;
+    @Output() onConfirm = new EventEmitter;
     constructor() { }
 
     ngOnInit() { }
+    
+    public onConfirmAction() {
+        this.onConfirm.emit();
+    }
+
+    public onCancelAction() {
+
+    }
 }

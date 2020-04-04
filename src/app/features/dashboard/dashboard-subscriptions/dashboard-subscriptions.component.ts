@@ -8,7 +8,7 @@ import { TranslateService } from "@ngx-translate/core";
 @Component({
   selector: "app-dashboard-subscriptions",
   templateUrl: "./dashboard-subscriptions.component.html",
-  styleUrls: ["./dashboard-subscriptions.component.scss"]
+  styleUrls: ["./dashboard-subscriptions.component.scss"],
 })
 export class DashboardSubscriptionsComponent implements OnInit {
   public subscriptions: Subscription[];
@@ -18,10 +18,7 @@ export class DashboardSubscriptionsComponent implements OnInit {
   public alertRole = "";
   public showModal = false;
   public showSubscriptionPicker = true;
-  public modalFooter = {
-    label: this.translate.instant("manage_action"),
-    action: () => {}
-  };
+  public footerLabel = this.translate.instant("manage_action");
 
   constructor(
     private subsService: SubscriptionService,
@@ -31,21 +28,20 @@ export class DashboardSubscriptionsComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.route.queryParams.subscribe(params => {
+    this.route.queryParams.subscribe((params) => {
       if (params.newUser) {
         this.newUser = params.newUser;
         this.message = this.translate.instant("subscription_picker_message");
       }
     });
     this.subsService.subscriptions$.subscribe(
-      subs => (this.subscriptions = [...subs.Items])
+      (subs) => (this.subscriptions = [...subs.Items])
     );
   }
 
   public onConfirmSubs(subs: Subscription[]) {
     this.confirmedSubs = [...this.confirmedSubs, ...subs];
     this.showSubscriptionPicker = false;
-    console.log(this.confirmedSubs);
     this.message = this.translate.instant("edit_values_message");
   }
 
@@ -55,10 +51,10 @@ export class DashboardSubscriptionsComponent implements OnInit {
       this.subsService
         .addUserSubscriptions(this.confirmedSubs, response.username)
         .subscribe(
-          response => {
+          (response) => {
             console.log(response);
           },
-          error => {
+          (error) => {
             console.error(error);
           }
         );
@@ -78,6 +74,8 @@ export class DashboardSubscriptionsComponent implements OnInit {
   public updateSub(sub: Subscription) {
     console.log(sub);
   }
+
+  public onConfirmModal() {}
 
   public closeAlert() {
     this.message = "";

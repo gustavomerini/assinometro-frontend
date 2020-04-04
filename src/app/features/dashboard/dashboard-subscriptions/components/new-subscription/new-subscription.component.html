@@ -1,3 +1,27 @@
-<app-modal [header]="header" [footer]="footer" [show]="show">
-  <div> dasdasdas asddas dsa</div>
-</app-modal>
+<div class="modal" *ngIf="show">
+  <div class="modal-dialog" role="dialog" aria-hidden="true">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button
+          (click)="onCancelAction()"
+          aria-label="Close"
+          class="close"
+          type="button"
+        >
+          <clr-icon aria-hidden="true" shape="close"></clr-icon>
+        </button>
+        <h3 class="modal-title">{{ "subscription" | translate }}</h3>
+      </div>
+      <div class="modal-body"></div>
+      <div class="modal-footer">
+        <button (click)="onCancelAction()" class="btn btn-sm btn-link">
+          {{ "cancel" | translate }}
+        </button>
+        <button (click)="onConfirmAction()" class="btn btn-sm btn-primary">
+          {{ "create" | translate }}
+        </button>
+      </div>
+    </div>
+  </div>
+  <div class="modal-backdrop" aria-hidden="true"></div>
+</div>

@@ -15,6 +15,8 @@ export class ConfirmedSubsComponent implements OnInit {
   >();
 
   public periodicity = "Monthly";
+  public showDeleteModal = false;
+  public currentIndex;
 
   ngOnInit() {
   }
@@ -26,6 +28,21 @@ export class ConfirmedSubsComponent implements OnInit {
   openModalAction = () => {
     this.openModal.emit();
   };
+
+  onDelete(index: number) {
+    console.log(this.subscriptions[index]);
+    this.showDeleteModal = !this.showDeleteModal;
+    this.currentIndex = index;
+  }
+
+  toggleModal() {
+    this.showDeleteModal = !this.showDeleteModal;
+  }
+
+  deleteSubscription() {
+    this.subscriptions = this.subscriptions.filter((sub, i) => i !== this.currentIndex);
+    this.showDeleteModal = false;
+  }
 
   onEdit(isEditing: boolean, index: number) {
     this.subscriptions[index].isEditing = isEditing;
