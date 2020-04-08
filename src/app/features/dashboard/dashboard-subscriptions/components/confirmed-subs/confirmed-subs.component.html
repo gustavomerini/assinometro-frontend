@@ -10,9 +10,9 @@
     (onClick)="openModalAction()"
   ></app-button>
   <app-button
-    [label]="'confirm' | translate"
+    [label]="'save' | translate"
+    (onClick)="saveSubscriptionsAction()"
     [classNames]="'btn btn-primary'"
-    (onClick)="openModalAction()"
   ></app-button>
 </div>
 <app-modal
@@ -26,7 +26,7 @@
 </app-modal>
 <dashboard-card
   *ngFor="let sub of subscriptions; let i = index"
-  [logo]="'assets/images/subscriptions/' + sub.logo"
+  [logo]="sub.logo"
   [header]="sub.subscriptionName"
   [isLoaded]="true"
   [rightButton]="true"

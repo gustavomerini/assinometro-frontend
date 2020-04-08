@@ -34,7 +34,7 @@ import { Component, OnInit, Input, EventEmitter, Output } from "@angular/core";
     <style></style>
     <div class="card">
       <div *ngIf="header" class="card-header">
-        <img *ngIf="logo" [src]="logo" class="card-logo" />
+        <img *ngIf="logo" [src]="'assets/images/subscriptions/' + logo" class="card-logo" />
         {{ header }}
         <div class="actions" *ngIf="rightButton">
           <button

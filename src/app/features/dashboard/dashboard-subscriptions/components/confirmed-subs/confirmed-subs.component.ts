@@ -10,6 +10,7 @@ export class ConfirmedSubsComponent implements OnInit {
   @Input() subscriptions = [];
   @Output() goBack = new EventEmitter();
   @Output() openModal = new EventEmitter();
+  @Output() onSave = new EventEmitter();
   @Output() updatedSub: EventEmitter<Subscription> = new EventEmitter<
     Subscription
   >();
@@ -47,5 +48,9 @@ export class ConfirmedSubsComponent implements OnInit {
   onEdit(isEditing: boolean, index: number) {
     this.subscriptions[index].isEditing = isEditing;
     console.log(isEditing, this.subscriptions[index]);
+  }
+
+  saveSubscriptionsAction() {
+    this.onSave.emit(this.subscriptions);
   }
 }

@@ -19,6 +19,7 @@
       (click)="toggleSubscription(sub)"
     >
       <img
+        *ngIf="sub.logo"
         [src]="'assets/images/subscriptions/' + sub.logo"
         class="card-media-image"
       />

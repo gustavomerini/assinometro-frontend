@@ -45,6 +45,10 @@ export class DashboardSubscriptionsComponent implements OnInit {
     this.message = this.translate.instant("edit_values_message");
   }
 
+  public saveSubscriptions(subs: Subscription[]) {
+    console.log("saving...", subs);
+  }
+
   public async tetse() {
     try {
       const response = await this.authService.getUserInfo();
@@ -67,7 +71,7 @@ export class DashboardSubscriptionsComponent implements OnInit {
     this.showSubscriptionPicker = true;
   }
 
-  public openModal() {
+  public toggleModal() {
     this.showModal = !this.showModal;
   }
 
@@ -75,7 +79,10 @@ export class DashboardSubscriptionsComponent implements OnInit {
     console.log(sub);
   }
 
-  public onConfirmModal() {}
+  public createSubscription(subscription: Subscription) {
+    this.confirmedSubs = [...this.confirmedSubs, subscription];
+    this.showModal = false;
+  }
 
   public closeAlert() {
     this.message = "";

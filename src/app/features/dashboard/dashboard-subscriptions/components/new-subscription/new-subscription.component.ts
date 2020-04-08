@@ -1,23 +1,34 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, Input } from "@angular/core";
+import { FormBuilder, Validators } from '@angular/forms';
 
 @Component({
-    selector: 'app-new-subscription',
-    templateUrl: 'new-subscription.component.html',
-    styleUrls: ['new-subscription.component.scss'],
+  selector: "app-new-subscription",
+  templateUrl: "new-subscription.component.html",
+  styleUrls: ["new-subscription.component.scss"],
 })
-
 export class NewSubscriptionComponent implements OnInit {
-    public show = false;
-    @Output() onConfirm = new EventEmitter;
-    constructor() { }
+  @Input()
+  public show = false;
+  @Output()
+  public onConfirm = new EventEmitter();
+  @Output()
+  public onClose = new EventEmitter();
+  public subForm = this.fb.group({
+    subscriptionName: ["", Validators.compose([Validators.required])],
+    price: ["", Validators.compose([Validators.required])],
+    periodicity: ["", Validators.compose([Validators.required])],
+  });
 
-    ngOnInit() { }
-    
-    public onConfirmAction() {
-        this.onConfirm.emit();
-    }
+  constructor(private fb: FormBuilder) {}
 
-    public onCancelAction() {
+  ngOnInit() {}
 
-    }
+  public addSubscription() {
+    this.onConfirm.emit(this.subForm.value);
+  }
+
+  public onCancelAction() {
+    this.show = false;
+    this.onClose.emit();
+  }
 }

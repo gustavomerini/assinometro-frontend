@@ -12,12 +12,54 @@
         </button>
         <h3 class="modal-title">{{ "subscription" | translate }}</h3>
       </div>
-      <div class="modal-body"></div>
+      <div class="modal-body">
+        <form [formGroup]="subForm" clrForm clrLayout="horizontal">
+          <clr-input-container>
+            <label>{{ "form_subscriptionName" | translate }}</label>
+            <input
+              name="subscriptionName"
+              clrInput
+              class="input-width"
+              formControlName="subscriptionName"
+              [placeholder]="'form_subscriptionName' | translate"
+            />
+            <clr-control-error *clrIfError="'required'">{{
+              "form_subscriptionName_required" | translate
+            }}</clr-control-error>
+          </clr-input-container>
+          <clr-input-container>
+            <label>{{ "form_price" | translate }}</label>
+            <input
+              name="price"
+              clrInput
+              class="input-width"
+              formControlName="price"
+              [placeholder]="'form_price' | translate"
+            />
+            <clr-control-error *clrIfError="'required'">{{
+              "form_price_required" | translate
+            }}</clr-control-error>
+          </clr-input-container>
+          <clr-input-container>
+            <label>{{ "form_periodicity" | translate }}</label>
+            <input
+              name="periodicity"
+              clrInput
+              class="input-width"
+              formControlName="periodicity"
+              [placeholder]="'form_periodicity' | translate"
+            />
+            <clr-control-error *clrIfError="'required'">{{
+              "form_periodicity_required" | translate
+            }}</clr-control-error>
+          </clr-input-container>
+        </form>
+      </div>
       <div class="modal-footer">
         <button (click)="onCancelAction()" class="btn btn-sm btn-link">
           {{ "cancel" | translate }}
         </button>
-        <button (click)="onConfirmAction()" class="btn btn-sm btn-primary">
+        <button (click)="addSubscription()" class="btn btn-sm btn-primary">
           {{ "create" | translate }}
         </button>
       </div>

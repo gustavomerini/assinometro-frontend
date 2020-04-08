@@ -4,10 +4,10 @@ import { SubscriptionsPickerComponent } from "./components/subscriptions-picker/
 import { SharedModule } from "src/app/shared/shared.module";
 import { ConfirmedSubsComponent } from './components/confirmed-subs/confirmed-subs.component';
 import { NewSubscriptionComponent } from './components/new-subscription/new-subscription.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
-    imports: [SharedModule, FormsModule],
+    imports: [SharedModule, FormsModule, ReactiveFormsModule],
     exports: [],
     declarations: [DashboardSubscriptionsComponent, SubscriptionsPickerComponent, ConfirmedSubsComponent, NewSubscriptionComponent],
     providers: [],
