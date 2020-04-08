@@ -13,13 +13,17 @@
         <h3 class="modal-title">{{ "subscription" | translate }}</h3>
       </div>
       <div class="modal-body">
-        <form [formGroup]="subForm" clrForm clrLayout="horizontal">
+        <form
+          [formGroup]="subForm"
+          class="form-flex"
+          clrForm
+          clrLayout="horizontal"
+        >
           <clr-input-container>
             <label>{{ "form_subscriptionName" | translate }}</label>
             <input
               name="subscriptionName"
               clrInput
-              class="input-width"
               formControlName="subscriptionName"
               [placeholder]="'form_subscriptionName' | translate"
             />
@@ -32,7 +36,6 @@
             <input
               name="price"
               clrInput
-              class="input-width"
               formControlName="price"
               [placeholder]="'form_price' | translate"
             />
@@ -40,19 +43,17 @@
               "form_price_required" | translate
             }}</clr-control-error>
           </clr-input-container>
-          <clr-input-container>
-            <label>{{ "form_periodicity" | translate }}</label>
-            <input
-              name="periodicity"
-              clrInput
-              class="input-width"
-              formControlName="periodicity"
-              [placeholder]="'form_periodicity' | translate"
-            />
+          <clr-select-container>
+            <label>{{ "form_frequency" | translate }}</label>
+            <select clrSelect name="options" formControlName="frequency">
+              <option class="capitalize" *ngFor="let option of options" [value]="option.value">{{
+                option.label | translate
+              }}</option>
+            </select>
             <clr-control-error *clrIfError="'required'">{{
-              "form_periodicity_required" | translate
+              "form_frequency_required" | translate
             }}</clr-control-error>
-          </clr-input-container>
+          </clr-select-container>
         </form>
       </div>
       <div class="modal-footer">

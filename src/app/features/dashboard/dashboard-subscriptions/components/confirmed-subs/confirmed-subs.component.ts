@@ -1,10 +1,11 @@
 import { Component, Input, Output, EventEmitter, OnInit } from "@angular/core";
 import { Subscription } from "src/app/core/subscription/subscription";
+import { TranslateService } from "@ngx-translate/core";
 
 @Component({
   selector: "app-confirmed-subs",
   templateUrl: "confirmed-subs.component.html",
-  styleUrls: ["confirmed-subs.component.scss"]
+  styleUrls: ["confirmed-subs.component.scss"],
 })
 export class ConfirmedSubsComponent implements OnInit {
   @Input() subscriptions = [];
@@ -14,13 +15,26 @@ export class ConfirmedSubsComponent implements OnInit {
   @Output() updatedSub: EventEmitter<Subscription> = new EventEmitter<
     Subscription
   >();
-
-  public periodicity = "Monthly";
   public showDeleteModal = false;
   public currentIndex;
+  public options = [
+    {
+      label: this.translate.instant("monthly"),
+      value: "MONTHLY",
+    },
+    {
+      label: this.translate.instant("weekly"),
+      value: "WEEKLY",
+    },
+    {
+      label: this.translate.instant("annually"),
+      value: "ANNUALLY",
+    },
+  ];
 
-  ngOnInit() {
-  }
+  constructor(private translate: TranslateService) {}
+
+  ngOnInit() {}
 
   goBackAction = () => {
     this.goBack.emit();
@@ -41,13 +55,14 @@ export class ConfirmedSubsComponent implements OnInit {
   }
 
   deleteSubscription() {
-    this.subscriptions = this.subscriptions.filter((sub, i) => i !== this.currentIndex);
+    this.subscriptions = this.subscriptions.filter(
+      (sub, i) => i !== this.currentIndex
+    );
     this.showDeleteModal = false;
   }
 
   onEdit(isEditing: boolean, index: number) {
     this.subscriptions[index].isEditing = isEditing;
-    console.log(isEditing, this.subscriptions[index]);
   }
 
   saveSubscriptionsAction() {

@@ -3,6 +3,12 @@
   flex-direction: column;
 }
 
+.text {
+  color: #454545;
+  line-height: .9rem;
+  font-weight: 600;
+}
+
 .actions {
   margin-top: 1rem;
   display: flex;
@@ -14,4 +20,8 @@
 
 .item-label {
   margin-right: 0.5rem;
+}
+
+.capitalize {
+  text-transform: capitalize;
 }

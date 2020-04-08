@@ -35,34 +35,46 @@
 >
   <section *ngIf="!sub.isEditing; else isEditingTemplate">
     <div class="card-content">
-      <span class="text"> {{ "billed" | translate }}: Monthly </span>
-      <span class="text">
-        {{ "value" | translate }}: {{ sub.coin || "R$" }} {{ sub.price }}
-      </span>
+      <div>
+        <span class="text"> {{ "form_frequency" | translate }}: </span>
+        <span class="capitalize">{{ sub.frequency.toLowerCase() }} </span>
+      </div>
+      <div>
+        <span class="text"> {{ "form_price" | translate }}: </span>
+        <span>{{ sub.coin || "R$" }} {{ sub.price }}</span>
+      </div>
     </div>
   </section>
   <ng-template #isEditingTemplate>
     <div class="card-content">
-      <form class="clr-form clr-form-compact">
-        <div class="clr-row">
-          <label class="item-label">{{ "billed" | translate }}: </label>
-          <input
-            class="clr-input"
-            type="text"
-            name="periodicity"
-            [(ngModel)]="periodicity"
-          />
-        </div>
+      <form class="clr-form clr-form-compact form-flex">
+        <clr-select-container>
+          <label>{{ "form_frequency" | translate }}:</label>
+          <select clrSelect name="options" [(ngModel)]="sub.frequency">
+            <option
+              class="capitalize"
+              *ngFor="let option of options"
+              [value]="option.value"
+              >{{ option.label | translate }}</option
+            >
+          </select>
+          <clr-control-error *clrIfError="'required'">{{
+            "form_frequency_required" | translate
+          }}</clr-control-error>
+        </clr-select-container>
 
-        <div class="clr-row">
-          <label class="item-label">{{ "value" | translate }}: </label>
+        <clr-input-container>
+          <label>{{ "form_price" | translate }}:</label>
           <input
-            class="clr-input"
-            type="text"
             name="price"
+            clrInput
             [(ngModel)]="sub.price"
+            [placeholder]="'form_price' | translate"
           />
-        </div>
+          <clr-control-error *clrIfError="'required'">{{
+            "form_price_required" | translate
+          }}</clr-control-error>
+        </clr-input-container>
       </form>
     </div>
   </ng-template>

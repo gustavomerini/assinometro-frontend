@@ -2,7 +2,7 @@ import { Injectable } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
 import * as config from "../../../config.json";
 import { Subject, BehaviorSubject } from "rxjs";
-import { Subscription } from './subscription';
+import { Subscription } from "./subscription";
 
 @Injectable({ providedIn: "root" })
 export class SubscriptionService {
@@ -10,17 +10,17 @@ export class SubscriptionService {
     AWSResponse<Subscription[]>
   > = new BehaviorSubject<AWSResponse<Subscription[]>>({
     Items: [],
-    Count: 0,
-    ScannedCount: 0
+    Count: -1,
+    ScannedCount: -1,
   });
 
   private userSubscriptions: Subject<
-  AWSResponse<Subscription[]>
-> = new BehaviorSubject<AWSResponse<Subscription[]>>({
-  Items: [],
-  Count: 0,
-  ScannedCount: 0
-});
+    AWSResponse<Subscription[]>
+  > = new BehaviorSubject<AWSResponse<Subscription[]>>({
+    Items: [],
+    Count: -1,
+    ScannedCount: -1,
+  });
 
   constructor(private http: HttpClient) {}
 
@@ -40,7 +40,7 @@ export class SubscriptionService {
     return this.http.get(`${config.api.invokeUrl}/subscriptions`);
   }
 
-  public updateUserSubscriptions(awsResponse: AWSResponse<Subscription[]>) {
+  public dispatchUserSubscriptions(awsResponse: AWSResponse<Subscription[]>) {
     this.userSubscriptions.next(awsResponse);
   }
 
@@ -48,11 +48,13 @@ export class SubscriptionService {
     return this.http.get(`${config.api.invokeUrl}/users/${userId}/`);
   }
 
-  public addUserSubscriptions(subscriptions: Subscription[], userId: string) {
-    return this.http.post(
-      `${config.api.invokeUrl}/users/${userId}/`,
-      {subscriptions}
-    );
+  public updateUserSubscriptions(
+    userId: string,
+    subscriptions: Subscription[]
+  ) {
+    return this.http.post(`${config.api.invokeUrl}/users/${userId}/`, {
+      subscriptions,
+    });
   }
 }
 

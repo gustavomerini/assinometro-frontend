@@ -4,19 +4,19 @@ import { Router } from "@angular/router";
 import * as Canvas from "../canvas/canvas";
 import {
   SubscriptionService,
-  AWSResponse
+  AWSResponse,
 } from "src/app/core/subscription/subscription.service";
 import { Subscription } from "src/app/core/subscription/subscription";
 
 @Component({
   selector: "app-dashboard-summary",
   styleUrls: ["dashboard-summary.component.scss"],
-  templateUrl: "dashboard-summary.component.html"
+  templateUrl: "dashboard-summary.component.html",
 })
 export class DashboardSummaryComponent implements OnInit {
   public totalSubsFooter = {
     label: this.translate.instant("manage_action"),
-    action: () => this.router.navigate(["/subscriptions"])
+    action: () => this.router.navigate(["dashboard/subscriptions"]),
   };
 
   public subscriptions: Subscription[];
@@ -25,7 +25,7 @@ export class DashboardSummaryComponent implements OnInit {
   public priceInfo = {
     month: 0,
     year: 0,
-    week: 0
+    week: 0,
   };
   public isNewUser = false;
   public isTotalSubsLoaded = false;
@@ -41,37 +41,40 @@ export class DashboardSummaryComponent implements OnInit {
     this.subsService.userSubscriptions$.subscribe(
       (subs: AWSResponse<Subscription[]>) => {
         if (!this.hasSubscriptions(subs)) {
-          this.router.navigate(['dashboard/subscriptions'], { queryParams: { newUser: true } })
+          this.router.navigate(["dashboard/subscriptions"], {
+            queryParams: { newUser: true },
+          });
           return;
         }
         this.subscriptions = subs.Items;
+        this.isTotalSubsLoaded = subs.Count > 0 || subs.Items.length > 0;
         const monthPrice =
           Math.round(
             this.subscriptions.reduce(
-              (previous, current) => previous + current.price,
+              (previous, current) => previous + +current.price,
               0
             ) * 100
           ) / 100;
         this.priceInfo = {
           month: monthPrice,
           year: Math.round(monthPrice * 12 * 100) / 100,
-          week: Math.round((monthPrice / 4) * 100) / 100
+          week: Math.round((monthPrice / 4) * 100) / 100,
         };
-        this.loadCanvas();
+        if (this.isTotalSubsLoaded) {
+          this.loadCanvas();
+        }
       }
     );
   }
 
-  hasSubscriptions(subs) {
+  hasSubscriptions(subs: AWSResponse<Subscription[]>) {
     const obj = subs.Items[0];
-    return obj && Object.keys(obj).length > 0 
+    return (obj && Object.keys(obj).length > 0) || subs.Count === -1;
   }
 
   loadCanvas() {
     const type = this.chartTypes[this.counter];
     this.counter >= 2 ? (this.counter = 0) : this.counter++;
-    console.log(performance.now(), "assadsda");
-    this.isTotalSubsLoaded = true;
     this.cdr.detectChanges();
     Canvas.addColorSet("customColorSet6", [
       "#0065AB",
@@ -79,7 +82,7 @@ export class DashboardSummaryComponent implements OnInit {
       "#49AFD9",
       "#798893",
       "#A6D8E7",
-      "#25333D"
+      "#25333D",
     ]);
 
     let chart = new Canvas.Chart("chartContainer", {
@@ -88,7 +91,7 @@ export class DashboardSummaryComponent implements OnInit {
       dataPointMaxWidth: 60,
       colorSet: "customColorSet6",
       fontFamily: {
-        fontFamily: "Metropolis"
+        fontFamily: "Metropolis",
       },
       data: [
         {
@@ -98,10 +101,10 @@ export class DashboardSummaryComponent implements OnInit {
             { y: this.priceInfo.month, label: "May" },
             { y: this.priceInfo.month, label: "June" },
             { y: this.priceInfo.month, label: "July" },
-            { y: this.priceInfo.month, label: "August" }
-          ]
-        }
-      ]
+            { y: this.priceInfo.month, label: "August" },
+          ],
+        },
+      ],
     });
 
     chart.render();

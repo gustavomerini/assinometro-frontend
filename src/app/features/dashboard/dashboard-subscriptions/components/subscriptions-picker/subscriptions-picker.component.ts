@@ -14,7 +14,7 @@ export class SubscriptionsPickerComponent implements OnInit {
   >();
   @Input() subscriptions: Subscription[];
   public subsPickerFooter = {
-    label: this.translate.instant("go_forward"),
+    label: this.translate.instant("confirm"),
     action: () => this.goForwardAction()
   };
 

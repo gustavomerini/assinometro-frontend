@@ -1,5 +1,6 @@
 import { Component, OnInit, Output, EventEmitter, Input } from "@angular/core";
-import { FormBuilder, Validators } from '@angular/forms';
+import { FormBuilder, Validators } from "@angular/forms";
+import { TranslateService } from "@ngx-translate/core";
 
 @Component({
   selector: "app-new-subscription",
@@ -16,10 +17,24 @@ export class NewSubscriptionComponent implements OnInit {
   public subForm = this.fb.group({
     subscriptionName: ["", Validators.compose([Validators.required])],
     price: ["", Validators.compose([Validators.required])],
-    periodicity: ["", Validators.compose([Validators.required])],
+    frequency: ["", Validators.compose([Validators.required])],
   });
+  public options = [
+    {
+      label: this.translate.instant("monthly"),
+      value: "MONTHLY",
+    },
+    {
+      label: this.translate.instant("weekly"),
+      value: "WEEKLY",
+    },
+    {
+      label: this.translate.instant("annually"),
+      value: "ANNUALLY",
+    },
+  ];
 
-  constructor(private fb: FormBuilder) {}
+  constructor(private fb: FormBuilder, private translate: TranslateService) {}
 
   ngOnInit() {}
 

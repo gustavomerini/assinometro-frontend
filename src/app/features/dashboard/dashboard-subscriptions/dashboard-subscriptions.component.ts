@@ -1,8 +1,11 @@
 import { Component, OnInit } from "@angular/core";
-import { SubscriptionService } from "src/app/core/subscription/subscription.service";
+import {
+  SubscriptionService,
+  AWSResponse,
+} from "src/app/core/subscription/subscription.service";
 import { AuthenticationService } from "src/app/core/services/authentication.service";
 import { Subscription } from "src/app/core/subscription/subscription";
-import { ActivatedRoute } from "@angular/router";
+import { ActivatedRoute, Router } from "@angular/router";
 import { TranslateService } from "@ngx-translate/core";
 
 @Component({
@@ -23,6 +26,7 @@ export class DashboardSubscriptionsComponent implements OnInit {
   constructor(
     private subsService: SubscriptionService,
     private route: ActivatedRoute,
+    private router: Router,
     private translate: TranslateService,
     private authService: AuthenticationService
   ) {}
@@ -32,6 +36,13 @@ export class DashboardSubscriptionsComponent implements OnInit {
       if (params.newUser) {
         this.newUser = params.newUser;
         this.message = this.translate.instant("subscription_picker_message");
+      } else {
+        this.showSubscriptionPicker = false;
+        this.subsService.userSubscriptions$.subscribe(
+          (subs: AWSResponse<Subscription[]>) => {
+            this.confirmedSubs = subs.Items;
+          }
+        );
       }
     });
     this.subsService.subscriptions$.subscribe(
@@ -45,18 +56,15 @@ export class DashboardSubscriptionsComponent implements OnInit {
     this.message = this.translate.instant("edit_values_message");
   }
 
-  public saveSubscriptions(subs: Subscription[]) {
-    console.log("saving...", subs);
-  }
-
-  public async tetse() {
+  public async saveSubscriptions(subs: Subscription[]) {
     try {
       const response = await this.authService.getUserInfo();
       this.subsService
-        .addUserSubscriptions(this.confirmedSubs, response.username)
+        .updateUserSubscriptions(response.username, subs)
         .subscribe(
           (response) => {
-            console.log(response);
+            this.subsService.dispatchUserSubscriptions({ Items: subs, Count: subs.length, ScannedCount: subs.length});
+            this.router.navigate(["dashboard/summary"]);
           },
           (error) => {
             console.error(error);
