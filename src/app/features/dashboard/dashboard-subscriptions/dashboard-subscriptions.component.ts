@@ -20,6 +20,7 @@ export class DashboardSubscriptionsComponent implements OnInit {
   public confirmedSubs = [];
   public alertRole = "";
   public showModal = false;
+  public isLoading = false;
   public showSubscriptionPicker = true;
   public footerLabel = this.translate.instant("manage_action");
 
@@ -58,12 +59,14 @@ export class DashboardSubscriptionsComponent implements OnInit {
 
   public async saveSubscriptions(subs: Subscription[]) {
     try {
+      this.isLoading = true;
       const response = await this.authService.getUserInfo();
       this.subsService
         .updateUserSubscriptions(response.username, subs)
         .subscribe(
           (response) => {
             this.subsService.dispatchUserSubscriptions({ Items: subs, Count: subs.length, ScannedCount: subs.length});
+            this.isLoading = false;
             this.router.navigate(["dashboard/summary"]);
           },
           (error) => {

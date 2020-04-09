@@ -1,7 +1,7 @@
-<section>
-  <div class="clr-row">
-    <div class="clr-col-lg-4"></div>
-    <div class="clr-col-lg-4 clr-col-12">
+<div class="clr-row">
+  <div class="clr-col-lg-4"></div>
+  <div class="clr-col-lg-4 clr-col-12">
+    <section *ngIf="!isLoading">
       <app-alert
         *ngIf="message"
         class="custom-alert"
@@ -28,7 +28,10 @@
         (onClose)="toggleModal()"
         (onConfirm)="createSubscription($event)"
       ></app-new-subscription>
-    </div>
-    <div class="clr-col-lg-4"></div>
+    </section>
   </div>
-</section>
+  <div class="clr-col-lg-4"></div>
+</div>
+<div *ngIf="isLoading" class="spinner-center">
+  <span class="spinner spinner-lg"> </span>
+</div>
