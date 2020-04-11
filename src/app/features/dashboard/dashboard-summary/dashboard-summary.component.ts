@@ -69,7 +69,7 @@ export class DashboardSummaryComponent implements OnInit {
 
   hasSubscriptions(subs: AWSResponse<Subscription[]>) {
     const obj = subs.Items[0];
-    return (obj && Object.keys(obj).length > 0) || subs.Count === -1;
+    return subs && (obj && Object.keys(obj).length > 0) || subs.Count === -1;
   }
 
   loadCanvas() {

@@ -26,6 +26,7 @@ export class AuthenticationService {
 
   async logoutUser() {
     try {
+      this.userData = null;
       return await Auth.signOut();
     } catch (error) {
       return new Promise(resolve => resolve(error));
