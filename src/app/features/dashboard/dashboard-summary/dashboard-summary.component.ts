@@ -27,7 +27,7 @@ export class DashboardSummaryComponent implements OnInit {
     year: 0,
     week: 0,
   };
-  public isNewUser = false;
+  public showEmptyState = false;
   public isTotalSubsLoaded = false;
 
   constructor(
@@ -41,11 +41,10 @@ export class DashboardSummaryComponent implements OnInit {
     this.subsService.userSubscriptions$.subscribe(
       (subs: AWSResponse<Subscription[]>) => {
         if (!this.hasSubscriptions(subs)) {
-          this.router.navigate(["dashboard/subscriptions"], {
-            queryParams: { newUser: true },
-          });
+          this.showEmptyState = true;
           return;
         }
+        this.showEmptyState = false;
         this.subscriptions = subs.Items;
         this.isTotalSubsLoaded = subs.Count > 0 || subs.Items.length > 0;
         const monthPrice =
@@ -65,6 +64,12 @@ export class DashboardSummaryComponent implements OnInit {
         }
       }
     );
+  }
+
+  redirectToSubscriptions() {
+    this.router.navigate(["dashboard/subscriptions"], {
+      queryParams: { newUser: true },
+    });
   }
 
   hasSubscriptions(subs: AWSResponse<Subscription[]>) {

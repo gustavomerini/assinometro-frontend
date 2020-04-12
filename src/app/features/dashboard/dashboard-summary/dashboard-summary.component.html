@@ -1,4 +1,4 @@
-<section>
+<section *ngIf="!showEmptyState">
   <div class="clr-row">
     <div class="clr-col-lg-2"></div>
     <div class="clr-col-lg-8 clr-col-md-12 clr-col-12">
@@ -44,8 +44,36 @@
       >
         <div
           id="chartContainer"
-          style="height: 45vh; width: 100%;  max-width: 100%;"
+          style="height: 45vh; width: 100%; max-width: 100%;"
         ></div>
+      </dashboard-card>
+    </div>
+    <div class="clr-col-lg-2"></div>
+  </div>
+</section>
+<section *ngIf="showEmptyState">
+  <div class="clr-row">
+    <div class="clr-col-lg-2"></div>
+    <div class="clr-col-lg-8 clr-col-md-12 clr-col-12">
+      <dashboard-card [isLoaded]="true">
+        <div class="wrapper">
+          <div class="content-wrapper">
+            <h4>
+              You have no subscriptions, click on 'add' to register your
+              subscriptions
+            </h4>
+          </div>
+          <div class="img-wrapper">
+            <img class="empty-state" src="assets/images/empty_state.svg" />
+          </div>
+          <div class="content-wrapper">
+            <app-button
+              [label]="'add' | translate"
+              (onClick)="redirectToSubscriptions()"
+              [classNames]="'btn btn-primary'"
+            ></app-button>
+          </div>
+        </div>
       </dashboard-card>
     </div>
     <div class="clr-col-lg-2"></div>

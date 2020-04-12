@@ -14,15 +14,15 @@
       </div>
       <div class="modal-body">
         <form
-          [formGroup]="subForm"
           class="form-flex"
           clrForm
+          [formGroup]="subForm"
           clrLayout="horizontal"
+          (ngSubmit)="addSubscription()"
         >
           <clr-input-container>
             <label>{{ "form_subscriptionName" | translate }}</label>
             <input
-              name="subscriptionName"
               clrInput
               formControlName="subscriptionName"
               [placeholder]="'form_subscriptionName' | translate"
@@ -34,7 +34,6 @@
           <clr-input-container>
             <label>{{ "form_price" | translate }}</label>
             <input
-              name="price"
               clrInput
               formControlName="price"
               [placeholder]="'form_price' | translate"
@@ -45,24 +44,28 @@
           </clr-input-container>
           <clr-select-container>
             <label>{{ "form_frequency" | translate }}</label>
-            <select clrSelect name="options" formControlName="frequency">
-              <option class="capitalize" *ngFor="let option of options" [value]="option.value">{{
-                option.label | translate
-              }}</option>
+            <select clrSelect formControlName="frequency">
+              <option
+                class="capitalize"
+                *ngFor="let option of options"
+                [value]="option.value"
+                >{{ option.label | translate }}</option
+              >
             </select>
             <clr-control-error *clrIfError="'required'">{{
               "form_frequency_required" | translate
             }}</clr-control-error>
           </clr-select-container>
+          <div class="modal-footer">
+            <button (click)="onCancelAction()" class="btn btn-sm btn-link">
+              {{ "cancel" | translate }}
+            </button>
+
+            <button type="submit" class="btn btn-sm btn-primary">
+              {{ "create" | translate }}
+            </button>
+          </div>
         </form>
-      </div>
-      <div class="modal-footer">
-        <button (click)="onCancelAction()" class="btn btn-sm btn-link">
-          {{ "cancel" | translate }}
-        </button>
-        <button (click)="addSubscription()" class="btn btn-sm btn-primary">
-          {{ "create" | translate }}
-        </button>
       </div>
     </div>
   </div>

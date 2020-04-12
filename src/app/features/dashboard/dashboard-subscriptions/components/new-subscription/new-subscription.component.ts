@@ -1,13 +1,20 @@
-import { Component, OnInit, Output, EventEmitter, Input } from "@angular/core";
+import {
+  Component,
+  Output,
+  EventEmitter,
+  Input,
+  AfterViewInit,
+  ViewChild,
+} from "@angular/core";
 import { FormBuilder, Validators } from "@angular/forms";
 import { TranslateService } from "@ngx-translate/core";
-
 @Component({
   selector: "app-new-subscription",
   templateUrl: "new-subscription.component.html",
   styleUrls: ["new-subscription.component.scss"],
 })
-export class NewSubscriptionComponent implements OnInit {
+export class NewSubscriptionComponent implements AfterViewInit {
+  @ViewChild("clrForm", { static: true }) clrForm;
   @Input()
   public show = false;
   @Output()
@@ -36,9 +43,13 @@ export class NewSubscriptionComponent implements OnInit {
 
   constructor(private fb: FormBuilder, private translate: TranslateService) {}
 
-  ngOnInit() {}
+  ngAfterViewInit() {}
 
   public addSubscription() {
+    if (this.subForm.invalid) {
+      this.clrForm.markAsTouched();
+      return;
+    }
     this.onConfirm.emit(this.subForm.value);
   }
 

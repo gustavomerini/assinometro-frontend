@@ -34,9 +34,11 @@ export class DashboardSubscriptionsComponent implements OnInit {
 
   ngOnInit(): void {
     this.route.queryParams.subscribe((params) => {
-      if (params.newUser) {
+      if (this.confirmedSubs.length === 0 && params.newUser) {
         this.newUser = params.newUser;
-        this.message = this.translate.instant("subscription_picker_message");
+        this.message = this.newUser
+          ? this.translate.instant("subscription_picker_message")
+          : null;
       } else {
         this.showSubscriptionPicker = false;
         this.subsService.userSubscriptions$.subscribe(
@@ -54,18 +56,28 @@ export class DashboardSubscriptionsComponent implements OnInit {
   public onConfirmSubs(subs: Subscription[]) {
     this.confirmedSubs = [...this.confirmedSubs, ...subs];
     this.showSubscriptionPicker = false;
-    this.message = this.translate.instant("edit_values_message");
+    this.message = this.newUser
+      ? this.translate.instant("edit_values_message")
+      : null;
   }
 
   public async saveSubscriptions(subs: Subscription[]) {
     try {
       this.isLoading = true;
+      subs = subs.map((subscription) => ({
+        ...subscription,
+        isEditing: false,
+      }));
       const response = await this.authService.getUserInfo();
       this.subsService
         .updateUserSubscriptions(response.username, subs)
         .subscribe(
-          (response) => {
-            this.subsService.dispatchUserSubscriptions({ Items: subs, Count: subs.length, ScannedCount: subs.length});
+          () => {
+            this.subsService.dispatchUserSubscriptions({
+              Items: subs,
+              Count: subs.length,
+              ScannedCount: subs.length,
+            });
             this.isLoading = false;
             this.router.navigate(["dashboard/summary"]);
           },
@@ -80,6 +92,9 @@ export class DashboardSubscriptionsComponent implements OnInit {
 
   public goBack() {
     this.showSubscriptionPicker = true;
+    this.message = this.newUser
+      ? this.translate.instant("subscription_picker_message")
+      : null;
   }
 
   public toggleModal() {
