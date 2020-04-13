@@ -1,74 +1,49 @@
-import { Component, OnInit, ViewChild } from "@angular/core";
+import { Component, OnInit, ViewChild, OnDestroy } from "@angular/core";
 import { FormBuilder, Validators } from "@angular/forms";
 import { TranslateService } from "@ngx-translate/core";
 import { ClrLoadingState } from "@clr/angular";
 
-import { Router } from "@angular/router";
 import { AuthenticationService } from "src/app/core/services/authentication.service";
-import { ComparePassword } from "src/app/shared/validators/compare-password.validator";
-import { StrongPassword } from "src/app/shared/validators/strong-password.validator";
 
 @Component({
   selector: "app-recovery-password",
   templateUrl: "./recovery-password.component.html",
   styleUrls: ["./recovery-password.component.scss"],
 })
-export class RecoveryPasswordComponent implements OnInit {
+export class RecoveryPasswordComponent implements OnInit, OnDestroy {
   @ViewChild("clrForm", { static: true }) clrForm;
 
-  public recoveryForm = this.fb.group(
-    {
-      code: ["", Validators.compose([Validators.required])],
-      password: ["", Validators.compose([Validators.required])],
-      confirmPassword: ["", Validators.compose([Validators.required])],
-    },
-    {
-      validators: [
-        ComparePassword("password", "confirmPassword"),
-        StrongPassword("password"),
-      ],
-    }
-  );
   public newPasswordForm = this.fb.group({});
   public validationError = false;
-  public message = "";
   public alertRole = "";
   public step = "email";
+  private currentEmail = "";
+  public message = this.translate.instant("recovery_message");
   public loginBtnState = ClrLoadingState.DEFAULT;
 
   constructor(
     private fb: FormBuilder,
     private translate: TranslateService,
-    private router: Router,
     private authService: AuthenticationService
   ) {}
 
   ngOnInit(): void {}
 
-  public async changePassword() {
-    if (this.recoveryForm.invalid) {
-      this.clrForm.markAsTouched();
-      return;
-    }
-    this.loginBtnState = ClrLoadingState.LOADING;
-    const { email, code, password } = this.recoveryForm.value;
-    this.closeAlert();
-    const response = await this.authService.changePasswordByRecovery(
-      email,
-      code,
-      password
+  ngOnDestroy(): void {
+    this.currentEmail = "";
+  }
+
+  public sendEmail(form) {
+    this.authService.sendRecoveryEmail(form.email).then(
+      (response) => {
+        this.message = this.translate.instant("email_sent_sucess");
+        this.currentEmail = form.email;
+        this.step = "code";
+      },
+      (error) => {
+        this.message = this.translate.instant("email_sent_error") + error;
+      }
     );
-  }
-
-  public sendRecoveryEmail() {
-    const { username } = this.recoveryForm.value;
-    this.message = this.translate.instant("recovery_email_message");
-    this.authService.sendRecoveryEmail(username);
-  }
-
-  public sendEmail(email) {
-    this.authService.sendRecoveryEmail(email);
-    this.step = "code";
   }
 
   public closeAlert() {
@@ -76,5 +51,21 @@ export class RecoveryPasswordComponent implements OnInit {
     this.alertRole = "";
   }
 
-  public changeUserPassword(tetse) {}
+  public changeUserPassword(form) {
+    const { code, password } = form;
+    this.loginBtnState = ClrLoadingState.LOADING;
+    this.closeAlert();
+    this.authService
+      .changePasswordByRecovery(this.currentEmail, code, password)
+      .then(
+        (response) => {
+          this.message = this.translate.instant("password_changed_sucess");
+          this.currentEmail = "";
+        },
+        (error) => {
+          console.error(error);
+          this.message = this.translate.instant("password_changed_error");
+        }
+      );
+  }
 }

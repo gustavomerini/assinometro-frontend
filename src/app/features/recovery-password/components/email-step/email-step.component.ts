@@ -1,7 +1,6 @@
-import { Component, Output, EventEmitter } from "@angular/core";
+import { Component, Output, EventEmitter, Input } from "@angular/core";
 import { TranslateService } from "@ngx-translate/core";
 import { Validators, FormBuilder } from "@angular/forms";
-import { AuthenticationService } from "src/app/core/services/authentication.service";
 
 @Component({
   selector: "app-email-step",
@@ -10,15 +9,14 @@ import { AuthenticationService } from "src/app/core/services/authentication.serv
 export class EmailStepComponent {
   public fields = [
     {
-      description: this.translate.instant("email"),
+      description: this.translate.instant("form_email"),
       name: "email",
       type: "input",
     },
   ];
 
   @Output() onSubmit = new EventEmitter();
-
-  public message = "";
+  @Input() message = "";
 
   public emailForm = this.fb.group({
     email: ["", Validators.compose([Validators.required])],

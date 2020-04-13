@@ -100,11 +100,7 @@ export class DashboardSubscriptionsComponent implements OnInit {
   public toggleModal() {
     this.showModal = !this.showModal;
   }
-
-  public updateSub(sub: Subscription) {
-    console.log(sub);
-  }
-
+  
   public createSubscription(subscription: Subscription) {
     this.confirmedSubs = [...this.confirmedSubs, subscription];
     this.showModal = false;

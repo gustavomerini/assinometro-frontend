@@ -1,4 +1,4 @@
-import { Component, Output, EventEmitter } from "@angular/core";
+import { Component, Output, EventEmitter, Input } from "@angular/core";
 import { TranslateService } from "@ngx-translate/core";
 import { Validators, FormBuilder } from "@angular/forms";
 import { AuthenticationService } from "src/app/core/services/authentication.service";
@@ -12,25 +12,24 @@ import { StrongPassword } from "src/app/shared/validators/strong-password.valida
 export class CodeStepComponent {
   public fields = [
     {
-      description: this.translate.instant("code"),
+      description: this.translate.instant("form_code"),
       name: "code",
       type: "input",
     },
     {
-      description: this.translate.instant("password"),
+      description: this.translate.instant("form_new_password"),
       name: "password",
       type: "password",
     },
     {
-      description: this.translate.instant("confirm_password"),
+      description: this.translate.instant("form_confirm_password"),
       name: "confirmPassword",
       type: "password",
     },
   ];
 
   @Output() onSubmit = new EventEmitter();
-
-  public message = "";
+  @Input() message = ""
 
   public codeForm = this.fb.group(
     {

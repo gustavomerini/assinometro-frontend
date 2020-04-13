@@ -12,9 +12,6 @@ export class ConfirmedSubsComponent implements OnInit {
   @Output() goBack = new EventEmitter();
   @Output() openModal = new EventEmitter();
   @Output() onSave = new EventEmitter();
-  @Output() updatedSub: EventEmitter<Subscription> = new EventEmitter<
-    Subscription
-  >();
   public showDeleteModal = false;
   public currentIndex;
   public options = [
@@ -45,7 +42,6 @@ export class ConfirmedSubsComponent implements OnInit {
   };
 
   onDelete(index: number) {
-    console.log(this.subscriptions[index]);
     this.showDeleteModal = !this.showDeleteModal;
     this.currentIndex = index;
   }

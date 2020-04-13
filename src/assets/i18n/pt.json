@@ -12,6 +12,8 @@
   "form_confirm_password": "Confirm your password",
   "form_confirmPassword": "Confirm your password",
   "form_email": "E-mail",
+  "form_code": "Recovery Code",
+  "form_new_password": "New password",
   "error_invalid_parameter_exception": "Password must have 8 di",
   "error_username_exists_exception": "Account already exists",
   "get_started": "Get Started",
@@ -70,5 +72,10 @@
   "form_subscriptionName_required": "Name is required",
   "error_password_reset_required_exception": "You must reset your password, check your email!",
   "forgot_password": "Forgot your password?",
-  "go_to_login_message": "Go to Login page"
+  "go_to_login_message": "Go to Login page",
+  "recovery_message": "Type the E-mail you want to recover",
+  "email_sent_sucess": "An E-mail was sent with your recovery code",
+  "email_sent_error": "An unknown error ocurred while sending the recovery code E-mail",
+  "password_changed_sucess": "Password was changed successfully",
+  "password_changed_error": "An unknown error ocurred while changing the password"
 }
