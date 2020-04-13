@@ -29,7 +29,9 @@ export class CodeStepComponent {
   ];
 
   @Output() onSubmit = new EventEmitter();
-  @Input() message = ""
+  @Input() message = "";
+  @Input() loadingState = "";
+  @Input() alertRole = "";
 
   public codeForm = this.fb.group(
     {

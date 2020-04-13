@@ -17,7 +17,9 @@ export class EmailStepComponent {
 
   @Output() onSubmit = new EventEmitter();
   @Input() message = "";
-
+  @Input() loadingState = "";
+  @Input() alertRole = "";
+  
   public emailForm = this.fb.group({
     email: ["", Validators.compose([Validators.required])],
   });

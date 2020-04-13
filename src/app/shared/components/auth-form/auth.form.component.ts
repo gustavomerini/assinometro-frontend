@@ -17,9 +17,10 @@ export class AuthFormComponent {
   onSubmit = new EventEmitter();
   @Input()
   message = "";
-  inputMessage = ""
+  @Input()
+  loadingState = ClrLoadingState.DEFAULT;
+  @Input()
   alertRole = "";
-  public loginBtnState = ClrLoadingState.DEFAULT;
 
   constructor() {}
 
@@ -27,12 +28,11 @@ export class AuthFormComponent {
     if (this.form.invalid) {
       return;
     }
-    this.inputMessage = this.message;
     this.onSubmit.emit(this.form.value);
   }
 
   public closeAlert() {
-    this.inputMessage = "";
+    this.message = "";
     this.alertRole = "";
   }
 }

@@ -1,1 +1,8 @@
-<app-auth-form [form]="emailForm" [fields]="fields" (onSubmit)="onSubmitAction($event)" [message]="message"></app-auth-form>
+<app-auth-form
+  [form]="emailForm"
+  [fields]="fields"
+  (onSubmit)="onSubmitAction($event)"
+  [loadingState]="loadingState"
+  [message]="message"
+  [alertRole]="alertRole"
+></app-auth-form>

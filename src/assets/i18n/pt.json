@@ -77,5 +77,8 @@
   "email_sent_sucess": "An E-mail was sent with your recovery code",
   "email_sent_error": "An unknown error ocurred while sending the recovery code E-mail",
   "password_changed_sucess": "Password was changed successfully",
-  "password_changed_error": "An unknown error ocurred while changing the password"
+  "password_changed_error": "An unknown error ocurred while changing the password",
+  "error_code_mismatch_exception": "Invalid code provided, please type the recovery code sent on your E-mail",
+  "error_expired_code_exception": "The code has expired, please go back and inform you E-mail again",
+  "error_internal_error_exception": "An unknown error ocurred, please contact the admin"
 }
