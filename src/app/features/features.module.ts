@@ -23,6 +23,11 @@ const routes: Routes = [
     path: "register",
     loadChildren: () =>
       import("./register/register.module").then(m => m.RegisterModule)
+  },
+  {
+    path: "recovery",
+    loadChildren: () =>
+      import("./recovery-password/recovery-password.module").then(m => m.RecoveryPasswordModule)
   }
 ];
 

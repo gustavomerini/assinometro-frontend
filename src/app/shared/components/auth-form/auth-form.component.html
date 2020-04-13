@@ -1,0 +1,28 @@
+<div class="login-wrapper">
+  <form class="login" clrForm [formGroup]="form" (ngSubmit)="onSubmitAction()">
+    <div class="img-title">
+      <img class="max-size" src="assets/images/logo.svg" />
+    </div>
+    <div class="login-group">
+      <section *ngFor="let field of fields">
+        <app-clarity-input [field]="field" [parent]="form"></app-clarity-input>
+      </section>
+      <app-alert
+        *ngIf="message"
+        class="custom-alert"
+        [message]="message"
+        [role]="alertRole"
+        (close)="closeAlert()"
+      ></app-alert>
+      <app-button
+        [type]="'submit'"
+        [label]="'confirm' | translate"
+        [loadingState]="loginBtnState"
+        [classNames]="'btn btn-primary with-margin full-width'"
+      ></app-button>
+      <a [routerLink]="['/login']" class="signup">{{
+        "go_to_login_message" | translate
+      }}</a>
+    </div>
+  </form>
+</div>

@@ -10,6 +10,7 @@
   "register_action": "Register",
   "form_error_confirm_password_required": "You need to confirm your password",
   "form_confirm_password": "Confirm your password",
+  "form_confirmPassword": "Confirm your password",
   "form_email": "E-mail",
   "error_invalid_parameter_exception": "Password must have 8 di",
   "error_username_exists_exception": "Account already exists",
@@ -25,6 +26,8 @@
   "logout_action": "Logout",
   "form_must_match": "Passwords must match",
   "form_password_required": "You need to inform a password",
+  "form_code_required": "You need to inform the recovery code",
+  "form_confirmPassword_required": "You need to inform the confirmation password",
   "form_username_required": "You need to inform an username",
   "form_email_required": "You need to inform an e-mail",
   "form_strong_password": "Password must have at least: 8 characters, a special character, an uppercase letter and an lowercase letter",
@@ -65,5 +68,7 @@
   "monthly": "Monthly",
   "weekly": "Weekly",
   "form_subscriptionName_required": "Name is required",
-  "error_password_reset_required_exception": "You must reset your password, check your email!"
+  "error_password_reset_required_exception": "You must reset your password, check your email!",
+  "forgot_password": "Forgot your password?",
+  "go_to_login_message": "Go to Login page"
 }

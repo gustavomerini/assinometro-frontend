@@ -59,4 +59,5 @@ export class LoginComponent implements OnInit {
     this.message = "";
     this.alertRole = "";
   }
+
 }
