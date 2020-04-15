@@ -1,54 +1,11 @@
-<div class="login-wrapper">
-  <form class="login" clrForm [formGroup]="loginForm" (ngSubmit)="loginUser()">
-    <div class="img-title">
-      <img class="max-size" src="assets/images/logo.svg" />
-    </div>
-    <div class="login-group">
-      <clr-input-container>
-        <label class="clr-sr-only">{{ "form_username" | translate }}</label>
-        <input
-          name="username"
-          clrInput
-          class="clr-col-12"
-          formControlName="username"
-          [placeholder]="'form_username' | translate"
-        />
-        <clr-control-error *clrIfError="'required'">{{
-          "form_username_required" | translate
-        }}</clr-control-error>
-      </clr-input-container>
-      <clr-password-container>
-        <label class="clr-sr-only">{{ "form_password" | translate }}</label>
-        <input
-          clrPassword
-          class="clr-col-12"
-          formControlName="password"
-          id="login_password"
-          [placeholder]="'form_password' | translate"
-        />
-        <clr-control-error *clrIfError="'required'">{{
-          "form_password_required" | translate
-        }}</clr-control-error>
-      </clr-password-container>
-      <app-alert
-        *ngIf="message"
-        class="custom-alert"
-        [message]="message"
-        [role]="alertRole"
-        (close)="closeAlert()"
-      ></app-alert>
-      <app-button
-        [type]="'submit'"
-        [label]="'login_action' | translate"
-        [loadingState]="loginBtnState"
-        [classNames]="'btn btn-primary with-margin full-width'"
-      ></app-button>
-      <a [routerLink]="['/register']" class="signup">{{
-        "signup_message" | translate
-      }}</a>
-      <a [routerLink]="['/recovery']" class="signup">{{
-        "forgot_password" | translate
-      }}</a>
-    </div>
-  </form>
-</div>
+<app-auth-form
+  [form]="loginForm"
+  [fields]="fields"
+  (onSubmit)="loginUser($event)"
+  [loadingState]="loginBtnState"
+  [message]="message"
+  [alertRole]="alertRole"
+  anchorRoute="/register"
+  [showForgetPassword]="true"
+  anchorMessage="{{ 'signup_message' | translate }}"
+></app-auth-form>

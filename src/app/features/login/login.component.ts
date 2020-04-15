@@ -11,13 +11,25 @@ import { User } from "src/app/core/services/user/user";
 @Component({
   selector: "app-login",
   templateUrl: "./login.component.html",
-  styleUrls: ["./login.component.scss"]
+  styleUrls: ["./login.component.scss"],
 })
 export class LoginComponent implements OnInit {
   @ViewChild("clrForm", { static: true }) clrForm;
+  public fields = [
+    {
+      description: this.translate.instant("form_email"),
+      name: "username",
+      type: "input",
+    },
+    {
+      description: this.translate.instant("form_password"),
+      name: "password",
+      type: "password",
+    },
+  ];
   public loginForm = this.fb.group({
     username: ["", Validators.compose([Validators.required])],
-    password: ["", Validators.compose([Validators.required])]
+    password: ["", Validators.compose([Validators.required])],
   });
   public validationError = false;
   public message = "";
@@ -33,7 +45,7 @@ export class LoginComponent implements OnInit {
 
   ngOnInit(): void {}
 
-  public async loginUser() {
+  public async loginUser(form) {
     if (this.loginForm.invalid) {
       this.clrForm.markAsTouched();
       return;
@@ -42,11 +54,13 @@ export class LoginComponent implements OnInit {
     const { username, password } = this.loginForm.value;
     const user: User = {
       username,
-      password
+      password,
     };
     this.closeAlert();
     const response = await this.authService.loginUser(user);
-    response.code ? this.loginFailed(response) : this.router.navigate(["/dashboard"]);
+    response.code
+      ? this.loginFailed(response)
+      : this.router.navigate(["/dashboard"]);
   }
 
   private loginFailed(error) {
@@ -59,5 +73,4 @@ export class LoginComponent implements OnInit {
     this.message = "";
     this.alertRole = "";
   }
-
 }

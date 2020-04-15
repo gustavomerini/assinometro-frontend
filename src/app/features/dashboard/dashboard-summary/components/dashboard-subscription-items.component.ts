@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from "@angular/core";
-
+                                                                                                               
 @Component({
   selector: "dashboard-subscription-items",
   styles: [
@@ -8,7 +8,11 @@ import { Component, OnInit, Input } from "@angular/core";
         font-weight: 700;
         text-transform: capitalize;
       }
-    `
+
+      .card-media-description {
+        justify-content: center !important;
+      }
+    `,
   ],
   template: `
     <section style="height: 45vh; width: 100%;  max-width: 100%;">
@@ -32,7 +36,7 @@ import { Component, OnInit, Input } from "@angular/core";
         </div>
       </div>
     </section>
-  `
+  `,
 })
 export class DashboardSubscriptionItems implements OnInit {
   @Input() subscriptions = [];

@@ -41,7 +41,13 @@ export class DashboardSidenavComponent {
           relativeTo: this.activatedRoute,
         }),
     },
-    { route: "profile", action: null },
+    {
+      route: "profile",
+      action: () =>
+        this.router.navigate(["profile"], {
+          relativeTo: this.activatedRoute,
+        }),
+    },
     {
       route: "logout",
       action: () => this.logoutUser(),

@@ -7,19 +7,24 @@ import { DashboardRoutingModule } from "./dashboard-routing.module";
 import { DashboardSidenavComponent } from "./components/dashboard-sidenav/dashboard-sidenav.component";
 import { DashboardSummaryComponent } from "./dashboard-summary/dashboard-summary.component";
 import { DashboardSubscriptionsModule } from "./dashboard-subscriptions/dashboard-subscriptions.module";
-import { DashboardSubscriptionItems } from './dashboard-summary/components/dashboard-subscription-items.component';
+import { DashboardSubscriptionItems } from "./dashboard-summary/components/dashboard-subscription-items.component";
+import { DashboardProfileModule } from "./dashboard-profile/dashboard-profile.module";
 
 @NgModule({
-  imports: [CommonModule, SharedModule, DashboardSubscriptionsModule, DashboardRoutingModule],
+  imports: [
+    CommonModule,
+    SharedModule,
+    DashboardSubscriptionsModule,
+    DashboardRoutingModule,
+    DashboardProfileModule,
+  ],
   exports: [],
   declarations: [
     DashboardComponent,
     DashboardSummaryComponent,
     DashboardSidenavComponent,
-    DashboardSubscriptionItems
+    DashboardSubscriptionItems,
   ],
-  providers: [
-    
-  ]
+  providers: [],
 })
 export class DashboardModule {}

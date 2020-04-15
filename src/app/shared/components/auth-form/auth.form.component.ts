@@ -9,18 +9,15 @@ import { Field } from "src/app/core/services/field/field";
   styleUrls: ["auth-form.component.scss"],
 })
 export class AuthFormComponent {
-  @Input()
-  form: FormGroup;
-  @Input()
-  fields: Field[];
-  @Output()
-  onSubmit = new EventEmitter();
-  @Input()
-  message = "";
-  @Input()
-  loadingState = ClrLoadingState.DEFAULT;
-  @Input()
-  alertRole = "";
+  @Output() onSubmit = new EventEmitter();
+  @Input() anchorRoute: string;
+  @Input() anchorMessage: string;
+  @Input() form: FormGroup;
+  @Input() fields: Field[];
+  @Input() message = "";
+  @Input() loadingState = ClrLoadingState.DEFAULT;
+  @Input() alertRole = "";
+  @Input() showForgetPassword = false;
 
   constructor() {}
 

@@ -38,7 +38,7 @@ export class RecoveryPasswordComponent implements OnInit, OnDestroy {
     this.loadingState = ClrLoadingState.LOADING;
     this.authService.sendRecoveryEmail(form.email).then(
       (response) => {
-        if (response.code) {
+        if (response && response.code) {
           this.message = this.translate.instant(handleCognitoError(response));
           this.loadingState = ClrLoadingState.DEFAULT;
           this.alertRole = "alert-danger";
@@ -67,7 +67,7 @@ export class RecoveryPasswordComponent implements OnInit, OnDestroy {
       .changePasswordByRecovery(this.currentEmail, code, password)
       .then(
         (response: any) => {
-          if (response.code) {
+          if (response && response.code) {
             this.message = this.translate.instant(handleCognitoError(response));
             this.loadingState = ClrLoadingState.DEFAULT;
             this.alertRole = "alert-danger";

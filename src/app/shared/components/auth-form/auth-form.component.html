@@ -20,8 +20,9 @@
         [loadingState]="loadingState"
         [classNames]="'btn btn-primary with-margin full-width'"
       ></app-button>
-      <a [routerLink]="['/login']" class="signup">{{
-        "go_to_login_message" | translate
+      <a [routerLink]="[anchorRoute]" class="signup">{{ anchorMessage }}</a>
+      <a *ngIf="showForgetPassword" [routerLink]="['/recovery']" class="signup">{{
+        "forgot_password" | translate
       }}</a>
     </div>
   </form>

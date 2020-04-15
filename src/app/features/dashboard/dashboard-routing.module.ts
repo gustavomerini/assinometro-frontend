@@ -5,6 +5,7 @@ import { DashboardComponent } from "./dashboard.component";
 import { UserLoggedInGuard } from "src/app/core/services/auth-guard.service";
 import { DashboardSummaryComponent } from "./dashboard-summary/dashboard-summary.component";
 import { DashboardSubscriptionsComponent } from "./dashboard-subscriptions/dashboard-subscriptions.component";
+import { DashboardProfileComponent } from './dashboard-profile/dashboard-profile.component';
 
 const routes: Routes = [
   {
@@ -24,7 +25,12 @@ const routes: Routes = [
         path: "subscriptions",
         component: DashboardSubscriptionsComponent,
         canActivate: [UserLoggedInGuard]
-      }
+      },
+      {
+        path: "profile",
+        component: DashboardProfileComponent,
+        canActivate: [UserLoggedInGuard]
+      },
     ]
   },
 ];

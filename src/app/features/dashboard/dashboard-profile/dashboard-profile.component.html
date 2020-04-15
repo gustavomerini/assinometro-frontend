@@ -1,0 +1,16 @@
+<div class="clr-row">
+  <div class="clr-col-lg-2"></div>
+  <div class="clr-col-lg-8 clr-col-md-12 clr-col-12">
+    <dashboard-card
+      [header]="'profile_title' | translate"
+      [isLoaded]="isLoaded"
+    >
+      <div class="card-text">
+        {{ user | json }}
+      </div>
+    </dashboard-card>
+  </div>
+  <div class="clr-col-lg-2"></div>
+  <div class="clr-col-lg-2"></div>
+  <div class="clr-col-lg-2"></div>
+</div>
