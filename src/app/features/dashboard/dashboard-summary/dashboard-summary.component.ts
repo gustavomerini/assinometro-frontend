@@ -7,6 +7,8 @@ import {
   AWSResponse,
 } from "src/app/core/subscription/subscription.service";
 import { Subscription } from "src/app/core/subscription/subscription";
+import { PriceHistory } from "src/app/core/price-history/price-history";
+import { calculatePeriods } from "src/app/shared/utils/utils";
 
 @Component({
   selector: "app-dashboard-summary",
@@ -20,13 +22,12 @@ export class DashboardSummaryComponent implements OnInit {
   };
 
   public subscriptions: Subscription[];
+  public pricesHistory: PriceHistory[];
+  public actualMonthPrice: PriceHistory;
+  public priceInfo: any;
   public chartTypes = ["area", "line", "column"];
   public counter = 0;
-  public priceInfo = {
-    month: 0,
-    year: 0,
-    week: 0,
-  };
+  private canvasData: any;
   public showEmptyState = false;
   public isTotalSubsLoaded = false;
 
@@ -46,19 +47,14 @@ export class DashboardSummaryComponent implements OnInit {
         }
         this.showEmptyState = false;
         this.subscriptions = subs.Items;
+        this.pricesHistory = subs.PriceHistory;
+        if (this.pricesHistory && this.pricesHistory.length > 0) {
+          this.priceInfo = calculatePeriods([...this.pricesHistory]);
+          this.canvasData = this.calculateMonthsCost([...this.pricesHistory]);
+        }
+
         this.isTotalSubsLoaded = subs.Count > 0 || subs.Items.length > 0;
-        const monthPrice =
-          Math.round(
-            this.subscriptions.reduce(
-              (previous, current) => previous + +current.price,
-              0
-            ) * 100
-          ) / 100;
-        this.priceInfo = {
-          month: monthPrice,
-          year: Math.round(monthPrice * 12 * 100) / 100,
-          week: Math.round((monthPrice / 4) * 100) / 100,
-        };
+
         if (this.isTotalSubsLoaded) {
           this.loadCanvas();
         }
@@ -72,12 +68,29 @@ export class DashboardSummaryComponent implements OnInit {
     });
   }
 
-  hasSubscriptions(subs: AWSResponse<Subscription[]>) {
+  private hasSubscriptions(subs: AWSResponse<Subscription[]>) {
     const obj = subs.Items[0];
-    return subs && (obj && Object.keys(obj).length > 0) || subs.Count === -1;
+    return (subs && obj && Object.keys(obj).length > 0) || subs.Count === -1;
   }
 
-  loadCanvas() {
+  private calculateMonthsCost(pricesHistory: PriceHistory[]) {
+    const filteredPrices = pricesHistory
+      .reverse()
+      .filter(
+        (thing, index, self) =>
+          self.findIndex(
+            (t) => t.month === thing.month && t.year === thing.year
+          ) === index
+      );
+    return filteredPrices.map((history) => {
+      return {
+        y: history.price,
+        label: this.translate.instant(`month_${history.month}`),
+      };
+    });
+  }
+
+  private loadCanvas() {
     const type = this.chartTypes[this.counter];
     this.counter >= 2 ? (this.counter = 0) : this.counter++;
     this.cdr.detectChanges();
@@ -101,13 +114,7 @@ export class DashboardSummaryComponent implements OnInit {
       data: [
         {
           type: "column",
-          dataPoints: [
-            { y: this.priceInfo.month, label: "April" },
-            { y: this.priceInfo.month, label: "May" },
-            { y: this.priceInfo.month, label: "June" },
-            { y: this.priceInfo.month, label: "July" },
-            { y: this.priceInfo.month, label: "August" },
-          ],
+          dataPoints: this.canvasData,
         },
       ],
     });

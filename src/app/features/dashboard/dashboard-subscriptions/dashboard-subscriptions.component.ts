@@ -7,6 +7,7 @@ import { AuthenticationService } from "src/app/core/services/authentication.serv
 import { Subscription } from "src/app/core/subscription/subscription";
 import { ActivatedRoute, Router } from "@angular/router";
 import { TranslateService } from "@ngx-translate/core";
+import { calculateActualMonthCost } from "src/app/shared/utils/utils";
 
 @Component({
   selector: "app-dashboard-subscriptions",
@@ -18,6 +19,7 @@ export class DashboardSubscriptionsComponent implements OnInit {
   public newUser = false;
   public message = "";
   public confirmedSubs = [];
+  public pricesHistory = [];
   public alertRole = "";
   public showModal = false;
   public isLoading = false;
@@ -44,6 +46,7 @@ export class DashboardSubscriptionsComponent implements OnInit {
         this.subsService.userSubscriptions$.subscribe(
           (subs: AWSResponse<Subscription[]>) => {
             this.confirmedSubs = subs.Items;
+            this.pricesHistory = subs.PriceHistory;
           }
         );
       }
@@ -73,8 +76,15 @@ export class DashboardSubscriptionsComponent implements OnInit {
         .updateUserSubscriptions(response.username, subs)
         .subscribe(
           () => {
+            const today = new Date();
+            this.pricesHistory.push({
+              month: today.getMonth() + 1,
+              year: today.getFullYear(),
+              price: calculateActualMonthCost(subs),
+            });
             this.subsService.dispatchUserSubscriptions({
               Items: subs,
+              PriceHistory: this.pricesHistory,
               Count: subs.length,
               ScannedCount: subs.length,
             });
@@ -100,7 +110,7 @@ export class DashboardSubscriptionsComponent implements OnInit {
   public toggleModal() {
     this.showModal = !this.showModal;
   }
-  
+
   public createSubscription(subscription: Subscription) {
     this.confirmedSubs = [...this.confirmedSubs, subscription];
     this.showModal = false;

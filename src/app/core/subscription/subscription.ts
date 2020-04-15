@@ -3,4 +3,5 @@ export interface Subscription {
   subscriptionName: string;
   logo: string;
   price: number;
+  frequency: string;
 }

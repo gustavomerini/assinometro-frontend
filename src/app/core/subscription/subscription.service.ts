@@ -3,6 +3,7 @@ import { HttpClient } from "@angular/common/http";
 import * as config from "../../../config.json";
 import { Subject, BehaviorSubject } from "rxjs";
 import { Subscription } from "./subscription";
+import { PriceHistory } from '../price-history/price-history';
 
 @Injectable({ providedIn: "root" })
 export class SubscriptionService {
@@ -60,6 +61,7 @@ export class SubscriptionService {
 
 export interface AWSResponse<T> {
   Items: T;
+  PriceHistory?: PriceHistory[]
   Count: number;
   ScannedCount: number;
 }

@@ -80,5 +80,17 @@
   "password_changed_error": "An unknown error ocurred while changing the password",
   "error_code_mismatch_exception": "Invalid code provided, please type the recovery code sent on your E-mail",
   "error_expired_code_exception": "The code has expired, please go back and inform you E-mail again",
-  "error_internal_error_exception": "An unknown error ocurred, please contact the admin"
+  "error_internal_error_exception": "An unknown error ocurred, please contact the admin",
+  "month_1": "January",
+  "month_2": "February",
+  "month_3": "March",
+  "month_4": "April",
+  "month_5": "May",
+  "month_6": "June",
+  "month_7": "July",
+  "month_8": "August",
+  "month_9": "September",
+  "month_10": "October",
+  "month_11": "November",
+  "month_12": "December"
 }
