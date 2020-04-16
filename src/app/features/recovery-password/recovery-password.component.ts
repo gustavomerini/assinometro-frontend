@@ -64,7 +64,7 @@ export class RecoveryPasswordComponent implements OnInit, OnDestroy {
     this.loadingState = ClrLoadingState.LOADING;
     this.closeAlert();
     this.authService
-      .changePasswordByRecovery(this.currentEmail, code, password)
+      .changePasswordByRecoveryCode(this.currentEmail, code, password)
       .then(
         (response: any) => {
           if (response && response.code) {

@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from "@angular/core";
-                                                                                                               
+
 @Component({
   selector: "dashboard-subscription-items",
   styles: [
@@ -21,18 +21,17 @@ import { Component, OnInit, Input } from "@angular/core";
         *ngFor="let sub of subscriptions"
       >
         <img
-          [src]="
-            'assets/images/subscriptions/' +
-            sub.subscriptionName.toLowerCase() +
-            '.png'
-          "
+          [src]="'assets/images/subscriptions/' + sub.logo"
           class="card-media-image"
         />
         <div class="card-media-description">
           <span class="card-media-title">
             {{ sub.subscriptionName }}
           </span>
-          <span class="card-media-text"> R$ {{ sub.price }} </span>
+          <span class="card-media-text">
+            R$ {{ sub.price }} /
+            {{ sub.frequency.toLowerCase() | translate }}</span
+          >
         </div>
       </div>
     </section>

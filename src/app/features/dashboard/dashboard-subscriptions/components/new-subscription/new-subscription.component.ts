@@ -25,6 +25,7 @@ export class NewSubscriptionComponent implements AfterViewInit {
     subscriptionName: ["", Validators.compose([Validators.required])],
     price: ["", Validators.compose([Validators.required])],
     frequency: ["", Validators.compose([Validators.required])],
+    logo: ["assinometro.png"],
   });
   public options = [
     {
