@@ -10,6 +10,14 @@
   background: $primary-color;
   align-items: center;
   height: 60px;
+  .analyser-btn {
+    margin-left: auto;
+  }
+}
+
+.max-size {
+  max-width: 200px;
+  max-height: 50px;
 }
 
 .with-align {

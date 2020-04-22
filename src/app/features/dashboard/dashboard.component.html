@@ -1,6 +1,19 @@
 <div class="main-container">
   <header class="nav-header">
-    <span class="brand-header">Assinômetro</span>
+    <div class="analyser-btn">
+      <app-button
+        [label]="'analyse_subscriptions' | translate"
+        [routerLink]="['/dashboard/analyser']"
+        routerLinkActive="router-link-active"
+        [classNames]="'btn btn-inverse'"
+      ></app-button>
+    </div>
+    <a
+      [routerLink]="['/dashboard/summary']"
+      routerLinkActive="router-link-active"
+      class="brand-header"
+      ><img class="max-size" src="assets/images/logo-4.svg"
+    /></a>
     <div class="menu-icon" (click)="toggleMenu()">
       <clr-icon class="end" size="36" shape="bars"></clr-icon>
     </div>
@@ -11,4 +24,7 @@
     </div>
   </div>
 </div>
-<dashboard-sidenav (close)="closeMenu()" [@slideInOut]="menuState"></dashboard-sidenav>
+<dashboard-sidenav
+  (close)="closeMenu()"
+  [@slideInOut]="menuState"
+></dashboard-sidenav>

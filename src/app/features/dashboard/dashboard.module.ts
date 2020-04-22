@@ -9,6 +9,7 @@ import { DashboardSummaryComponent } from "./dashboard-summary/dashboard-summary
 import { DashboardSubscriptionsModule } from "./dashboard-subscriptions/dashboard-subscriptions.module";
 import { DashboardSubscriptionItems } from "./dashboard-summary/components/dashboard-subscription-items.component";
 import { DashboardProfileModule } from "./dashboard-profile/dashboard-profile.module";
+import { DashboardAnalyserModule } from './dashboard-analyser/dashboard-subscriptions.module';
 
 @NgModule({
   imports: [
@@ -17,6 +18,7 @@ import { DashboardProfileModule } from "./dashboard-profile/dashboard-profile.mo
     DashboardSubscriptionsModule,
     DashboardRoutingModule,
     DashboardProfileModule,
+    DashboardAnalyserModule
   ],
   exports: [],
   declarations: [

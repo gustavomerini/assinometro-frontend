@@ -5,17 +5,15 @@
 
 .text {
   color: #454545;
-  line-height: .9rem;
+  line-height: 0.9rem;
   font-weight: 600;
 }
 
 .actions {
   margin-top: 1rem;
   display: flex;
+  justify-items: center;
   flex-direction: row;
-  app-button:nth-child(3) {
-    margin-left: auto;
-  }
 }
 
 .item-label {

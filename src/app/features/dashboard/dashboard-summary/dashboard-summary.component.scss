@@ -7,6 +7,8 @@
 .highlight-price {
   font-weight: 500;
   font-size: 1rem;
+  margin-left: 0.3rem;
+  vertical-align: bottom;
 }
 
 .with-align {
@@ -42,4 +44,11 @@
 .empty-state {
   max-height: 400px;
   max-width: 400px;
+}
+
+@media (max-width: 480px) {
+  .price-info {
+    display: flex;
+    flex-direction: column;
+  }
 }

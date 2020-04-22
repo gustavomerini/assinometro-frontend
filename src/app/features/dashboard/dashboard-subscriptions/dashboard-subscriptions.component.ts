@@ -107,6 +107,10 @@ export class DashboardSubscriptionsComponent implements OnInit {
       : null;
   }
 
+  public onCancel() {
+    this.router.navigate(['dashboard/summary'])
+  }
+
   public toggleModal() {
     this.showModal = !this.showModal;
   }

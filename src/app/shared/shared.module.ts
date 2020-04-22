@@ -11,6 +11,7 @@ import { DashboardCardComponent } from "./components/dashboard-card/dashboard-ca
 import { AppModalComponent } from "./components/app-modal/app-modal.component";
 import { AuthFormComponent } from "./components/auth-form/auth.form.component";
 import { ClarityInputComponent } from './components/clarity-input/clarity-input.component';
+import { TimelineComponent } from './components/timeline/timeline.component';
 
 @NgModule({
   imports: [
@@ -30,7 +31,8 @@ import { ClarityInputComponent } from './components/clarity-input/clarity-input.
     ButtonComponent,
     DashboardCardComponent,
     AppModalComponent,
-    AuthFormComponent
+    AuthFormComponent,
+    TimelineComponent
   ],
   declarations: [
     AlertComponent,
@@ -38,8 +40,9 @@ import { ClarityInputComponent } from './components/clarity-input/clarity-input.
     ButtonComponent,
     DashboardCardComponent,
     AppModalComponent,
+    TimelineComponent,
     AuthFormComponent,
-    ClarityInputComponent
+    ClarityInputComponent,
   ],
   providers: [],
 })

@@ -12,6 +12,7 @@ export class ConfirmedSubsComponent implements OnInit {
   @Output() goBack = new EventEmitter();
   @Output() openModal = new EventEmitter();
   @Output() onSave = new EventEmitter();
+  @Output() onCancel = new EventEmitter();
   public showDeleteModal = false;
   public currentIndex;
   public options = [
@@ -63,5 +64,9 @@ export class ConfirmedSubsComponent implements OnInit {
 
   saveSubscriptionsAction() {
     this.onSave.emit(this.subscriptions);
+  }
+
+  cancel() {
+    this.onCancel.emit(true);
   }
 }

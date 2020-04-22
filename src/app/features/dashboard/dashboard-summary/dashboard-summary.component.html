@@ -7,14 +7,17 @@
         [isLoaded]="isTotalSubsLoaded"
       >
         <div class="card-text average-cost">
-          <div>
-            Year: <span class="highlight-price">R$ {{ priceInfo?.year }}</span>
+          <div class="price-info">
+            <span>{{ "annually" | translate }}:</span
+            ><span class="highlight-price">R$ {{ priceInfo?.year }}</span>
           </div>
-          <div>
-            Month: <span class="highlight-price">R$ {{ priceInfo?.month }}</span>
+          <div class="price-info">
+            <span>{{ "monthly" | translate }}:</span>
+            <span class="highlight-price">R$ {{ priceInfo?.month }}</span>
           </div>
-          <div>
-            Weekly: <span class="highlight-price">R$ {{ priceInfo?.week }}</span>
+          <div class="price-info">
+            <span>{{ "weekly" | translate }}:</span>
+            <span class="highlight-price">R$ {{ priceInfo?.week }}</span>
           </div>
         </div>
       </dashboard-card>
@@ -53,8 +56,8 @@
 </section>
 <section *ngIf="showEmptyState">
   <div class="clr-row">
-    <div class="clr-col-lg-2"></div>
-    <div class="clr-col-lg-8 clr-col-md-12 clr-col-12">
+    <div class="clr-col-lg-3"></div>
+    <div class="clr-col-lg-6 clr-col-md-12 clr-col-12">
       <dashboard-card [isLoaded]="true">
         <div class="wrapper">
           <div class="content-wrapper">
@@ -76,6 +79,6 @@
         </div>
       </dashboard-card>
     </div>
-    <div class="clr-col-lg-2"></div>
+    <div class="clr-col-lg-3"></div>
   </div>
 </section>
