@@ -8,6 +8,4 @@ import { Subscription } from "src/app/core/subscription/subscription";
 })
 export class SubscriptionDataComponent {
   @Input() subscriptions: Subscription[] = [];
-
-  
 }

@@ -1,0 +1,33 @@
+<dashboard-card
+  [header]="sub.subscriptionName"
+  [isLoaded]="true"
+  [logo]="sub.logo"
+  *ngFor="let sub of subscriptions"
+>
+  <div class="card-media-block">
+    <div class="card-content">
+      <div>
+        <span class="text"> {{ "form_type" | translate }}: </span>
+        <span class="value">
+          {{ "form_" + sub.type?.toLowerCase() | translate }}
+        </span>
+      </div>
+      <div>
+        <span class="text"> {{ "form_price" | translate }}: </span>
+        <span class="value"
+          >{{ sub.coin || "R$" }} {{ sub.price }} /
+          <span>
+            {{ "form_" + sub.frequency?.toLowerCase() | translate }}
+          </span></span
+        >
+      </div>
+      <div>
+        <span class="text">
+          60% of all the similar subscriptions have a better price than this
+          one, we recommend you to negotiate with the company to get a better
+          offer
+        </span>
+      </div>
+    </div>
+  </div>
+</dashboard-card>

@@ -1,17 +1,24 @@
-<div
-  class="card-media-block with-align card-overflow"
+<dashboard-card
+  [header]="sub.subscriptionName"
+  [isLoaded]="true"
+  [logo]="sub.logo"
   *ngFor="let sub of subscriptions"
 >
-  <img
-    [src]="'assets/images/subscriptions/' + sub.logo"
-    class="card-media-image"
-  />
-  <div class="card-media-description">
-    <span class="card-media-title">
-      {{ sub.subscriptionName }}
-    </span>
-    <span class="card-media-text">
-      R$ {{ sub.price }} / {{ sub.frequency.toLowerCase() | translate }}</span
-    >
+  <div class="card-media-block">
+    <div [ngSwitch]="sub.type" class="form-wrapper">
+      <div *ngSwitchCase="'INTERNET'">
+        <app-internet-form></app-internet-form>
+      </div>
+      <div *ngSwitchCase="'TELEVISION'">
+        <app-television-form></app-television-form>
+      </div>
+      <div *ngSwitchCase="'MOBILE'">
+        <app-television-form></app-television-form>
+      </div>
+      <div *ngSwitchCase="'PHONE'">
+        <app-television-form></app-television-form>
+      </div>
+      <div *ngSwitchDefault></div>
+    </div>
   </div>
-</div>
+</dashboard-card>

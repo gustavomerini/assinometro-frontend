@@ -15,22 +15,9 @@ import { TimelineOption } from "src/app/shared/components/timeline/timeline.comp
 })
 export class DashboardAnalyserComponent implements OnInit {
   public subscriptions: Subscription[];
-  public isLoading = false;
-  public timelineIndex = 0;
-  public timelineOptions: TimelineOption[] = [
-    {
-      label: this.translate.instant("subscription_data"),
-      state: "circle",
-    },
-    {
-      label: this.translate.instant("analyzing"),
-      state: "circle",
-    },
-    {
-      label: this.translate.instant("results"),
-      state: "circle",
-    },
-  ];
+  public currentIndex = 0;
+  public isLoading = true;
+  public isLoadingResults = false;
 
   constructor(
     private subsService: SubscriptionService,
@@ -44,6 +31,7 @@ export class DashboardAnalyserComponent implements OnInit {
       this.subsService.userSubscriptions$.subscribe(
         (subs: AWSResponse<Subscription[]>) => {
           this.subscriptions = subs.Items;
+          this.isLoading = false;
         }
       );
     });
@@ -54,10 +42,10 @@ export class DashboardAnalyserComponent implements OnInit {
   }
 
   public goForward() {
-    if (this.timelineIndex === 2) {
-      return;
-    }
-    this.timelineOptions[this.timelineIndex].state = "success-standard";
-    this.timelineIndex = this.timelineIndex + 1;
+    this.currentIndex++;
+    this.isLoadingResults = true;
+    setTimeout(() => {
+      this.isLoadingResults = false;
+    }, 4000);
   }
 }

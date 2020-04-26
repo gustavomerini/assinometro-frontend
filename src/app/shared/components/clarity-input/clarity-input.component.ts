@@ -9,7 +9,10 @@ import { Field } from "src/app/core/services/field/field";
       <section [ngSwitch]="field.type">
         <section *ngSwitchCase="'input'">
           <clr-input-container>
-            <label class="clr-sr-only">{{ field.description }}</label>
+            <label
+              [ngClass]="hideLabel ? 'hide-label clr-sr-only' : 'show-label'"
+              >{{ field.description }}</label
+            >
             <input
               clrInput
               class="clr-col-12"
@@ -24,7 +27,10 @@ import { Field } from "src/app/core/services/field/field";
         </section>
         <section *ngSwitchDefault>
           <clr-password-container>
-            <label class="clr-sr-only">{{ field.description }}</label>
+            <label
+              [ngClass]="hideLabel ? 'hide-label clr-sr-only' : 'show-label'"
+              >{{ field.description }}</label
+            >
             <input
               clrPassword
               class="clr-col-12"
@@ -48,7 +54,7 @@ import { Field } from "src/app/core/services/field/field";
   `,
   styles: [
     `
-      label {
+      .hide-label {
         display: none !important;
       }
     `,
@@ -57,5 +63,6 @@ import { Field } from "src/app/core/services/field/field";
 export class ClarityInputComponent {
   @Input() parent: FormGroup;
   @Input() field: Field;
+  @Input() hideLabel = true;
   constructor() {}
 }

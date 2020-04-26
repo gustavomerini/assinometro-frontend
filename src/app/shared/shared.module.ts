@@ -10,8 +10,8 @@ import { ButtonComponent } from "./components/button/button.component";
 import { DashboardCardComponent } from "./components/dashboard-card/dashboard-card.compontent";
 import { AppModalComponent } from "./components/app-modal/app-modal.component";
 import { AuthFormComponent } from "./components/auth-form/auth.form.component";
-import { ClarityInputComponent } from './components/clarity-input/clarity-input.component';
-import { TimelineComponent } from './components/timeline/timeline.component';
+import { ClarityInputComponent } from "./components/clarity-input/clarity-input.component";
+import { TimelineComponent } from "./components/timeline/timeline.component";
 
 @NgModule({
   imports: [
@@ -20,7 +20,7 @@ import { TimelineComponent } from './components/timeline/timeline.component';
     RouterModule,
     ClarityModule,
     ReactiveFormsModule,
-    FormsModule
+    FormsModule,
   ],
   exports: [
     TranslateModule,
@@ -32,7 +32,8 @@ import { TimelineComponent } from './components/timeline/timeline.component';
     DashboardCardComponent,
     AppModalComponent,
     AuthFormComponent,
-    TimelineComponent
+    TimelineComponent,
+    ClarityInputComponent,
   ],
   declarations: [
     AlertComponent,

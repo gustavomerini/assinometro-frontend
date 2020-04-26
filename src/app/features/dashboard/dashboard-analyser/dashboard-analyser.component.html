@@ -1,21 +1,35 @@
 <div class="clr-row">
-  <div class="clr-col-lg-3"></div>
-  <div class="clr-col-lg-6 clr-col-12">
-    <dashboard-card
-      [header]="'subscription_analyser' | translate"
-      [isLoaded]="true"
-    >
+  <div class="clr-col-lg-4"></div>
+  <div class="clr-col-lg-4 clr-col-sm-12">
+    <section *ngIf="currentIndex === 0">
       <app-subscription-data
         [subscriptions]="subscriptions"
       ></app-subscription-data>
+    </section>
+    <section *ngIf="currentIndex === 1">
+      <div class="load-wrapper" *ngIf="isLoadingResults">
+        <h3>Analysing...</h3>
+
+        <div class="spinner-center">
+          <span class="spinner spinner-lg"> </span>
+        </div>
+        <!-- <img src="assets/images/loading-results.svg" /> -->
+      </div>
+      <app-data-analyser
+        *ngIf="!isLoadingResults"
+        [subscriptions]="subscriptions"
+      ></app-data-analyser>
+    </section>
+    <div class="actions">
       <app-button
+        *ngIf="!isLoadingResults"
         [label]="'go_forward' | translate"
         [classNames]="'btn btn-primary'"
         (onClick)="goForward()"
       ></app-button>
-    </dashboard-card>
+    </div>
   </div>
-  <div class="clr-col-lg-3"></div>
+  <div class="clr-col-lg-4"></div>
 </div>
 <div *ngIf="isLoading" class="spinner-center">
   <span class="spinner spinner-lg"> </span>

@@ -31,12 +31,19 @@
   <section *ngIf="!sub.isEditing; else isEditingTemplate">
     <div class="card-content">
       <div>
-        <span class="text"> {{ "form_frequency" | translate }}: </span>
-        <span class="capitalize">{{ sub.frequency?.toLowerCase() }} </span>
+        <span class="text"> {{ "form_type" | translate }}: </span>
+        <span>
+          {{ "form_" + sub.type?.toLowerCase() | translate }}
+        </span>
       </div>
       <div>
         <span class="text"> {{ "form_price" | translate }}: </span>
-        <span>{{ sub.coin || "R$" }} {{ sub.price }}</span>
+        <span
+          >{{ sub.coin || "R$" }} {{ sub.price }} /
+          <span
+            >{{ "form_" + sub.frequency?.toLowerCase() | translate }}
+          </span></span
+        >
       </div>
     </div>
   </section>
