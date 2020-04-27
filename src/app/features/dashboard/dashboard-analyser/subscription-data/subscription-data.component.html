@@ -7,18 +7,37 @@
   <div class="card-media-block">
     <div [ngSwitch]="sub.type" class="form-wrapper">
       <div *ngSwitchCase="'INTERNET'">
-        <app-internet-form></app-internet-form>
+        <app-internet-form
+          [form]="internetForm"
+          [fields]="internetFields"
+        ></app-internet-form>
       </div>
       <div *ngSwitchCase="'TELEVISION'">
-        <app-television-form></app-television-form>
+        <app-internet-form
+          [form]="televisionForm"
+          [fields]="televisionFields"
+        ></app-internet-form>
       </div>
       <div *ngSwitchCase="'MOBILE'">
-        <app-television-form></app-television-form>
+        <app-internet-form
+          [form]="mobileForm"
+          [fields]="mobileFields"
+        ></app-internet-form>
       </div>
       <div *ngSwitchCase="'PHONE'">
-        <app-television-form></app-television-form>
+        <app-internet-form
+          [form]="mobileForm"
+          [fields]="mobileFields"
+        ></app-internet-form>
       </div>
       <div *ngSwitchDefault></div>
     </div>
   </div>
 </dashboard-card>
+<div class="actions">
+  <app-button
+    [label]="'go_forward' | translate"
+    [classNames]="'btn btn-primary'"
+    (onClick)="onClickAction()"
+  ></app-button>
+</div>

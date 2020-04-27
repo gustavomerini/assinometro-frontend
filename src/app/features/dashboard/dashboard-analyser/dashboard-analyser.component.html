@@ -20,14 +20,6 @@
         [subscriptions]="subscriptions"
       ></app-data-analyser>
     </section>
-    <div class="actions">
-      <app-button
-        *ngIf="!isLoadingResults"
-        [label]="'go_forward' | translate"
-        [classNames]="'btn btn-primary'"
-        (onClick)="goForward()"
-      ></app-button>
-    </div>
   </div>
   <div class="clr-col-lg-4"></div>
 </div>
