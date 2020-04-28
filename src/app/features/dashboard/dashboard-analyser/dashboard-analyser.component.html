@@ -1,23 +1,24 @@
 <div class="clr-row">
   <div class="clr-col-lg-4"></div>
   <div class="clr-col-lg-4 clr-col-sm-12">
+    <div class="load-wrapper" *ngIf="isLoadingResults">
+      <h3>Analysing...</h3>
+
+      <div class="spinner-center">
+        <span class="spinner spinner-lg"> </span>
+      </div>
+      <!-- <img src="assets/images/loading-results.svg" /> -->
+    </div>
     <section *ngIf="currentIndex === 0">
       <app-subscription-data
         [subscriptions]="subscriptions"
+        (onClick)="analyseSubs($event)"
       ></app-subscription-data>
     </section>
     <section *ngIf="currentIndex === 1">
-      <div class="load-wrapper" *ngIf="isLoadingResults">
-        <h3>Analysing...</h3>
-
-        <div class="spinner-center">
-          <span class="spinner spinner-lg"> </span>
-        </div>
-        <!-- <img src="assets/images/loading-results.svg" /> -->
-      </div>
       <app-data-analyser
         *ngIf="!isLoadingResults"
-        [subscriptions]="subscriptions"
+        [subscriptions]="results"
       ></app-data-analyser>
     </section>
   </div>

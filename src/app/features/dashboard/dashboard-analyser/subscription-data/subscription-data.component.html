@@ -2,31 +2,31 @@
   [header]="sub.subscriptionName"
   [isLoaded]="true"
   [logo]="sub.logo"
-  *ngFor="let sub of subscriptions"
+  *ngFor="let sub of subscriptions | filter"
 >
   <div class="card-media-block">
     <div [ngSwitch]="sub.type" class="form-wrapper">
       <div *ngSwitchCase="'INTERNET'">
         <app-internet-form
-          [form]="internetForm"
+          [subscription]="sub"
           [fields]="internetFields"
         ></app-internet-form>
       </div>
       <div *ngSwitchCase="'TELEVISION'">
         <app-internet-form
-          [form]="televisionForm"
+          [subscription]="sub"
           [fields]="televisionFields"
         ></app-internet-form>
       </div>
       <div *ngSwitchCase="'MOBILE'">
         <app-internet-form
-          [form]="mobileForm"
+          [subscription]="sub"
           [fields]="mobileFields"
         ></app-internet-form>
       </div>
       <div *ngSwitchCase="'PHONE'">
         <app-internet-form
-          [form]="mobileForm"
+          [subscription]="sub"
           [fields]="mobileFields"
         ></app-internet-form>
       </div>

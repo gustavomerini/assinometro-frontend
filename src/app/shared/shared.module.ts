@@ -12,6 +12,8 @@ import { AppModalComponent } from "./components/app-modal/app-modal.component";
 import { AuthFormComponent } from "./components/auth-form/auth.form.component";
 import { ClarityInputComponent } from "./components/clarity-input/clarity-input.component";
 import { TimelineComponent } from "./components/timeline/timeline.component";
+import { ClarityInputBindComponent } from "./components/clarity-input/clarity-input-bind.component";
+import { FilterPipe } from "./pipes/filter-pipe";
 
 @NgModule({
   imports: [
@@ -34,6 +36,8 @@ import { TimelineComponent } from "./components/timeline/timeline.component";
     AuthFormComponent,
     TimelineComponent,
     ClarityInputComponent,
+    ClarityInputBindComponent,
+    FilterPipe,
   ],
   declarations: [
     AlertComponent,
@@ -43,8 +47,10 @@ import { TimelineComponent } from "./components/timeline/timeline.component";
     AppModalComponent,
     TimelineComponent,
     AuthFormComponent,
+    ClarityInputBindComponent,
     ClarityInputComponent,
+    FilterPipe,
   ],
-  providers: [],
+  providers: [FilterPipe],
 })
 export class SharedModule {}

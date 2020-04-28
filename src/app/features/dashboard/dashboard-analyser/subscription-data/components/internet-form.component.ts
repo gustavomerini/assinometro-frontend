@@ -1,22 +1,24 @@
-import { Component, OnInit, Input } from "@angular/core";
+import { Component, OnInit, Input, Output, EventEmitter } from "@angular/core";
+import { Subscription } from "src/app/core/subscription/subscription";
 
 @Component({
   selector: "app-internet-form",
   template: `
-    <form [formGroup]="form" class="clr-form clr-form-compact">
+    <form class="clr-form clr-form-compact" (ngSubmit)="(onSubmitAction)">
       <div class="form-field" *ngFor="let field of fields">
-        <app-clarity-input
+        <app-clarity-input-bind
           [hideLabel]="false"
           [field]="field"
-          [parent]="form"
-        ></app-clarity-input>
+          [value]="subscription"
+        ></app-clarity-input-bind>
       </div>
     </form>
   `,
 })
 export class InternetFormComponent implements OnInit {
-  @Input() form;
   @Input() fields;
+  @Input() subscription: Subscription;
+  @Output() onSubmitAction = new EventEmitter();
   constructor() {}
 
   ngOnInit() {}

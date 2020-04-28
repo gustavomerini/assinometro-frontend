@@ -33,16 +33,14 @@
       <div>
         <span class="text"> {{ "form_type" | translate }}: </span>
         <span>
-          {{ "form_" + sub.type?.toLowerCase() | translate }}
+          {{ sub.type?.toLowerCase() | translate }}
         </span>
       </div>
       <div>
         <span class="text"> {{ "form_price" | translate }}: </span>
         <span
           >{{ sub.coin || "R$" }} {{ sub.price }} /
-          <span
-            >{{ "form_" + sub.frequency?.toLowerCase() | translate }}
-          </span></span
+          <span>{{ sub.frequency?.toLowerCase() | translate }} </span></span
         >
       </div>
     </div>

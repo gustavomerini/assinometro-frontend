@@ -2,6 +2,7 @@ import { Component, Input, EventEmitter, Output } from "@angular/core";
 import { Subscription } from "src/app/core/subscription/subscription";
 import { Validators, FormBuilder } from "@angular/forms";
 import { TranslateService } from "@ngx-translate/core";
+import { Pipe, PipeTransform } from "@angular/core";
 @Component({
   selector: "app-subscription-data",
   templateUrl: "subscription-data.component.html",
@@ -93,7 +94,8 @@ export class SubscriptionDataComponent {
     deviceCount: ["", [Validators.required]],
   });
   constructor(private fb: FormBuilder, private translate: TranslateService) {}
-  
+
   public onClickAction() {
+    this.onClick.emit(this.subscriptions);
   }
 }

@@ -20,6 +20,7 @@ export class DashboardAnalyserComponent implements OnInit {
   public currentIndex = 0;
   public isLoading = true;
   public isLoadingResults = false;
+  public results: Subscription[];
   public id = "";
 
   constructor(
@@ -46,12 +47,21 @@ export class DashboardAnalyserComponent implements OnInit {
     this.router.navigate(["dashboard/summary"]);
   }
 
-  public goForward() {
-    this.currentIndex++;
+  public analyseSubs(subscriptions: Subscription[]) {
     this.isLoadingResults = true;
-    this.analyserService.analyseUserSubscriptions(this.id, this.subscriptions);
-    setTimeout(() => {
-      this.isLoadingResults = false;
-    }, 4000);
+    this.currentIndex = 2;
+    this.analyserService
+      .analyseUserSubscriptions(this.id, subscriptions)
+      .subscribe(
+        (response: any) => {
+          this.isLoadingResults = false;
+          this.currentIndex = 1;
+          this.results = response.subscriptions;
+        },
+        (error) => {
+          this.isLoadingResults = false;
+          console.error(error);
+        }
+      );
   }
 }
