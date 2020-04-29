@@ -30,7 +30,7 @@ export class SubscriptionDataComponent {
     {
       description: this.translate.instant("form_is_fibra"),
       name: "isFibra",
-      type: "input",
+      type: "checkbox",
     },
   ];
   public mobileForm = this.fb.group({
@@ -47,29 +47,29 @@ export class SubscriptionDataComponent {
     {
       description: this.translate.instant("form_has_unlimited_internet_app"),
       name: "hasUnlimitedInternetApp",
-      type: "input",
+      type: "checkbox",
     },
     {
       description: this.translate.instant("form_unlimited_calls_brasil"),
       name: "unlimitedCallsBrasil",
-      type: "input",
+      type: "checkbox",
     },
   ];
   public phoneFields = [
     {
       description: this.translate.instant("form_unlimited_mobile_calls"),
       name: "unlimitedMobileCalls",
-      type: "input",
+      type: "checkbox",
     },
     {
       description: this.translate.instant("form_unlimited_phone_calls"),
       name: "unlimitedPhoneCalls",
-      type: "input",
+      type: "checkbox",
     },
     {
       description: this.translate.instant("form_all_operators"),
       name: "allOperators",
-      type: "input",
+      type: "checkbox",
     },
   ];
   public phoneForm = this.fb.group({

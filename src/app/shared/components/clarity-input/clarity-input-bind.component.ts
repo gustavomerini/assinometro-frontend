@@ -11,7 +11,7 @@ import { Field } from "src/app/core/services/field/field";
           <clr-input-container>
             <label
               [ngClass]="hideLabel ? 'hide-label clr-sr-only' : 'show-label'"
-              >{{ field.description }}</label
+              >{{ field.description }}:</label
             >
             <input
               clrInput
@@ -25,11 +25,25 @@ import { Field } from "src/app/core/services/field/field";
             }}</clr-control-error>
           </clr-input-container>
         </section>
+        <section *ngSwitchCase="'checkbox'">
+          <clr-checkbox-container>
+            <label>{{ field.description }}</label>
+            <clr-checkbox-wrapper>
+              <input
+                type="checkbox"
+                clrCheckbox
+                [name]="field.name"
+                [(ngModel)]="value.ext[field.name]"
+                [placeholder]="field.description"
+              />
+            </clr-checkbox-wrapper>
+          </clr-checkbox-container>
+        </section>
         <section *ngSwitchDefault>
           <clr-password-container>
             <label
               [ngClass]="hideLabel ? 'hide-label clr-sr-only' : 'show-label'"
-              >{{ field.description }}</label
+              >{{ field.description }}:</label
             >
             <input
               clrPassword

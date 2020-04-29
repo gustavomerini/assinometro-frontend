@@ -23,7 +23,7 @@ export function calculatePeriods(pricesHistory: PriceHistory[]) {
     (price) => price.month === today.getMonth() + 1
   )[0];
   return {
-    month: actualMonthPrice.price,
+    month: Math.ceil(actualMonthPrice.price),
     year: Math.round(actualMonthPrice.price * 12 * 100) / 100,
     week: Math.round((actualMonthPrice.price / 4) * 100) / 100,
   };
@@ -40,5 +40,5 @@ export function calculateActualMonthCost(subscriptions: Subscription[]) {
     }
     return price + prev;
   }, 0);
-  return price;
+  return Math.ceil(price);
 }

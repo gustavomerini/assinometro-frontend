@@ -84,7 +84,7 @@ export class DashboardSummaryComponent implements OnInit {
       );
     return filteredPrices.map((history) => {
       return {
-        y: history.price,
+        y: Math.ceil(history.price),
         label: this.translate.instant(`month_${history.month}`),
       };
     });

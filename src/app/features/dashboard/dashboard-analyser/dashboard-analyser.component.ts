@@ -50,6 +50,7 @@ export class DashboardAnalyserComponent implements OnInit {
   public analyseSubs(subscriptions: Subscription[]) {
     this.isLoadingResults = true;
     this.currentIndex = 2;
+    console.log(subscriptions);
     this.analyserService
       .analyseUserSubscriptions(this.id, subscriptions)
       .subscribe(
