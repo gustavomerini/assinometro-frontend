@@ -56,6 +56,10 @@ export class DashboardSubscriptionsComponent implements OnInit {
     );
   }
 
+  public onDeleteSub(index: number) {
+    this.confirmedSubs = this.confirmedSubs.filter((sub, i) => i !== index);
+  }
+
   public onConfirmSubs(subs: Subscription[]) {
     this.confirmedSubs = [...this.confirmedSubs, ...subs];
     this.showSubscriptionPicker = false;
@@ -108,7 +112,7 @@ export class DashboardSubscriptionsComponent implements OnInit {
   }
 
   public onCancel() {
-    this.router.navigate(['dashboard/summary'])
+    this.router.navigate(["dashboard/summary"]);
   }
 
   public toggleModal() {

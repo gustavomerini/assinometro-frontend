@@ -20,12 +20,12 @@ export class SubscriptionDataComponent {
     {
       description: this.translate.instant("form_download_speed"),
       name: "downloadSpeed",
-      type: "input",
+      type: "number",
     },
     {
       description: this.translate.instant("form_upload_speed"),
       name: "uploadSpeed",
-      type: "input",
+      type: "number",
     },
     {
       description: this.translate.instant("form_is_fibra"),
@@ -42,7 +42,7 @@ export class SubscriptionDataComponent {
     {
       description: this.translate.instant("form_gb_quantity"),
       name: "gbQuantity",
-      type: "input",
+      type: "number",
     },
     {
       description: this.translate.instant("form_has_unlimited_internet_app"),
@@ -81,12 +81,12 @@ export class SubscriptionDataComponent {
     {
       description: this.translate.instant("form_channel_count"),
       name: "channelCount",
-      type: "input",
+      type: "number",
     },
     {
       description: this.translate.instant("form_device_count"),
       name: "deviceCount",
-      type: "input",
+      type: "number",
     },
   ];
   public televisionForm = this.fb.group({

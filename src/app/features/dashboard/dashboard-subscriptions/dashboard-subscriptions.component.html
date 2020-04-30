@@ -19,6 +19,7 @@
           (openModal)="toggleModal()"
           (goBack)="goBack()"
           (onSave)="saveSubscriptions($event)"
+          (onDeleteSubscription)="onDeleteSub($event)"
           (onCancel)="onCancel()"
           [subscriptions]="confirmedSubs"
         ></app-confirmed-subs>

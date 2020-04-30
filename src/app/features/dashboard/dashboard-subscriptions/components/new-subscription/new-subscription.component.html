@@ -35,6 +35,7 @@
             <label>{{ "form_price" | translate }}</label>
             <input
               clrInput
+              type="number"
               formControlName="price"
               [placeholder]="'form_price' | translate"
             />
@@ -42,6 +43,20 @@
               "form_price_required" | translate
             }}</clr-control-error>
           </clr-input-container>
+          <clr-select-container>
+            <label>{{ "form_type" | translate }}</label>
+            <select clrSelect formControlName="type">
+              <option
+                class="capitalize"
+                *ngFor="let type of types"
+                [value]="type.value"
+                >{{ type.label | translate }}</option
+              >
+            </select>
+            <clr-control-error *clrIfError="'required'">{{
+              "form_type_required" | translate
+            }}</clr-control-error>
+          </clr-select-container>
           <clr-select-container>
             <label>{{ "form_frequency" | translate }}</label>
             <select clrSelect formControlName="frequency">

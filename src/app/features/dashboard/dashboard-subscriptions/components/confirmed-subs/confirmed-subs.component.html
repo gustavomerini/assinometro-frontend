@@ -14,7 +14,7 @@
   [show]="showDeleteModal"
   [header]="'delete' | translate"
   [label]="'delete' | translate"
-  (onConfirm)="deleteSubscription()"
+  (onConfirm)="onDeleteAction()"
   [message]="'delete_message' | translate"
   (onCancel)="toggleModal()"
 >
@@ -67,6 +67,7 @@
           <label>{{ "form_price" | translate }}:</label>
           <input
             name="price"
+            type="number"
             clrInput
             [(ngModel)]="sub.price"
             [placeholder]="'form_price' | translate"

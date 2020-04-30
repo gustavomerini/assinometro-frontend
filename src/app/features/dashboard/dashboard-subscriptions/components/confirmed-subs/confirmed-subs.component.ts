@@ -12,6 +12,7 @@ export class ConfirmedSubsComponent implements OnInit {
   @Output() goBack = new EventEmitter();
   @Output() openModal = new EventEmitter();
   @Output() onSave = new EventEmitter();
+  @Output() onDeleteSubscription = new EventEmitter();
   @Output() onCancel = new EventEmitter();
   public showDeleteModal = false;
   public currentIndex;
@@ -51,10 +52,8 @@ export class ConfirmedSubsComponent implements OnInit {
     this.showDeleteModal = !this.showDeleteModal;
   }
 
-  deleteSubscription() {
-    this.subscriptions = this.subscriptions.filter(
-      (sub, i) => i !== this.currentIndex
-    );
+  onDeleteAction() {
+    this.onDeleteSubscription.emit(this.currentIndex);
     this.showDeleteModal = false;
   }
 
@@ -67,6 +66,7 @@ export class ConfirmedSubsComponent implements OnInit {
   }
 
   cancel() {
+    this.subscriptions.forEach((sub) => (sub.isEditing = false));
     this.onCancel.emit(true);
   }
 }

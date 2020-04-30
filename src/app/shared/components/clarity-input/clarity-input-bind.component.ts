@@ -25,9 +25,28 @@ import { Field } from "src/app/core/services/field/field";
             }}</clr-control-error>
           </clr-input-container>
         </section>
+        <section *ngSwitchCase="'number'">
+          <clr-input-container>
+            <label
+              [ngClass]="hideLabel ? 'hide-label clr-sr-only' : 'show-label'"
+              >{{ field.description }}:</label
+            >
+            <input
+              clrInput
+              type="number"
+              class="clr-col-12"
+              [(ngModel)]="value.ext[field.name]"
+              [placeholder]="field.description"
+            />
+
+            <clr-control-error *clrIfError="'required'">{{
+              "form_" + field.name + "_required" | translate
+            }}</clr-control-error>
+          </clr-input-container>
+        </section>
         <section *ngSwitchCase="'checkbox'">
           <clr-checkbox-container>
-            <label>{{ field.description }}</label>
+            <label>{{ field.description }}:</label>
             <clr-checkbox-wrapper>
               <input
                 type="checkbox"

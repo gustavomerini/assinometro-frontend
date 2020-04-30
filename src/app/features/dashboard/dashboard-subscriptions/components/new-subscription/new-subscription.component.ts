@@ -24,6 +24,7 @@ export class NewSubscriptionComponent implements AfterViewInit {
   public subForm = this.fb.group({
     subscriptionName: ["", Validators.compose([Validators.required])],
     price: ["", Validators.compose([Validators.required])],
+    type: ["", Validators.compose([Validators.required])],
     frequency: ["", Validators.compose([Validators.required])],
     logo: ["assinometro.png"],
   });
@@ -42,6 +43,37 @@ export class NewSubscriptionComponent implements AfterViewInit {
     },
   ];
 
+  public types = [
+    {
+      label: this.translate.instant("internet_description"),
+      value: "INTERNET",
+    },
+    {
+      label: this.translate.instant("television_description"),
+      value: "TELEVISION",
+    },
+    {
+      label: this.translate.instant("phone_description"),
+      value: "PHONE",
+    },
+    {
+      label: this.translate.instant("mobile_description"),
+      value: "MOBILE",
+    },
+    {
+      label: this.translate.instant("streaming_description"),
+      value: "STREAMING",
+    },
+    {
+      label: this.translate.instant("games_description"),
+      value: "GAMES",
+    },
+    {
+      label: this.translate.instant("other_description"),
+      value: "OTHER",
+    },
+  ];
+
   constructor(private fb: FormBuilder, private translate: TranslateService) {}
 
   ngAfterViewInit() {}
@@ -51,7 +83,9 @@ export class NewSubscriptionComponent implements AfterViewInit {
       this.clrForm.markAsTouched();
       return;
     }
-    this.onConfirm.emit(this.subForm.value);
+    const newSub = { ...this.subForm.value };
+    newSub.ext = {};
+    this.onConfirm.emit(newSub);
   }
 
   public onCancelAction() {
