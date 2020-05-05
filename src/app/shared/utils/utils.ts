@@ -9,18 +9,11 @@ export function camelToSnakeCase(str) {
   return str.replace(/[A-Z]/g, (letter) => `_${letter.toLowerCase()}`);
 }
 
-export function calculatePeriods(pricesHistory: PriceHistory[]) {
-  const today = new Date();
-  const filteredPrices = pricesHistory
-    .reverse()
-    .filter(
-      (thing, index, self) =>
-        self.findIndex(
-          (t) => t.month === thing.month && t.year === thing.year
-        ) === index
-    );
-  const actualMonthPrice = filteredPrices.filter(
-    (price) => price.month === today.getMonth() + 1
+export function calculatePeriods(pricesHistory: PriceHistory[], today: any) {
+  if (!pricesHistory || !pricesHistory.length) return null;
+  const date = new Date(today);
+  const actualMonthPrice = pricesHistory.filter(
+    (price) => price.month === date.getMonth() + 1
   )[0];
   return {
     month: Math.ceil(actualMonthPrice.price),
@@ -30,6 +23,7 @@ export function calculatePeriods(pricesHistory: PriceHistory[]) {
 }
 
 export function calculateActualMonthCost(subscriptions: Subscription[]) {
+  if (!subscriptions || !subscriptions.length) return null;
   const price = subscriptions.reduce((prev, acc) => {
     let price = +acc.price;
     if (acc.frequency === "WEEKLY") {

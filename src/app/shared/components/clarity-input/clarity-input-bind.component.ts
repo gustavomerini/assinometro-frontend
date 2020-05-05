@@ -52,6 +52,7 @@ import { Field } from "src/app/core/services/field/field";
                 type="checkbox"
                 clrCheckbox
                 [name]="field.name"
+                class="checkbox-input"
                 [(ngModel)]="value.ext[field.name]"
                 [placeholder]="field.description"
               />

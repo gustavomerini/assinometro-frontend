@@ -2,7 +2,7 @@
   [header]="sub.subscriptionName"
   [isLoaded]="true"
   [logo]="sub.logo"
-  *ngFor="let sub of subscriptions"
+  *ngFor="let sub of subscriptions | filter"
 >
   <div class="card-media-block">
     <div class="card-content">

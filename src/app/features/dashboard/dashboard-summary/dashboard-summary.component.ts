@@ -47,9 +47,14 @@ export class DashboardSummaryComponent implements OnInit {
         }
         this.showEmptyState = false;
         this.subscriptions = subs.Items;
-        this.pricesHistory = subs.PriceHistory;
+        this.pricesHistory = subs.PriceHistory
+          ? subs.PriceHistory.reverse()
+          : null;
         if (this.pricesHistory && this.pricesHistory.length > 0) {
-          this.priceInfo = calculatePeriods([...this.pricesHistory]);
+          this.priceInfo = calculatePeriods(
+            [...this.pricesHistory],
+            subs.today
+          );
           this.canvasData = this.calculateMonthsCost([...this.pricesHistory]);
         }
 

@@ -62,6 +62,7 @@ export class SubscriptionService {
 export interface AWSResponse<T> {
   Items: T;
   PriceHistory?: PriceHistory[]
+  today?: string;
   Count: number;
   ScannedCount: number;
 }
