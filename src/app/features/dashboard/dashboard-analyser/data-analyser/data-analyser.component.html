@@ -1,35 +1,49 @@
-<dashboard-card
-  [header]="sub.subscriptionName"
-  [isLoaded]="true"
-  [logo]="sub.logo"
-  *ngFor="let sub of subscriptions | filter"
->
-  <div class="card-media-block">
-    <div class="card-content">
-      <div>
-        <span class="text"> {{ "form_type" | translate }}: </span>
-        <span class="value">
-          {{ sub.type?.toLowerCase() | translate }}
-        </span>
-      </div>
-      <div>
-        <span class="text"> {{ "form_price" | translate }}: </span>
-        <span class="value"
-          >{{ sub.coin || "R$" }} {{ sub.price }} /
-          <span>
-            {{ sub.frequency?.toLowerCase() | translate }}
-          </span></span
-        >
-      </div>
-      <div>
-        <span class="text">
-          {{ sub.result }} % of all similar subscriptions have a better price or
-          benefits.
-          <!-- 60% of all the similar subscriptions have a better price than this
-          one, we recommend you to negotiate with the company to get a better
-          offer -->
-        </span>
+<section>
+  <dashboard-card
+    [header]="sub.subscriptionName"
+    [isLoaded]="true"
+    [logo]="sub.logo"
+    *ngFor="let sub of subscriptions"
+  >
+    <div class="card-media-block">
+      <div class="card-content">
+        <div>
+          <span class="text"> {{ "form_type" | translate }}: </span>
+          <span class="value">
+            {{ sub.type?.toLowerCase() | translate }}
+          </span>
+        </div>
+        <div>
+          <span class="text"> {{ "form_price" | translate }}: </span>
+          <span class="value"
+            >{{ sub.coin || "R$" }} {{ sub.price }} /
+            <span>
+              {{ sub.frequency?.toLowerCase() | translate }}
+            </span></span
+          >
+        </div>
+        <div>
+          <span class="text" *ngIf="!sub.result">
+            {{ "no_better_offer" | translate }}
+          </span>
+          <span class="text" *ngIf="sub.result > 0 && sub.result <= 20">
+            {{ sub.result }} {{ "default_result_message" | translate }}
+          </span>
+          <span class="text" *ngIf="sub.result > 20 && sub.result <= 40">
+            {{ sub.result }} {{ "default_result_message" | translate }}
+          </span>
+          <span class="text" *ngIf="sub.result > 40 && sub.result <= 60">
+            {{ sub.result }} {{ "default_result_message" | translate }}
+          </span>
+          <span class="text" *ngIf="sub.result > 60 && sub.result <= 80">
+            {{ sub.result }} {{ "default_result_message" | translate }}
+          </span>
+          <span class="text" *ngIf="sub.result > 80 && sub.result <= 100">
+            {{ sub.result }} {{ "default_result_message" | translate }}
+            {{ "recommend_offer_message" | translate }}
+          </span>
+        </div>
       </div>
     </div>
-  </div>
-</dashboard-card>
+  </dashboard-card>
+</section>

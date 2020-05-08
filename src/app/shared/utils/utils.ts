@@ -11,7 +11,7 @@ export function camelToSnakeCase(str) {
 
 export function calculatePeriods(pricesHistory: PriceHistory[], today: any) {
   if (!pricesHistory || !pricesHistory.length) return null;
-  const date = new Date(today);
+  const date = new Date();
   const actualMonthPrice = pricesHistory.filter(
     (price) => price.month === date.getMonth() + 1
   )[0];

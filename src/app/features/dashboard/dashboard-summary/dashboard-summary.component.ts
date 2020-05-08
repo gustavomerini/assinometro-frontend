@@ -47,9 +47,7 @@ export class DashboardSummaryComponent implements OnInit {
         }
         this.showEmptyState = false;
         this.subscriptions = subs.Items;
-        this.pricesHistory = subs.PriceHistory
-          ? subs.PriceHistory.reverse()
-          : null;
+        this.pricesHistory = subs.PriceHistory;
         if (this.pricesHistory && this.pricesHistory.length > 0) {
           this.priceInfo = calculatePeriods(
             [...this.pricesHistory],
@@ -79,15 +77,7 @@ export class DashboardSummaryComponent implements OnInit {
   }
 
   private calculateMonthsCost(pricesHistory: PriceHistory[]) {
-    const filteredPrices = pricesHistory
-      .reverse()
-      .filter(
-        (thing, index, self) =>
-          self.findIndex(
-            (t) => t.month === thing.month && t.year === thing.year
-          ) === index
-      );
-    return filteredPrices.map((history) => {
+    return pricesHistory.map((history) => {
       return {
         y: Math.ceil(history.price),
         label: this.translate.instant(`month_${history.month}`),

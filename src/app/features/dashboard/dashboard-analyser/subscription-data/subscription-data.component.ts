@@ -3,6 +3,7 @@ import { Subscription } from "src/app/core/subscription/subscription";
 import { Validators, FormBuilder } from "@angular/forms";
 import { TranslateService } from "@ngx-translate/core";
 import { Pipe, PipeTransform } from "@angular/core";
+import { Router } from "@angular/router";
 @Component({
   selector: "app-subscription-data",
   templateUrl: "subscription-data.component.html",
@@ -93,9 +94,17 @@ export class SubscriptionDataComponent {
     channelCount: ["", [Validators.required]],
     deviceCount: ["", [Validators.required]],
   });
-  constructor(private fb: FormBuilder, private translate: TranslateService) {}
+  constructor(
+    private fb: FormBuilder,
+    private translate: TranslateService,
+    private router: Router
+  ) {}
 
   public onClickAction() {
     this.onClick.emit(this.subscriptions);
+  }
+
+  public redirectToSubscriptions() {
+    this.router.navigate(["dashboard/summary"]);
   }
 }

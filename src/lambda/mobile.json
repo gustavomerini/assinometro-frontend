@@ -1,0 +1,132 @@
+{
+  "subscriptions": [
+    {
+      "subscriptionName": "tim",
+      "ext": { "channelCount": 0, "deviceCount": 0 },
+      "price": "r$ 49,99p",
+      "type": "INTERNET",
+      "frequency": "MONTHLY",
+      "logo": "tim.png"
+    },
+    {
+      "subscriptionName": "vivo",
+      "ext": { "channelCount": 0, "deviceCount": 0 },
+      "price": "r$ 59,99p",
+      "type": "INTERNET",
+      "frequency": "MONTHLY",
+      "logo": "vivo.png"
+    },
+    {
+      "subscriptionName": "vivo",
+      "ext": { "channelCount": 0, "deviceCount": 0 },
+      "price": "r$ 74,99p",
+      "type": "INTERNET",
+      "frequency": "MONTHLY",
+      "logo": "vivo.png"
+    },
+    {
+      "subscriptionName": "oi",
+      "ext": { "channelCount": 0, "deviceCount": 0 },
+      "price": "r$ 39,99p",
+      "type": "INTERNET",
+      "frequency": "MONTHLY",
+      "logo": "oi.png"
+    },
+    {
+      "subscriptionName": "oi",
+      "ext": { "channelCount": 0, "deviceCount": 0 },
+      "price": "r$ 49,99p",
+      "type": "INTERNET",
+      "frequency": "MONTHLY",
+      "logo": "oi.png"
+    },
+    {
+      "subscriptionName": "claro",
+      "ext": { "channelCount": 0, "deviceCount": 0 },
+      "price": "r$ 49,99p",
+      "type": "INTERNET",
+      "frequency": "MONTHLY",
+      "logo": "claro.png"
+    },
+    {
+      "subscriptionName": "claro",
+      "ext": { "channelCount": 0, "deviceCount": 0 },
+      "price": "r$ 49,99p",
+      "type": "INTERNET",
+      "frequency": "MONTHLY",
+      "logo": "claro.png"
+    },
+    {
+      "subscriptionName": "tim",
+      "ext": { "channelCount": 0, "deviceCount": 0 },
+      "price": "r$ 49,99p",
+      "type": "INTERNET",
+      "frequency": "MONTHLY",
+      "logo": "tim.png"
+    },
+    {
+      "subscriptionName": "tim",
+      "ext": { "channelCount": 0, "deviceCount": 0 },
+      "price": "r$ 54,99p",
+      "type": "INTERNET",
+      "frequency": "MONTHLY",
+      "logo": "tim.png"
+    },
+    {
+      "subscriptionName": "claro",
+      "ext": { "channelCount": 0, "deviceCount": 0 },
+      "price": "r$ 59,99p",
+      "type": "INTERNET",
+      "frequency": "MONTHLY",
+      "logo": "claro.png"
+    },
+    {
+      "subscriptionName": "claro",
+      "ext": { "channelCount": 0, "deviceCount": 0 },
+      "price": "r$ 64,99\n",
+      "type": "INTERNET",
+      "frequency": "MONTHLY",
+      "logo": "claro.png"
+    },
+    {
+      "subscriptionName": "tim",
+      "ext": { "channelCount": 0, "deviceCount": 0 },
+      "price": "r$ 64,99\n",
+      "type": "INTERNET",
+      "frequency": "MONTHLY",
+      "logo": "tim.png"
+    },
+    {
+      "subscriptionName": "tim",
+      "ext": { "channelCount": 0, "deviceCount": 0 },
+      "price": "r$ 64,99\n",
+      "type": "INTERNET",
+      "frequency": "MONTHLY",
+      "logo": "tim.png"
+    },
+    {
+      "subscriptionName": "claro",
+      "ext": { "channelCount": 0, "deviceCount": 0 },
+      "price": "r$ 79,99\n",
+      "type": "INTERNET",
+      "frequency": "MONTHLY",
+      "logo": "claro.png"
+    },
+    {
+      "subscriptionName": "oi",
+      "ext": { "channelCount": 0, "deviceCount": 0 },
+      "price": "r$ 99,90\n",
+      "type": "INTERNET",
+      "frequency": "MONTHLY",
+      "logo": "oi.png"
+    },
+    {
+      "subscriptionName": "oi",
+      "ext": { "channelCount": 0, "deviceCount": 0 },
+      "price": "r$ 129,90",
+      "type": "INTERNET",
+      "frequency": "MONTHLY",
+      "logo": "oi.png"
+    }
+  ]
+}

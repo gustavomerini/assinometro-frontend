@@ -1,43 +1,71 @@
-<dashboard-card
-  [header]="sub.subscriptionName"
-  [isLoaded]="true"
-  [logo]="sub.logo"
-  *ngFor="let sub of subscriptions | filter"
->
-  <div class="card-media-block">
-    <div [ngSwitch]="sub.type" class="form-wrapper">
-      <div *ngSwitchCase="'INTERNET'">
-        <app-internet-form
-          [subscription]="sub"
-          [fields]="internetFields"
-        ></app-internet-form>
+<section *ngIf="subscriptions.length > 0">
+  <dashboard-card
+    [header]="sub.subscriptionName"
+    [isLoaded]="true"
+    [logo]="sub.logo"
+    *ngFor="let sub of subscriptions"
+  >
+    <div class="card-media-block">
+      <div [ngSwitch]="sub.type" class="form-wrapper">
+        <div *ngSwitchCase="'INTERNET'">
+          <app-internet-form
+            [subscription]="sub"
+            [fields]="internetFields"
+          ></app-internet-form>
+        </div>
+        <div *ngSwitchCase="'TELEVISION'">
+          <app-internet-form
+            [subscription]="sub"
+            [fields]="televisionFields"
+          ></app-internet-form>
+        </div>
+        <div *ngSwitchCase="'MOBILE'">
+          <app-internet-form
+            [subscription]="sub"
+            [fields]="mobileFields"
+          ></app-internet-form>
+        </div>
+        <div *ngSwitchCase="'PHONE'">
+          <app-internet-form
+            [subscription]="sub"
+            [fields]="mobileFields"
+          ></app-internet-form>
+        </div>
+        <div *ngSwitchDefault></div>
       </div>
-      <div *ngSwitchCase="'TELEVISION'">
-        <app-internet-form
-          [subscription]="sub"
-          [fields]="televisionFields"
-        ></app-internet-form>
-      </div>
-      <div *ngSwitchCase="'MOBILE'">
-        <app-internet-form
-          [subscription]="sub"
-          [fields]="mobileFields"
-        ></app-internet-form>
-      </div>
-      <div *ngSwitchCase="'PHONE'">
-        <app-internet-form
-          [subscription]="sub"
-          [fields]="mobileFields"
-        ></app-internet-form>
-      </div>
-      <div *ngSwitchDefault></div>
     </div>
+  </dashboard-card>
+  <div class="actions">
+    <app-button
+      [label]="'analyse' | translate"
+      [classNames]="'btn btn-primary'"
+      (onClick)="onClickAction()"
+    ></app-button>
   </div>
-</dashboard-card>
-<div class="actions">
-  <app-button
-    [label]="'go_forward' | translate"
-    [classNames]="'btn btn-primary'"
-    (onClick)="onClickAction()"
-  ></app-button>
-</div>
+</section>
+<section *ngIf="subscriptions.length === 0">
+  <div class="clr-row">
+    <dashboard-card [isLoaded]="true">
+      <div class="wrapper">
+        <div class="content-wrapper">
+          <h3>
+            {{ "sorry_desc" | translate }}
+          </h3>
+          <h5>
+            {{ "no_valid_subs_message" | translate }}
+          </h5>
+        </div>
+        <div class="img-wrapper">
+          <img class="empty-state" src="assets/images/void.svg" />
+        </div>
+        <div class="content-wrapper">
+          <app-button
+            [label]="'get_back' | translate"
+            (onClick)="redirectToSubscriptions()"
+            [classNames]="'btn btn-primary'"
+          ></app-button>
+        </div>
+      </div>
+    </dashboard-card>
+  </div>
+</section>

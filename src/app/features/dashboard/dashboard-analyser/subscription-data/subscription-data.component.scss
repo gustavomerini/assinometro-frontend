@@ -5,3 +5,22 @@
 .actions {
   margin-top: 20px;
 }
+
+.wrapper {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  .img-wrapper {
+    margin: 30px auto 30px auto;
+  }
+  .content-wrapper {
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+  }
+}
+
+.empty-state {
+  height: 400px;
+  width: 400px;
+}

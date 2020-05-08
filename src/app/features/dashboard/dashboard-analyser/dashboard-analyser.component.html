@@ -11,14 +11,14 @@
     </div>
     <section *ngIf="currentIndex === 0">
       <app-subscription-data
-        [subscriptions]="subscriptions"
+        [subscriptions]="subscriptions | filter"
         (onClick)="analyseSubs($event)"
       ></app-subscription-data>
     </section>
     <section *ngIf="currentIndex === 1">
       <app-data-analyser
         *ngIf="!isLoadingResults"
-        [subscriptions]="results"
+        [subscriptions]="results | filter"
       ></app-data-analyser>
     </section>
   </div>

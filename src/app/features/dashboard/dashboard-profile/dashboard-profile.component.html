@@ -80,14 +80,14 @@
         ></app-alert>
         <div class="actions">
           <app-button
-            [label]="'save' | translate"
-            [type]="'submit'"
-            [classNames]="'btn btn-primary'"
-          ></app-button>
-          <app-button
             [label]="'cancel' | translate"
             [classNames]="'btn btn-secondary'"
             (onClick)="cancel()"
+          ></app-button>
+          <app-button
+            [label]="'save' | translate"
+            [type]="'submit'"
+            [classNames]="'btn btn-primary'"
           ></app-button>
         </div>
       </form>
