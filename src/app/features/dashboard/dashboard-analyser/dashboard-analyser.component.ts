@@ -50,14 +50,17 @@ export class DashboardAnalyserComponent implements OnInit {
   public analyseSubs(subscriptions: Subscription[]) {
     this.isLoadingResults = true;
     this.currentIndex = 2;
-    console.log(subscriptions);
+    const validSubs = subscriptions.filter((sub) => {
+      return Object.keys(sub.ext).filter((key) => !sub.ext[key]).length === 0;
+    });
+    console.log({ validSubs });
     this.analyserService
-      .analyseUserSubscriptions(this.id, subscriptions)
+      .analyseUserSubscriptions(this.id, validSubs)
       .subscribe(
         (response: any) => {
-          this.isLoadingResults = false;
-          this.currentIndex = 1;
           this.results = response.subscriptions;
+          this.currentIndex = 1;
+          this.isLoadingResults = false;
         },
         (error) => {
           this.isLoadingResults = false;

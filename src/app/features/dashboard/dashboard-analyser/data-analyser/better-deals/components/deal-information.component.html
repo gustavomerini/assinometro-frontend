@@ -1,0 +1,50 @@
+<div [ngSwitch]="subscription.type" class="form-wrapper">
+  <div class="wrapper">
+    <div>
+      <span class="text">{{ "form_price" | translate }}: </span>
+      <span>{{ subscription.price }} / {{ subscription.frequency.toLowerCase() | translate }}</span>
+    </div>
+  </div>
+  <div *ngSwitchCase="'INTERNET'" class="wrapper">
+    <div>
+      <span class="text">{{ "form_upload_speed" | translate }}: </span>
+      <span>{{ subscription.ext.uploadSpeed }}</span>
+    </div>
+    <div>
+      <span class="text">{{ "form_download_speed" | translate }}: </span>
+      <span>{{ subscription.ext.downloadSpeed }}</span>
+    </div>
+    <div>
+      <span class="text">{{ "form_is_fibra" | translate }}: </span>
+      <span>{{ subscription.ext.isFibra }}</span>
+    </div>
+  </div>
+  <div *ngSwitchCase="'TELEVISION'">
+    <div>
+      <span class="text">{{ "form_channel_count" | translate }}: </span>
+      <span>{{ subscription.ext.channelCount }}</span>
+    </div>
+    <div>
+      <span class="text">{{ "form_device_count" | translate }}: </span>
+      <span>{{ subscription.ext.deviceCount }}</span>
+    </div>
+  </div>
+  <div *ngSwitchCase="'PHONE'"></div>
+  <div *ngSwitchCase="'MOBILE'">
+    <div>
+      <span class="text">{{ "form_gb_quantity" | translate }}: </span>
+      <span>{{ subscription.ext.gbQuantity }}</span>
+    </div>
+    <div>
+      <span class="text"
+        >{{ "form_has_unlimited_internet_app" | translate }}:
+      </span>
+      <span>{{ subscription.ext.hasUnlimitedInternetApp }}</span>
+    </div>
+    <div>
+      <span>{{ "unlimited_calls_brasil" | translate }}: </span>
+      <span>{{ subscription.ext.unlimitedCallsBrasil }}</span>
+    </div>
+  </div>
+  <div *ngSwitchDefault></div>
+</div>

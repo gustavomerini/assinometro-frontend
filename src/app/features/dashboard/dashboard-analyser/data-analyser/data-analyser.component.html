@@ -1,9 +1,9 @@
-<section>
+<section *ngFor="let sub of subscriptions">
   <dashboard-card
     [header]="sub.subscriptionName"
     [isLoaded]="true"
     [logo]="sub.logo"
-    *ngFor="let sub of subscriptions"
+    *ngIf="!showDeal"
   >
     <div class="card-media-block">
       <div class="card-content">
@@ -22,28 +22,32 @@
             </span></span
           >
         </div>
-        <div>
+        <div (click)="toggleDeal(sub.subscriptionName)">
           <span class="text" *ngIf="!sub.result">
             {{ "no_better_offer" | translate }}
           </span>
-          <span class="text" *ngIf="sub.result > 0 && sub.result <= 20">
-            {{ sub.result }} {{ "default_result_message" | translate }}
+          <span class="text clickable" *ngIf="sub.result > 0 && sub.result <= 20">
+            {{ "check_better_offers" | translate }}
           </span>
-          <span class="text" *ngIf="sub.result > 20 && sub.result <= 40">
-            {{ sub.result }} {{ "default_result_message" | translate }}
+          <span class="text clickable" *ngIf="sub.result > 20 && sub.result <= 40">
+            {{ "check_better_offers" | translate }}
           </span>
-          <span class="text" *ngIf="sub.result > 40 && sub.result <= 60">
-            {{ sub.result }} {{ "default_result_message" | translate }}
+          <span class="text clickable" *ngIf="sub.result > 40 && sub.result <= 60">
+            {{ "check_better_offers" | translate }}
           </span>
-          <span class="text" *ngIf="sub.result > 60 && sub.result <= 80">
-            {{ sub.result }} {{ "default_result_message" | translate }}
+          <span class="text clickable" *ngIf="sub.result > 60 && sub.result <= 80">
+            {{ "check_better_offers" | translate }}
           </span>
-          <span class="text" *ngIf="sub.result > 80 && sub.result <= 100">
-            {{ sub.result }} {{ "default_result_message" | translate }}
-            {{ "recommend_offer_message" | translate }}
+          <span class="text clickable" *ngIf="sub.result > 80 && sub.result <= 100">
+            {{ "check_better_offers" | translate }}
           </span>
         </div>
       </div>
     </div>
   </dashboard-card>
+  <app-better-deals
+    *ngIf="showDeal && currentSub === sub.subscriptionName"
+    (goBack)="toggleDeal()"
+    [betterDeals]="sub.betterSubs"
+  ></app-better-deals>
 </section>

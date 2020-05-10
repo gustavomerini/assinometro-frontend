@@ -30,7 +30,7 @@ const routes: Routes = [
       {
         path: "analyser",
         component: DashboardAnalyserComponent,
-        canActivate: [UserLoggedInGuard]
+        canActivate: [UserLoggedInGuard],
       },
       {
         path: "profile",

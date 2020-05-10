@@ -1,0 +1,20 @@
+<div class="wrapper">
+  <h4 class="message">{{ "better_deals_message" | translate }}</h4>
+
+  <dashboard-card
+    *ngFor="let sub of betterDeals"
+    [header]="sub.subscriptionName"
+    [isLoaded]="true"
+    [logo]="sub.logo"
+  >
+    <app-deal-information [subscription]="sub"></app-deal-information>
+  </dashboard-card>
+
+  <div class="actions">
+    <app-button
+      [label]="'go_back' | translate"
+      (onClick)="goBackAction()"
+      [classNames]="'btn btn-primary'"
+    ></app-button>
+  </div>
+</div>

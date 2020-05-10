@@ -7,7 +7,6 @@ import { AuthenticationService } from "src/app/core/services/authentication.serv
 import { Subscription } from "src/app/core/subscription/subscription";
 import { ActivatedRoute, Router } from "@angular/router";
 import { TranslateService } from "@ngx-translate/core";
-import { calculateActualMonthCost } from "src/app/shared/utils/utils";
 
 @Component({
   selector: "app-dashboard-subscriptions",
@@ -44,16 +43,17 @@ export class DashboardSubscriptionsComponent implements OnInit {
       } else {
         this.showSubscriptionPicker = false;
         this.subsService.userSubscriptions$.subscribe(
-          (subs: AWSResponse<Subscription[]>) => {
-            this.confirmedSubs = subs.Items;
-            this.pricesHistory = subs.PriceHistory;
+          (response: AWSResponse<Subscription[]>) => {
+            const newObj = JSON.parse(JSON.stringify(response));
+            this.confirmedSubs = [...newObj.Items];
+            this.pricesHistory = [...newObj.PriceHistory];
           }
         );
       }
     });
-    this.subsService.subscriptions$.subscribe(
-      (subs) => (this.subscriptions = [...subs.Items])
-    );
+    this.subsService.subscriptions$.subscribe((subs) => {
+      this.subscriptions = [...subs.Items];
+    });
   }
 
   public onDeleteSub(index: number) {
@@ -107,6 +107,7 @@ export class DashboardSubscriptionsComponent implements OnInit {
   }
 
   public onCancel() {
+    console.log({subsconfirmed: this.confirmedSubs});
     this.router.navigate(["dashboard/summary"]);
   }
 
