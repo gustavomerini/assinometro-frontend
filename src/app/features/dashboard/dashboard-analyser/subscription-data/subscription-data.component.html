@@ -19,13 +19,13 @@
             [fields]="televisionFields"
           ></app-internet-form>
         </div>
-        <div *ngSwitchCase="'MOBILE'">
+        <div *ngSwitchCase="'PHONE'">
           <app-internet-form
             [subscription]="sub"
-            [fields]="mobileFields"
+            [fields]="phoneFields"
           ></app-internet-form>
         </div>
-        <div *ngSwitchCase="'PHONE'">
+        <div *ngSwitchCase="'MOBILE'">
           <app-internet-form
             [subscription]="sub"
             [fields]="mobileFields"

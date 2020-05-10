@@ -57,7 +57,7 @@ export class NewSubscriptionComponent implements AfterViewInit {
       value: "PHONE",
     },
     {
-      label: this.translate.instant("mobile_description"),
+      label: this.translate.instant("mobile"),
       value: "MOBILE",
     },
     {

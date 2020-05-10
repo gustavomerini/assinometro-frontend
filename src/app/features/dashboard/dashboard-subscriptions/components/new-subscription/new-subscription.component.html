@@ -31,6 +31,7 @@
               "form_subscriptionName_required" | translate
             }}</clr-control-error>
           </clr-input-container>
+
           <clr-input-container>
             <label>{{ "form_price" | translate }}</label>
             <input
@@ -43,6 +44,7 @@
               "form_price_required" | translate
             }}</clr-control-error>
           </clr-input-container>
+
           <clr-select-container>
             <label>{{ "form_type" | translate }}</label>
             <select clrSelect formControlName="type">
@@ -57,6 +59,7 @@
               "form_type_required" | translate
             }}</clr-control-error>
           </clr-select-container>
+
           <clr-select-container>
             <label>{{ "form_frequency" | translate }}</label>
             <select clrSelect formControlName="frequency">
@@ -71,6 +74,7 @@
               "form_frequency_required" | translate
             }}</clr-control-error>
           </clr-select-container>
+          
           <div class="modal-footer">
             <button (click)="onCancelAction()" class="btn btn-sm btn-link">
               {{ "cancel" | translate }}

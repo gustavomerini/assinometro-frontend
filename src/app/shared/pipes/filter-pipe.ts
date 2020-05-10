@@ -12,6 +12,6 @@ export class FilterPipe implements PipeTransform {
     if (!items) {
       return items;
     }
-    return items.filter((item) => config.validArgs.includes(item.type));
+    return items.filter((item) => config.validTypes.includes(item.type));
   }
 }

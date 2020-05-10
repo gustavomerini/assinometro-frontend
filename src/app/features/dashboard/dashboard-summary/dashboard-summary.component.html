@@ -56,14 +56,17 @@
 </section>
 <section *ngIf="showEmptyState">
   <div class="clr-row">
-    <div class="clr-col-lg-3"></div>
-    <div class="clr-col-lg-6 clr-col-md-12 clr-col-12">
+    <div class="clr-col-lg-4"></div>
+    <div class="clr-col-lg-4 clr-col-md-12 clr-col-12">
       <dashboard-card [isLoaded]="true">
         <div class="wrapper">
           <div class="content-wrapper">
-            <h4>
+            <h3>
+              {{ "get_started_desc" | translate }}
+            </h3>
+            <h5>
               {{ "empty_state_message" | translate }}
-            </h4>
+            </h5>
           </div>
           <div class="img-wrapper">
             <img class="empty-state" src="assets/images/empty_state.svg" />
@@ -78,6 +81,6 @@
         </div>
       </dashboard-card>
     </div>
-    <div class="clr-col-lg-3"></div>
+    <div class="clr-col-lg-4"></div>
   </div>
 </section>

@@ -12,11 +12,7 @@ import { Router } from "@angular/router";
 export class SubscriptionDataComponent {
   @Input() subscriptions: Subscription[] = [];
   @Output() onClick = new EventEmitter();
-  public internetForm = this.fb.group({
-    downloadSpeed: ["", [Validators.required]],
-    uploadSpeed: ["", [Validators.required]],
-    isFibra: ["", [Validators.required]],
-  });
+
   public internetFields = [
     {
       description: this.translate.instant("form_download_speed"),
@@ -34,11 +30,12 @@ export class SubscriptionDataComponent {
       type: "checkbox",
     },
   ];
-  public mobileForm = this.fb.group({
-    gbQuantity: ["", [Validators.required]],
-    hasUnlimitedInternetApp: ["", [Validators.required]],
-    unlimitedCallsBrasil: ["", [Validators.required]],
+  public internetForm = this.fb.group({
+    downloadSpeed: ["", [Validators.required]],
+    uploadSpeed: ["", [Validators.required]],
+    isFibra: ["", [Validators.required]],
   });
+
   public mobileFields = [
     {
       description: this.translate.instant("form_gb_quantity"),
@@ -51,24 +48,30 @@ export class SubscriptionDataComponent {
       type: "checkbox",
     },
     {
-      description: this.translate.instant("form_unlimited_calls_brasil"),
+      description: this.translate.instant("unlimited_calls_brasil"),
       name: "unlimitedCallsBrasil",
       type: "checkbox",
     },
   ];
+  public mobileForm = this.fb.group({
+    gbQuantity: ["", [Validators.required]],
+    hasUnlimitedInternetApp: ["", [Validators.required]],
+    unlimitedCallsBrasil: ["", [Validators.required]],
+  });
+
   public phoneFields = [
     {
-      description: this.translate.instant("form_unlimited_mobile_calls"),
+      description: this.translate.instant("all_mobile_calls"),
       name: "unlimitedMobileCalls",
       type: "checkbox",
     },
     {
-      description: this.translate.instant("form_unlimited_phone_calls"),
+      description: this.translate.instant("all_calls"),
       name: "unlimitedPhoneCalls",
       type: "checkbox",
     },
     {
-      description: this.translate.instant("form_all_operators"),
+      description: this.translate.instant("all_operators"),
       name: "allOperators",
       type: "checkbox",
     },
@@ -78,6 +81,7 @@ export class SubscriptionDataComponent {
     unlimitedPhoneCalls: ["", [Validators.required]],
     allOperators: ["", [Validators.required]],
   });
+
   public televisionFields = [
     {
       description: this.translate.instant("form_channel_count"),
@@ -94,6 +98,7 @@ export class SubscriptionDataComponent {
     channelCount: ["", [Validators.required]],
     deviceCount: ["", [Validators.required]],
   });
+
   constructor(
     private fb: FormBuilder,
     private translate: TranslateService,

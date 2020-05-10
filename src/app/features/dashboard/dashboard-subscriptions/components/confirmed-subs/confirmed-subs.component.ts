@@ -1,5 +1,4 @@
 import { Component, Input, Output, EventEmitter, OnInit } from "@angular/core";
-import { Subscription } from "src/app/core/subscription/subscription";
 import { TranslateService } from "@ngx-translate/core";
 
 @Component({
@@ -16,6 +15,36 @@ export class ConfirmedSubsComponent implements OnInit {
   @Output() onCancel = new EventEmitter();
   public showDeleteModal = false;
   public currentIndex;
+  public types = [
+    {
+      label: this.translate.instant("internet"),
+      value: "INTERNET",
+    },
+    {
+      label: this.translate.instant("mobile"),
+      value: "MOBILE",
+    },
+    {
+      label: this.translate.instant("phone"),
+      value: "PHONE",
+    },
+    {
+      label: this.translate.instant("television"),
+      value: "TELEVISION",
+    },
+    {
+      label: this.translate.instant("streaming"),
+      value: "STREAMING",
+    },
+    {
+      label: this.translate.instant("games"),
+      value: "GAMES",
+    },
+    {
+      label: this.translate.instant("other"),
+      value: "OTHER",
+    },
+  ];
   public options = [
     {
       label: this.translate.instant("monthly"),
@@ -36,6 +65,7 @@ export class ConfirmedSubsComponent implements OnInit {
   ngOnInit() {}
 
   goBackAction = () => {
+    this.subscriptions.forEach((sub) => (sub.isEditing = false));
     this.goBack.emit();
   };
 

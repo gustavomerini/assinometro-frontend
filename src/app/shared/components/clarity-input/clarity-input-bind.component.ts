@@ -54,7 +54,6 @@ import { Field } from "src/app/core/services/field/field";
                 [name]="field.name"
                 class="checkbox-input"
                 [(ngModel)]="value.ext[field.name]"
-                [placeholder]="field.description"
               />
             </clr-checkbox-wrapper>
           </clr-checkbox-container>

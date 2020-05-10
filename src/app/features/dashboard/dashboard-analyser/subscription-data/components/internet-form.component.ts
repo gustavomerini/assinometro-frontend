@@ -4,7 +4,7 @@ import { Subscription } from "src/app/core/subscription/subscription";
 @Component({
   selector: "app-internet-form",
   template: `
-    <form class="clr-form clr-form-compact" (ngSubmit)="(onSubmitAction)">
+    <form class="clr-form clr-form-compact" (ngSubmit)="onSubmit()">
       <div class="form-field" *ngFor="let field of fields">
         <app-clarity-input-bind
           [hideLabel]="false"
@@ -22,4 +22,8 @@ export class InternetFormComponent implements OnInit {
   constructor() {}
 
   ngOnInit() {}
+
+  onSubmit() {
+    this.onSubmitAction.emit();
+  }
 }
