@@ -4,9 +4,8 @@ import {
   AWSResponse,
 } from "src/app/core/subscription/subscription.service";
 import { Subscription } from "src/app/core/subscription/subscription";
-import { ActivatedRoute, Router } from "@angular/router";
+import { Router } from "@angular/router";
 import { TranslateService } from "@ngx-translate/core";
-import { TimelineOption } from "src/app/shared/components/timeline/timeline.component";
 import { AnalyserService } from "src/app/core/services/analyser/analyser.service";
 import { AuthenticationService } from "src/app/core/services/authentication.service";
 
@@ -21,6 +20,8 @@ export class DashboardAnalyserComponent implements OnInit {
   public isLoading = true;
   public isLoadingResults = false;
   public results: Subscription[];
+  public alertRole = "alert-danger";
+  public message = "";
   public id = "";
 
   constructor(
@@ -47,25 +48,36 @@ export class DashboardAnalyserComponent implements OnInit {
     this.router.navigate(["dashboard/summary"]);
   }
 
+  public closeAlert() {
+    this.message = "";
+    this.alertRole = "";
+  }
+
   public analyseSubs(subscriptions: Subscription[]) {
+    const validSubs = subscriptions.filter((sub) => {
+      return (
+        Object.keys(sub.ext).filter(
+          (key) => sub.ext[key] === null || sub.ext[key] === undefined
+        ).length === 0
+      );
+    });
+    if (validSubs.length === 0) {
+      this.message = this.translate.instant("error_fill_subs_info");
+      this.alertRole;
+      return;
+    }
     this.isLoadingResults = true;
     this.currentIndex = 2;
-    const validSubs = subscriptions.filter((sub) => {
-      return Object.keys(sub.ext).filter((key) => !sub.ext[key]).length === 0;
-    });
-    console.log({ validSubs });
-    this.analyserService
-      .analyseUserSubscriptions(this.id, validSubs)
-      .subscribe(
-        (response: any) => {
-          this.results = response.subscriptions;
-          this.currentIndex = 1;
-          this.isLoadingResults = false;
-        },
-        (error) => {
-          this.isLoadingResults = false;
-          console.error(error);
-        }
-      );
+    this.analyserService.analyseUserSubscriptions(this.id, validSubs).subscribe(
+      (response: any) => {
+        this.results = response.subscriptions;
+        this.currentIndex = 1;
+        this.isLoadingResults = false;
+      },
+      (error) => {
+        this.isLoadingResults = false;
+        console.error(error);
+      }
+    );
   }
 }

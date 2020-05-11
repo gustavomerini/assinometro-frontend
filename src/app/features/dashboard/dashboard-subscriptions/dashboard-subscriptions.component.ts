@@ -7,6 +7,7 @@ import { AuthenticationService } from "src/app/core/services/authentication.serv
 import { Subscription } from "src/app/core/subscription/subscription";
 import { ActivatedRoute, Router } from "@angular/router";
 import { TranslateService } from "@ngx-translate/core";
+import { uuidv4 } from "src/app/shared/utils/utils";
 
 @Component({
   selector: "app-dashboard-subscriptions",
@@ -73,6 +74,7 @@ export class DashboardSubscriptionsComponent implements OnInit {
       this.isLoading = true;
       subs = subs.map((subscription) => ({
         ...subscription,
+        uniqueId: uuidv4(),
         isEditing: false,
       }));
       const response = await this.authService.getUserInfo();
@@ -107,7 +109,7 @@ export class DashboardSubscriptionsComponent implements OnInit {
   }
 
   public onCancel() {
-    console.log({subsconfirmed: this.confirmedSubs});
+    console.log({ subsconfirmed: this.confirmedSubs });
     this.router.navigate(["dashboard/summary"]);
   }
 

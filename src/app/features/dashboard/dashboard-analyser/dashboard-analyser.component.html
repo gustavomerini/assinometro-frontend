@@ -2,13 +2,19 @@
   <div class="clr-col-lg-4"></div>
   <div class="clr-col-lg-4 clr-col-sm-12">
     <div class="load-wrapper" *ngIf="isLoadingResults">
-      <h3>Analysing...</h3>
-
+      <h3>{{ "analysing_message" | translate }}</h3>
       <div class="spinner-center">
         <span class="spinner spinner-lg"> </span>
       </div>
       <!-- <img src="assets/images/loading-results.svg" /> -->
     </div>
+    <app-alert
+      *ngIf="message"
+      class="custom-alert"
+      [message]="message"
+      [role]="alertRole"
+      (close)="closeAlert()"
+    ></app-alert>
     <section *ngIf="currentIndex === 0">
       <app-subscription-data
         [subscriptions]="subscriptions | filter"

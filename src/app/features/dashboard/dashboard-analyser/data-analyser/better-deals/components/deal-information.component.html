@@ -2,21 +2,24 @@
   <div class="wrapper">
     <div>
       <span class="text">{{ "form_price" | translate }}: </span>
-      <span>{{ subscription.price }} / {{ subscription.frequency.toLowerCase() | translate }}</span>
+      <span
+        >{{ subscription.price }} /
+        {{ subscription.frequency.toLowerCase() | translate }}</span
+      >
     </div>
   </div>
   <div *ngSwitchCase="'INTERNET'" class="wrapper">
-    <div>
-      <span class="text">{{ "form_upload_speed" | translate }}: </span>
-      <span>{{ subscription.ext.uploadSpeed }}</span>
-    </div>
     <div>
       <span class="text">{{ "form_download_speed" | translate }}: </span>
       <span>{{ subscription.ext.downloadSpeed }}</span>
     </div>
     <div>
+      <span class="text">{{ "form_upload_speed" | translate }}: </span>
+      <span>{{ subscription.ext.uploadSpeed }}</span>
+    </div>
+    <div>
       <span class="text">{{ "form_is_fibra" | translate }}: </span>
-      <span>{{ subscription.ext.isFibra }}</span>
+      <span>{{ (subscription.ext.isFibra ? "yes_desc" : "no_desc") | translate }}</span>
     </div>
   </div>
   <div *ngSwitchCase="'TELEVISION'">

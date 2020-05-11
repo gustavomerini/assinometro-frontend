@@ -22,14 +22,14 @@
             </span></span
           >
         </div>
-        <div (click)="toggleDeal(sub.subscriptionName)">
+        <div>
           <span class="text" *ngIf="!sub.result">
             {{ "no_better_offer" | translate }}
           </span>
-          <span class="text clickable" *ngIf="sub.result > 0 && sub.result <= 20">
+          <span class="text clickable" (click)="toggleDeal(sub.subscriptionName)" *ngIf="sub.result > 0">
             {{ "check_better_offers" | translate }}
           </span>
-          <span class="text clickable" *ngIf="sub.result > 20 && sub.result <= 40">
+          <!-- <span class="text clickable" *ngIf="sub.result > 20 && sub.result <= 40">
             {{ "check_better_offers" | translate }}
           </span>
           <span class="text clickable" *ngIf="sub.result > 40 && sub.result <= 60">
@@ -40,7 +40,7 @@
           </span>
           <span class="text clickable" *ngIf="sub.result > 80 && sub.result <= 100">
             {{ "check_better_offers" | translate }}
-          </span>
+          </span> -->
         </div>
       </div>
     </div>

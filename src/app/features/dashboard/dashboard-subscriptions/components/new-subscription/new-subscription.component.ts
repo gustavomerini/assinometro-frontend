@@ -8,6 +8,7 @@ import {
 } from "@angular/core";
 import { FormBuilder, Validators } from "@angular/forms";
 import { TranslateService } from "@ngx-translate/core";
+import { uuidv4 } from 'src/app/shared/utils/utils';
 @Component({
   selector: "app-new-subscription",
   templateUrl: "new-subscription.component.html",
@@ -84,6 +85,7 @@ export class NewSubscriptionComponent implements AfterViewInit {
       return;
     }
     const newSub = { ...this.subForm.value };
+    newSub.uniqueId = uuidv4();
     newSub.ext = {};
     this.onConfirm.emit(newSub);
   }

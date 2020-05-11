@@ -6,7 +6,7 @@ import { EventEmitter } from "@angular/core";
 @Component({
   selector: "app-subscriptions-picker",
   styleUrls: ["subscriptions-picker.component.scss"],
-  templateUrl: "subscriptions-picker.component.html"
+  templateUrl: "subscriptions-picker.component.html",
 })
 export class SubscriptionsPickerComponent implements OnInit {
   @Output() confirmSubs: EventEmitter<Subscription[]> = new EventEmitter<
@@ -15,7 +15,7 @@ export class SubscriptionsPickerComponent implements OnInit {
   @Input() subscriptions: Subscription[];
   public subsPickerFooter = {
     label: this.translate.instant("continue"),
-    action: () => this.goForwardAction()
+    action: () => this.goForwardAction(),
   };
 
   public filteredSubs = [];
@@ -24,14 +24,17 @@ export class SubscriptionsPickerComponent implements OnInit {
   constructor(private translate: TranslateService) {}
 
   ngOnInit() {
-    this.subscriptions = this.subscriptions.map(sub => ({...sub, selected: false}));
+    this.subscriptions = this.subscriptions.map((sub) => ({
+      ...sub,
+      selected: false,
+    }));
   }
 
   public toggleSubscription(subscription) {
     const name = subscription.subscriptionName;
-    if (this.selectedSubs.find(sub => sub.subscriptionName === name)) {
+    if (this.selectedSubs.find((sub) => sub.subscriptionName === name)) {
       this.selectedSubs = this.selectedSubs.filter(
-        sub => sub.subscriptionName !== name
+        (sub) => sub.subscriptionName !== name
       );
       subscription.selected = false;
       return;
@@ -42,7 +45,7 @@ export class SubscriptionsPickerComponent implements OnInit {
 
   public onInput(value: string) {
     this.filteredSubs = this.subscriptions.filter(
-      sub =>
+      (sub) =>
         sub.subscriptionName
           .toLocaleLowerCase()
           .indexOf(value.toLocaleLowerCase()) === 0
@@ -52,6 +55,9 @@ export class SubscriptionsPickerComponent implements OnInit {
   public goForwardAction() {
     this.confirmSubs.emit(this.selectedSubs);
     this.filteredSubs = [];
-    this.subscriptions = this.subscriptions.map(sub => ({...sub, selected: false}));
+    this.subscriptions = this.subscriptions.map((sub) => ({
+      ...sub,
+      selected: false,
+    }));
   }
 }
