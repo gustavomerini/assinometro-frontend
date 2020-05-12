@@ -37,6 +37,11 @@
   </dashboard-card>
   <div class="actions">
     <app-button
+      [label]="'cancel' | translate"
+      [classNames]="'btn btn-secondary'"
+      (onClick)="redirectToSubscriptions()"
+    ></app-button>
+    <app-button
       [label]="'analyse' | translate"
       [classNames]="'btn btn-primary'"
       (onClick)="onClickAction()"
