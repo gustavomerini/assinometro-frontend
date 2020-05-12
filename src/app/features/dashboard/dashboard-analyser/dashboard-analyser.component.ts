@@ -45,6 +45,7 @@ export class DashboardAnalyserComponent implements OnInit {
   }
 
   public onCancel() {
+    this.closeAlert();
     this.router.navigate(["dashboard/summary"]);
   }
 
@@ -54,6 +55,7 @@ export class DashboardAnalyserComponent implements OnInit {
   }
 
   public analyseSubs(subscriptions: Subscription[]) {
+    this.closeAlert();
     const validSubs = subscriptions.filter((sub) => {
       return (
         Object.keys(sub.ext).filter(
@@ -63,7 +65,7 @@ export class DashboardAnalyserComponent implements OnInit {
     });
     if (validSubs.length === 0) {
       this.message = this.translate.instant("error_fill_subs_info");
-      this.alertRole;
+      this.alertRole = "alert-danger";
       return;
     }
     this.isLoadingResults = true;

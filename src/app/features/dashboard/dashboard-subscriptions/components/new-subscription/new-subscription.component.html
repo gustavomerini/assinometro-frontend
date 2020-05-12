@@ -46,6 +46,21 @@
           </clr-input-container>
 
           <clr-select-container>
+            <label>{{ "form_frequency" | translate }}</label>
+            <select clrSelect formControlName="frequency">
+              <option
+                class="capitalize"
+                *ngFor="let option of options"
+                [value]="option.value"
+                >{{ option.label | translate }}</option
+              >
+            </select>
+            <clr-control-error *clrIfError="'required'">{{
+              "form_frequency_required" | translate
+            }}</clr-control-error>
+          </clr-select-container>
+
+          <clr-select-container>
             <label>{{ "form_type" | translate }}</label>
             <select clrSelect formControlName="type">
               <option
@@ -60,21 +75,6 @@
             }}</clr-control-error>
           </clr-select-container>
 
-          <clr-select-container>
-            <label>{{ "form_frequency" | translate }}</label>
-            <select clrSelect formControlName="frequency">
-              <option
-                class="capitalize"
-                *ngFor="let option of options"
-                [value]="option.value"
-                >{{ option.label | translate }}</option
-              >
-            </select>
-            <clr-control-error *clrIfError="'required'">{{
-              "form_frequency_required" | translate
-            }}</clr-control-error>
-          </clr-select-container>
-          
           <div class="modal-footer">
             <button (click)="onCancelAction()" class="btn btn-sm btn-link">
               {{ "cancel" | translate }}

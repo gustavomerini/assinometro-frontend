@@ -12,7 +12,7 @@ export class AppComponent {
   public user = null;
 
   constructor(private translate: TranslateService) {
-    this.translate.setDefaultLang("pt");
+    this.translate.setDefaultLang("en");
   }
 
   public async verifyUserSession() {}

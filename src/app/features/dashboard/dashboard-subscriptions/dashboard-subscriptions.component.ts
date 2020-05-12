@@ -35,6 +35,14 @@ export class DashboardSubscriptionsComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    this.subsService.userSubscriptions$.subscribe(
+      (response: AWSResponse<Subscription[]>) => {
+        const newObj = JSON.parse(JSON.stringify(response));
+        this.confirmedSubs = [...newObj.Items];
+        this.pricesHistory =
+          newObj && newObj.PriceHistory ? [...newObj.PriceHistory] : [];
+      }
+    );
     this.route.queryParams.subscribe((params) => {
       if (this.confirmedSubs.length === 0 && params.newUser) {
         this.newUser = params.newUser;
@@ -43,13 +51,6 @@ export class DashboardSubscriptionsComponent implements OnInit {
           : null;
       } else {
         this.showSubscriptionPicker = false;
-        this.subsService.userSubscriptions$.subscribe(
-          (response: AWSResponse<Subscription[]>) => {
-            const newObj = JSON.parse(JSON.stringify(response));
-            this.confirmedSubs = [...newObj.Items];
-            this.pricesHistory = [...newObj.PriceHistory];
-          }
-        );
       }
     });
     this.subsService.subscriptions$.subscribe((subs) => {

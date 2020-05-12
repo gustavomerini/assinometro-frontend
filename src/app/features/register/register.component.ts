@@ -7,6 +7,7 @@ import { ClrLoadingState } from "@clr/angular";
 import { ComparePassword } from "src/app/shared/validators/compare-password.validator";
 import { StrongPassword } from "src/app/shared/validators/strong-password.validator";
 import { UserService } from "src/app/core/services/user/user.service";
+import { Router } from '@angular/router';
 
 @Component({
   selector: "app-register",
@@ -52,7 +53,8 @@ export class RegisterComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     public translate: TranslateService,
-    private userService: UserService
+    private userService: UserService,
+    private router: Router
   ) {}
 
   ngOnInit(): void {}
@@ -76,6 +78,7 @@ export class RegisterComponent implements OnInit {
           this.message = this.translate.instant("check_your_email");
           this.alertRole = "alert-info";
           this.registerBtnState = ClrLoadingState.SUCCESS;
+          setTimeout(() => {this.router.navigate(["/login"])}, 2000)
         },
         (error) => this.dispatchError(error)
       );

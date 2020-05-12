@@ -5,6 +5,7 @@ import { ClrLoadingState } from "@clr/angular";
 
 import { AuthenticationService } from "src/app/core/services/authentication.service";
 import { handleCognitoError } from "src/app/shared/utils/utils";
+import { Router } from '@angular/router';
 
 @Component({
   selector: "app-recovery-password",
@@ -25,7 +26,8 @@ export class RecoveryPasswordComponent implements OnInit, OnDestroy {
   constructor(
     private fb: FormBuilder,
     private translate: TranslateService,
-    private authService: AuthenticationService
+    private authService: AuthenticationService,
+    private router: Router
   ) {}
 
   ngOnInit(): void {}
@@ -77,6 +79,7 @@ export class RecoveryPasswordComponent implements OnInit, OnDestroy {
           this.message = this.translate.instant("password_changed_sucess");
           this.currentEmail = "";
           this.loadingState = ClrLoadingState.DEFAULT;
+          setTimeout(() => {this.router.navigate(["/login"])}, 2000)
         },
         (error) => {
           console.error(error);
