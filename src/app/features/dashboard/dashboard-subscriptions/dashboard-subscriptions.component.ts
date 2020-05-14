@@ -110,7 +110,6 @@ export class DashboardSubscriptionsComponent implements OnInit {
   }
 
   public onCancel() {
-    console.log({ subsconfirmed: this.confirmedSubs });
     this.router.navigate(["dashboard/summary"]);
   }
 

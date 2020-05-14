@@ -68,7 +68,6 @@ export class DashboardProfileComponent implements OnInit {
         password
       );
       this.isLoading = false;
-      console.log(response);
       if (response.code) {
         this.message = this.translate.instant(`${handleCognitoError(response)}_profile_page`);
         return;

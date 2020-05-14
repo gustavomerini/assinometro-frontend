@@ -12,7 +12,6 @@ export class BetterDealsComponent implements AfterViewInit {
   constructor() {}
 
   ngAfterViewInit() {
-      console.log(this.betterDeals);
   }
 
   goBackAction() {

@@ -45,7 +45,6 @@ export class DashboardSummaryComponent implements OnInit {
           this.showEmptyState = true;
           return;
         }
-        console.log({subs: subs.Items});
         this.showEmptyState = false;
         this.subscriptions = subs.Items;
         this.pricesHistory = subs.PriceHistory;

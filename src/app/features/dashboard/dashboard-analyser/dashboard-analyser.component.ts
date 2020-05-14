@@ -57,11 +57,10 @@ export class DashboardAnalyserComponent implements OnInit {
   public analyseSubs(subscriptions: Subscription[]) {
     this.closeAlert();
     const validSubs = subscriptions.filter((sub) => {
-      return (
-        Object.keys(sub.ext).filter(
-          (key) => sub.ext[key] === null || sub.ext[key] === undefined
-        ).length === 0
+      const nullProps = Object.keys(sub.ext).filter(
+        (key) => sub.ext[key] === null || sub.ext[key] === undefined
       );
+      return nullProps.length <= 1;
     });
     if (validSubs.length === 0) {
       this.message = this.translate.instant("error_fill_subs_info");
