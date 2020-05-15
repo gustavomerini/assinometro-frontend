@@ -70,6 +70,18 @@ export class NewSubscriptionComponent implements AfterViewInit {
       value: "GAMES",
     },
     {
+      label: this.translate.instant("health_description"),
+      value: "HEALTH",
+    },
+    {
+      label: this.translate.instant("cloud_description"),
+      value: "NÚVEM",
+    },
+    {
+      label: this.translate.instant("prod_description"),
+      value: "PRODUCTIVITY",
+    },
+    {
       label: this.translate.instant("other_description"),
       value: "OTHER",
     },
@@ -92,6 +104,7 @@ export class NewSubscriptionComponent implements AfterViewInit {
 
   public onCancelAction() {
     this.show = false;
+    this.subForm.reset();
     this.onClose.emit();
   }
 }

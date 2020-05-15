@@ -29,28 +29,37 @@ export class DashboardSidenavComponent {
   public menuItems = [
     {
       route: "dashboard",
-      action: () =>
+      action: () => {
+        this.close.emit(true);
         this.router.navigate(["summary"], {
           relativeTo: this.activatedRoute,
-        }),
+        });
+      },
     },
     {
       route: "subscriptions",
-      action: () =>
+      action: () => {
+        this.close.emit(true);
         this.router.navigate(["subscriptions"], {
           relativeTo: this.activatedRoute,
-        }),
+        });
+      },
     },
     {
       route: "profile",
-      action: () =>
+      action: () => {
+        this.close.emit(true);
         this.router.navigate(["profile"], {
           relativeTo: this.activatedRoute,
-        }),
+        });
+      },
     },
     {
       route: "logout",
-      action: () => this.logoutUser(),
+      action: () => {
+        this.close.emit(true);
+        this.logoutUser();
+      },
     },
   ];
   constructor(

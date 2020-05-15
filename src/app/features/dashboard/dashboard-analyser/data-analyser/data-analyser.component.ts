@@ -1,6 +1,5 @@
-import { Component, OnInit, Input } from "@angular/core";
+import { Component, OnInit, Input, EventEmitter, Output } from "@angular/core";
 import { Subscription } from "src/app/core/subscription/subscription";
-import { Router, ActivatedRoute } from "@angular/router";
 
 @Component({
   selector: "app-data-analyser",
@@ -8,6 +7,7 @@ import { Router, ActivatedRoute } from "@angular/router";
   styleUrls: ["data-analyser.component.scss"],
 })
 export class DataAnalyserComponent implements OnInit {
+  @Output() goBack = new EventEmitter();
   @Input() subscriptions: Subscription[] = [];
   public showDeal = false;
   public currentSub = "";
@@ -18,5 +18,9 @@ export class DataAnalyserComponent implements OnInit {
   public toggleDeal(subName?: string) {
     this.currentSub = subName;
     this.showDeal = !this.showDeal;
+  }
+
+  public goBackAction() {
+    this.goBack.emit();
   }
 }

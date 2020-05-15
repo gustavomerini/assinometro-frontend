@@ -54,6 +54,10 @@ export class DashboardAnalyserComponent implements OnInit {
     this.alertRole = "";
   }
 
+  public resetNavigation() {
+    this.currentIndex = 0;
+  }
+  
   public analyseSubs(subscriptions: Subscription[]) {
     this.closeAlert();
     const validSubs = subscriptions.filter((sub) => {

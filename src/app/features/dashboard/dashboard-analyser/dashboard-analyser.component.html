@@ -24,6 +24,7 @@
     <section *ngIf="currentIndex === 1">
       <app-data-analyser
         *ngIf="!isLoadingResults"
+        (goBack)="resetNavigation()"
         [subscriptions]="results | filter"
       ></app-data-analyser>
     </section>

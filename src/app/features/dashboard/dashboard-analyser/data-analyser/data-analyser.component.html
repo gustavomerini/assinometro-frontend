@@ -26,7 +26,11 @@
           <span class="text" *ngIf="!sub.result">
             {{ "no_better_offer" | translate }}
           </span>
-          <span class="text clickable" (click)="toggleDeal(sub.subscriptionName)" *ngIf="sub.result > 0">
+          <span
+            class="text clickable"
+            (click)="toggleDeal(sub.subscriptionName)"
+            *ngIf="sub.result > 0"
+          >
             {{ "check_better_offers" | translate }}
           </span>
           <!-- <span class="text clickable" *ngIf="sub.result > 20 && sub.result <= 40">
@@ -51,3 +55,10 @@
     [betterDeals]="sub.betterSubs"
   ></app-better-deals>
 </section>
+<div *ngIf="!showDeal" class="actions">
+  <app-button
+    [label]="'go_back' | translate"
+    (onClick)="goBackAction()"
+    [classNames]="'btn btn-primary'"
+  ></app-button>
+</div>
