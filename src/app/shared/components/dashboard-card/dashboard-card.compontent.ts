@@ -47,12 +47,11 @@ import { Component, OnInit, Input, EventEmitter, Output } from "@angular/core";
           </button>
           <button
             type="button"
-            *ngIf="isEditing"
             (click)="onDeleteAction()"
             class="btn btn-icon"
             aria-label="home"
           >
-            <clr-icon shape="times"></clr-icon>
+            <clr-icon shape="trash"></clr-icon>
           </button>
         </div>
       </div>
