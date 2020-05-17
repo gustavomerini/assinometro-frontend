@@ -64,6 +64,9 @@ export class DashboardAnalyserComponent implements OnInit {
       const nullProps = Object.keys(sub.ext).filter(
         (key) => sub.ext[key] === null || sub.ext[key] === undefined
       );
+      if (sub.type === "PHONE") {
+        return true;
+      }
       return nullProps.length <= 1;
     });
     if (validSubs.length === 0) {

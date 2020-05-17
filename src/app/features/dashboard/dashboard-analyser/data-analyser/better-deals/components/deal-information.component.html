@@ -19,7 +19,9 @@
     </div>
     <div>
       <span class="text">{{ "form_is_fibra" | translate }}: </span>
-      <span>{{ (subscription.ext.isFibra ? "yes_desc" : "no_desc") | translate }}</span>
+      <span>{{
+        (subscription.ext.isFibra ? "yes_desc" : "no_desc") | translate
+      }}</span>
     </div>
   </div>
   <div *ngSwitchCase="'TELEVISION'">
@@ -32,7 +34,28 @@
       <span>{{ subscription.ext.deviceCount }}</span>
     </div>
   </div>
-  <div *ngSwitchCase="'PHONE'"></div>
+  <div *ngSwitchCase="'PHONE'">
+    <div>
+      <span class="text">{{ "unlimited_calls_brasil" | translate }}: </span>
+      <span>{{
+        (subscription.ext.unlimitedCallsBrasil ? "yes_desc" : "no_desc")
+          | translate
+      }}</span>
+    </div>
+    <div>
+      <span class="text">{{ "unlimited_calls_brasil" | translate }}: </span>
+      <span>{{
+        (subscription.ext.unlimitedMobileCalls ? "yes_desc" : "no_desc")
+          | translate
+      }}</span>
+    </div>
+    <div>
+      <span class="text">{{ "unlimited_calls_brasil" | translate }}: </span>
+      <span>{{
+        (subscription.ext.allOperators ? "yes_desc" : "no_desc") | translate
+      }}</span>
+    </div>
+  </div>
   <div *ngSwitchCase="'MOBILE'">
     <div>
       <span class="text">{{ "form_gb_quantity" | translate }}: </span>
@@ -42,11 +65,17 @@
       <span class="text"
         >{{ "form_has_unlimited_internet_app" | translate }}:
       </span>
-      <span>{{ subscription.ext.hasUnlimitedInternetApp }}</span>
+      <span>{{
+        (subscription.ext.unlimitedCallsBrasil ? "yes_desc" : "no_desc")
+          | translate
+      }}</span>
     </div>
     <div>
-      <span>{{ "unlimited_calls_brasil" | translate }}: </span>
-      <span>{{ subscription.ext.unlimitedCallsBrasil }}</span>
+      <span class="text">{{ "unlimited_calls_brasil" | translate }}: </span>
+      <span>{{
+        (subscription.ext.unlimitedCallsBrasil ? "yes_desc" : "no_desc")
+          | translate
+      }}</span>
     </div>
   </div>
   <div *ngSwitchDefault></div>
