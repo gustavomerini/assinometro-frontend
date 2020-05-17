@@ -61,12 +61,12 @@ export class SubscriptionDataComponent {
 
   public phoneFields = [
     {
-      description: this.translate.instant("all_mobile_calls"),
+      description: this.translate.instant("unlimited_mobile_calls_brasil"),
       name: "unlimitedMobileCalls",
       type: "checkbox",
     },
     {
-      description: this.translate.instant("all_calls"),
+      description: this.translate.instant("unlimited_calls_brasil"),
       name: "unlimitedPhoneCalls",
       type: "checkbox",
     },
