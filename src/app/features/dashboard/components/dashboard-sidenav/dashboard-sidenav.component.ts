@@ -13,12 +13,14 @@ import { SubscriptionService } from "src/app/core/subscription/subscription.serv
   styleUrls: ["./dashboard-sidenav.component.scss"],
   template: `
     <nav class="dashboard-sidenav sidenav-items mob-full-size">
-      <app-button
-        *ngFor="let item of menuItems"
-        (onClick)="item.action($event)"
-        [label]="item.route + '_page' | translate"
-        [classNames]="'btn btn-link clarity-blue-color with-margin-top'"
-      ></app-button>
+      <div class="nav-item" *ngFor="let item of menuItems">
+        <clr-icon class="end" size="24" [attr.shape]="item.icon"></clr-icon>
+        <app-button
+          (onClick)="item.action($event)"
+          [label]="item.route + '_page' | translate"
+          [classNames]="'btn btn-link clarity-blue-color with-margin-top'"
+        ></app-button>
+      </div>
     </nav>
     ,
   `,
@@ -29,6 +31,7 @@ export class DashboardSidenavComponent {
   public menuItems = [
     {
       route: "dashboard",
+      icon: "view-cards",
       action: () => {
         this.close.emit(true);
         this.router.navigate(["summary"], {
@@ -38,6 +41,7 @@ export class DashboardSidenavComponent {
     },
     {
       route: "subscriptions",
+      icon: "view-list",
       action: () => {
         this.close.emit(true);
         this.router.navigate(["subscriptions"], {
@@ -47,6 +51,7 @@ export class DashboardSidenavComponent {
     },
     {
       route: "profile",
+      icon: "user",
       action: () => {
         this.close.emit(true);
         this.router.navigate(["profile"], {
@@ -56,6 +61,7 @@ export class DashboardSidenavComponent {
     },
     {
       route: "logout",
+      icon: "logout",
       action: () => {
         this.close.emit(true);
         this.logoutUser();

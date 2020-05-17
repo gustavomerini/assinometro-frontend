@@ -14,7 +14,10 @@
 .sidenav-items {
   display: flex;
   flex-direction: column;
-  align-items: center;
+  .nav-item {
+    margin-left: 1rem;
+    
+  }
 }
 
 .dashboard-sidenav {
