@@ -48,7 +48,7 @@ export class SubscriptionDataComponent {
       type: "checkbox",
     },
     {
-      description: this.translate.instant("unlimited_calls_brasil"),
+      description: this.translate.instant("unlimited_calls_brasil_mobile"),
       name: "unlimitedCallsBrasil",
       type: "checkbox",
     },
