@@ -17,31 +17,43 @@ export class ConfirmedSubsComponent implements OnInit {
   public currentIndex;
   public types = [
     {
-      label: this.translate.instant("internet"),
+      label: this.translate.instant("internet_description"),
       value: "INTERNET",
+    },
+    {
+      label: this.translate.instant("television_description"),
+      value: "TELEVISION",
+    },
+    {
+      label: this.translate.instant("phone_description"),
+      value: "PHONE",
     },
     {
       label: this.translate.instant("mobile"),
       value: "MOBILE",
     },
     {
-      label: this.translate.instant("phone"),
-      value: "PHONE",
-    },
-    {
-      label: this.translate.instant("television"),
-      value: "TELEVISION",
-    },
-    {
-      label: this.translate.instant("streaming"),
+      label: this.translate.instant("streaming_description"),
       value: "STREAMING",
     },
     {
-      label: this.translate.instant("games"),
+      label: this.translate.instant("games_description"),
       value: "GAMES",
     },
     {
-      label: this.translate.instant("other"),
+      label: this.translate.instant("health_description"),
+      value: "HEALTH",
+    },
+    {
+      label: this.translate.instant("cloud_description"),
+      value: "NÚVEM",
+    },
+    {
+      label: this.translate.instant("prod_description"),
+      value: "PRODUCTIVITY",
+    },
+    {
+      label: this.translate.instant("other_description"),
       value: "OTHER",
     },
   ];
