@@ -25,8 +25,6 @@ export class DashboardSummaryComponent implements OnInit {
   public pricesHistory: PriceHistory[];
   public actualMonthPrice: PriceHistory;
   public priceInfo: any;
-  public chartTypes = ["area", "line", "column"];
-  public counter = 0;
   private canvasData: any;
   public showEmptyState = false;
   public isTotalSubsLoaded = false;
@@ -86,16 +84,9 @@ export class DashboardSummaryComponent implements OnInit {
   }
 
   private loadCanvas() {
-    const type = this.chartTypes[this.counter];
-    this.counter >= 2 ? (this.counter = 0) : this.counter++;
     this.cdr.detectChanges();
     Canvas.addColorSet("customColorSet6", [
-      "#0065AB",
-      "#C1CDD4",
-      "#49AFD9",
-      "#798893",
-      "#A6D8E7",
-      "#25333D",
+      "#4257b2",
     ]);
 
     let chart = new Canvas.Chart("chartContainer", {
@@ -113,7 +104,6 @@ export class DashboardSummaryComponent implements OnInit {
         },
       ],
     });
-
     chart.render();
   }
 }

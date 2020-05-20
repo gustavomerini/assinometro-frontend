@@ -1,13 +1,12 @@
-import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { Injectable } from "@angular/core";
+import { HttpClient } from "@angular/common/http";
 import * as config from "../../../../config.json";
 
-@Injectable({providedIn: 'root'})
+@Injectable({ providedIn: "root" })
 export class UserService {
-    constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {}
 
-    public createUser(id) {
-        return this.http.post(`${config.api.invokeUrl}/users`, {id});
-    }
-    
+  public createUser(id: String, email: String) {
+    return this.http.post(`${config.api.invokeUrl}/users`, { id, email });
+  }
 }

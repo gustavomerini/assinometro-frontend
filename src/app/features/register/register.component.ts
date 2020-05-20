@@ -73,7 +73,7 @@ export class RegisterComponent implements OnInit {
     };
     try {
       const response = await Auth.signUp(user);
-      this.userService.createUser(response.userSub).subscribe(
+      this.userService.createUser(response.userSub, response.user.getUsername()).subscribe(
         (res) => {
           this.message = this.translate.instant("check_your_email");
           this.alertRole = "alert-info";
