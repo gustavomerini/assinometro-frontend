@@ -67,6 +67,9 @@ export class DashboardAnalyserComponent implements OnInit {
       if (sub.type === "PHONE") {
         return true;
       }
+      if (sub.type === "MOBILE" && sub.ext.gbQuantity) {
+        return true;
+      }
       return nullProps.length <= 1;
     });
     if (validSubs.length === 0) {

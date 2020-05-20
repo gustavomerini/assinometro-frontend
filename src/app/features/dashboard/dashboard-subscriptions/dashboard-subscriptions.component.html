@@ -1,6 +1,6 @@
 <div class="clr-row">
-  <div class="clr-col-lg-4"></div>
-  <div class="clr-col-lg-4 clr-col-12">
+  <div class="clr-col-lg-4 thirty"></div>
+  <div class="clr-col-lg-4 sixty clr-col-12 clr-col-md-12 clr-col-sm-12">
     <section *ngIf="!isLoading">
       <app-alert
         *ngIf="message"
@@ -31,7 +31,7 @@
       ></app-new-subscription>
     </section>
   </div>
-  <div class="clr-col-lg-4"></div>
+  <div class="clr-col-lg-4 thirty"></div>
 </div>
 <div *ngIf="isLoading" class="spinner-center">
   <span class="spinner spinner-lg"> </span>

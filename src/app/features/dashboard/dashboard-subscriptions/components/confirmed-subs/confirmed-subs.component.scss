@@ -19,3 +19,20 @@
 .capitalize {
   text-transform: capitalize;
 }
+
+@media (min-width: 576px) {
+  .flex-container {
+    max-width: 540px;
+  }
+}
+
+@media (max-width: 768px) {
+  .actions-top {
+    margin-top: 1rem;
+    display: flex;
+    justify-items: center;
+    margin-left: auto;
+    margin-right: auto;
+    flex-direction: column;
+  }
+}
