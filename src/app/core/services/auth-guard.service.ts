@@ -1,5 +1,5 @@
 import { Injectable } from "@angular/core";
-import Auth from "@aws-amplify/auth";
+import { Auth } from "aws-amplify";
 import { Router, CanActivate } from "@angular/router";
 
 @Injectable({ providedIn: "root" })

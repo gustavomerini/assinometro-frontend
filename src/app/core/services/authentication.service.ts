@@ -1,6 +1,6 @@
 import { Injectable } from "@angular/core";
 import { User } from "./user/user";
-import Auth, { CognitoUser } from "@aws-amplify/auth";
+import { Auth } from "aws-amplify";
 import { AWSUserData } from "./user/userData";
 
 @Injectable({ providedIn: "root" })
@@ -12,7 +12,7 @@ export class AuthenticationService {
     try {
       return await Auth.signIn(user);
     } catch (error) {
-      return new Promise((resolve) => resolve(error));
+      return new Promise(resolve => resolve(error));
     }
   }
 
@@ -20,7 +20,7 @@ export class AuthenticationService {
     try {
       return await Auth.signUp(user);
     } catch (error) {
-      return new Promise((resolve) => resolve(error));
+      return new Promise(resolve => resolve(error));
     }
   }
 
@@ -29,7 +29,7 @@ export class AuthenticationService {
       this.userData = null;
       return await Auth.signOut();
     } catch (error) {
-      return new Promise((resolve) => resolve(error));
+      return new Promise(resolve => resolve(error));
     }
   }
 
@@ -37,7 +37,7 @@ export class AuthenticationService {
     try {
       return await Auth.forgotPassword(email);
     } catch (error) {
-      return new Promise((resolve) => resolve(error));
+      return new Promise(resolve => resolve(error));
     }
   }
 
@@ -49,19 +49,19 @@ export class AuthenticationService {
     try {
       return await Auth.forgotPasswordSubmit(email, code, newPassword);
     } catch (error) {
-      return new Promise((resolve) => resolve(error));
+      return new Promise(resolve => resolve(error));
     }
   }
 
   async changePasswordByAuthentication(
-    user: CognitoUser,
+    user: any,
     oldPassword: string,
     newPassword: string
   ) {
     try {
       return await Auth.changePassword(user, oldPassword, newPassword);
     } catch (error) {
-      return new Promise((resolve) => resolve(error));
+      return new Promise(resolve => resolve(error));
     }
   }
 
@@ -73,7 +73,7 @@ export class AuthenticationService {
       this.userData = response;
       return this.userData;
     } catch (error) {
-      return new Promise((resolve) => resolve(error));
+      return new Promise(resolve => resolve(error));
     }
   }
 }
