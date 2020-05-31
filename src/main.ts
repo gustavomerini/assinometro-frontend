@@ -14,6 +14,7 @@ Amplify.configure({
     userPoolWebClientId: config.cognito.APP_CLIENT_ID
   }
 });
+
 Auth.configure({
   Auth: {
     mandatorySignId: true,

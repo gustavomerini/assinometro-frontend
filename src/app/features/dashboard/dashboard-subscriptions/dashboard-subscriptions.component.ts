@@ -82,13 +82,13 @@ export class DashboardSubscriptionsComponent implements OnInit {
       this.subsService
         .updateUserSubscriptions(response.username, subs)
         .subscribe(
-          (response: any) => {
+          (res: any) => {
             const today = new Date();
             this.subsService.dispatchUserSubscriptions({
-              Items: response.subscriptions,
-              PriceHistory: response.priceHistory,
-              Count: response.subscriptions.length,
-              ScannedCount: response.subscriptions.length,
+              Items: res.subscriptions,
+              PriceHistory: res.priceHistory,
+              Count: res.subscriptions.length,
+              ScannedCount: res.subscriptions.length,
             });
             this.isLoading = false;
             this.router.navigate(["dashboard/summary"]);
