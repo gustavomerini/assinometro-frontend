@@ -4,11 +4,12 @@ const AWS = require("aws-sdk");
 
 exports.handler = async (event, context) => {
   const documentClient = new AWS.DynamoDB.DocumentClient();
-  const { id } = JSON.parse(event.body);
+  const { id, email } = JSON.parse(event.body);
   const params = {
     TableName: "Users",
     Item: {
-      id
+      id,
+      email
     }
   };
   let responseBody = "";
