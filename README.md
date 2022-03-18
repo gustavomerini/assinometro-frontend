@@ -1,7 +1,5 @@
 # [Assinômetro](https://www.assinometro.com)
 
-# WIP
-
 This is the project I created for my final paper (TCC).
 
 The idea is to provide a Web Application where the user can register their expenses with subscriptions.
