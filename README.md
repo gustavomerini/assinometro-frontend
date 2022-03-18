@@ -1,4 +1,4 @@
-# [Assinômetro](https://www.assinometro.com)
+# [Assinômetro]
 
 This is the project I created for my final paper (TCC).
 
